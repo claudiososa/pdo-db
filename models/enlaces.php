@@ -19,7 +19,7 @@ class Paginas{
 
 		else if($enlaces == "ok"){
 
-			$module =  "views/modules/registro.php";
+			$module =  "views/modules/inicio.php";
 
 		}
 		else if($enlaces == "fallo"){

@@ -4,14 +4,14 @@ class Datos extends Conexion{
   //Registro de usuarios
 
   public function registroUsuarioModel($datosModel,$tabla){
-    $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (user_name, password, email)
-    VALUES (:user_name,:password,:email)");
+    $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (user_id, user_name, password, email, type, status)
+    VALUES (null,:user_name,:password,:email,:type,:status)");
 
     $stmt->bindParam(":user_name",$datosModel["usuario"],PDO::PARAM_STR);
     $stmt->bindParam(":password",$datosModel["password"],PDO::PARAM_STR);
     $stmt->bindParam(":email",$datosModel["email"],PDO::PARAM_STR);
-    //$stmt->bindParam(":type","Alumno",PDO::PARAM_STR);
-  //  $stmt->bindParam(":status","Activo",PDO::PARAM_STR);
+    $stmt->bindParam(":type",$datosModel["type"],PDO::PARAM_STR);
+    $stmt->bindParam(":status",$datosModel["status"],PDO::PARAM_STR);
 
   if($stmt->execute()){
       return $stmt;
@@ -26,7 +26,7 @@ class Datos extends Conexion{
 //Ingreso de usuarios
 //******************************
     public function ingresoUsuarioModel($datosModel,$tabla){
-      $stmt = Conexion::conectar()->prepare("SELECT user_name,password FROM $tabla WHERE user_name=:user_name");
+      $stmt = Conexion::conectar()->prepare("SELECT user_name,password,type FROM $tabla WHERE user_name=:user_name");
       $stmt->bindParam(":user_name",$datosModel["usuario"],PDO::PARAM_STR);
 
       //$stmt->bindParam(":password",$datosModel["password"],PDO::PARAM_STR);

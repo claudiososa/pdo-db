@@ -39,7 +39,9 @@ class MvcController{
 		if(isset($_POST["usuarioRegistro"])){
 		$datosController = array("usuario"=>$_POST["usuarioRegistro"],
 									  "password"=>$_POST["passwordRegistro"],
-										"email"=>$_POST["emailRegistro"]
+										"email"=>$_POST["emailRegistro"],
+										"type"=>$_POST["typeRegistro"],
+										"status"=>$_POST["statusRegistro"]
 
 									);
 		$respuesta = Datos::registroUsuarioModel($datosController, "users");
@@ -66,8 +68,11 @@ class MvcController{
 
 		if($respuesta["user_name"] == $_POST["usuarioIngreso"] && $respuesta["password"] == $_POST["passwordIngreso"] ){
 			session_start();
+			$tipoUsuario= $respuesta["type"];
 			$_SESSION["validar"]=true;
-			header("location:index.php?action=usuarios");
+			$_SESSION["typeUser"]=$respuesta["type"];
+
+			header("location:index.php?action=ok");
 		}else{
 			header("location:index.php?action=fallo");
 		}
@@ -87,6 +92,8 @@ class MvcController{
 			<td>'.$item["user_name"].'</td>
 			<td>'.$item["password"].'</td>
 			<td>'.$item["email"].'</td>
+			<td>'.$item["type"].'</td>
+			<td>'.$item["status"].'</td>
 			<td><a href="index.php?action=editar&id='.$item["user_id"].'"><button>Editar</button></a></td>
 			<td><a href="index.php?action=usuarios&idBorrar='.$item["user_id"].'"><button>Borrar</button></a></td>
 		</tr>';

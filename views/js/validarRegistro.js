@@ -1,6 +1,7 @@
 //comentario
 function validarRegistro() {
 
+
   /*var usuario = document.querySelector("#usuarioRegistro").value;
   console.log("usuario",usuario);
   var password = document.querySelector("#passwordRegistro").value;

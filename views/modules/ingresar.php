@@ -1,14 +1,29 @@
-<h1>INGRESAR</h1>
+<div class="container" >
+		<div class="row">
+		<div class="Absolute-Center is-Responsive">
+		<div class="col-md-4 col-md-offset-4">
+<form action="" name="iniciosesion"method="POST">
+	<label class="">Inicio de Sesión</label>
 
-	<form method="post" action="">
+		<div class="form-group input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+		<input class="form-control" type="text" name="usuarioIngreso"  placeholder="Ingrese Usuario" id="formulario"  size="50" required>
+		</div>
 
-		<input type="text" placeholder="Usuario" name="usuarioIngreso" required>
+		<!--<div id="alerta" style="display:none;"><font color="crimsol">Ingrese 8 caracteres (solo números)</font></div>-->
+		<div class="form-group input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+				<input class="form-control" type="password" name="passwordIngreso" placeholder="Ingrese Contraseña" size="50" required>
+		</div>
 
-		<input type="password" placeholder="Contraseña" name="passwordIngreso" required>
-
-		<input type="submit" value="Enviar">
-
-	</form>
+		<div class="form-group" "input-group">
+				<button class="btn btn-lg btn-primary btn-block" type="submit" id="btnvalidar" value="Ingresar">Ingresar</button>
+		</div>
+</form>
+		</div>
+		</div>
+		</div>
+</div>
 <?php
 
 $ingreso = new MvcController();

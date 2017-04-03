@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(!$_SESSION["validar"]){
+if($_SESSION["typeUser"]<>'Admin'){
 	header("location:index.php?action=ingresar");
 	exit();
 }
@@ -17,9 +17,10 @@ if(!$_SESSION["validar"]){
 				<th>Usuario</th>
 				<th>Contraseña</th>
 				<th>Email</th>
+				<th>Tipo</th>
+				<th>Estado</th>
 				<th></th>
 				<th></th>
-
 			</tr>
 
 		</thead>

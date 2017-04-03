@@ -1,4 +1,9 @@
 <?php
+session_start();
+if($_SESSION["typeUser"]<>'Admin'){
+	header("location:index.php?action=ingresar");
+	exit();
+}
 	$type=General::camposet('type','users');
 	$status=General::camposet('status','users');
 ?>
