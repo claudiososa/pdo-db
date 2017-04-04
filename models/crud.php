@@ -26,7 +26,7 @@ class Datos extends Conexion{
 //Ingreso de usuarios
 //******************************
     public function ingresoUsuarioModel($datosModel,$tabla){
-      $stmt = Conexion::conectar()->prepare("SELECT user_name,password,type FROM $tabla WHERE user_name=:user_name");
+      $stmt = Conexion::conectar()->prepare("SELECT user_id, user_name,password,type,attempts FROM $tabla WHERE user_name=:user_name");
       $stmt->bindParam(":user_name",$datosModel["usuario"],PDO::PARAM_STR);
 
       //$stmt->bindParam(":password",$datosModel["password"],PDO::PARAM_STR);
@@ -35,6 +35,27 @@ class Datos extends Conexion{
       return $stmt->fetch();
       $stmt->close();
     }
+
+    //Intentos de usuarios
+    //******************************
+        public function intentosUsuarioModel($datosModel,$tabla){
+          $stmt = Conexion::conectar()->prepare("UPDATE users SET attempts=:intentos WHERE user_id=:user_id");
+
+          $stmt->bindParam(":intentos",$datosModel["intentos"],PDO::PARAM_INT);
+          $stmt->bindParam(":user_id",$datosModel["usuarioId"],PDO::PARAM_INT);
+
+          //$stmt->bindParam(":password",$datosModel["password"],PDO::PARAM_STR);
+
+          if($stmt->execute()){
+              return "success";
+            }else{
+              return "error";
+            }
+
+            $stmt->close();
+          }
+
+
 
     //Vista de usuarios
     //******************************

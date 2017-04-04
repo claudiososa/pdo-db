@@ -37,8 +37,11 @@ class MvcController{
 
 	public function registroUsuarioController(){
 		if(isset($_POST["usuarioRegistro"])){
+
+		$encriptar = md5($_POST["passwordRegistro"]);
+		//$encriptar = crypt($_POST["passwordRegistro"]);
 		$datosController = array("usuario"=>$_POST["usuarioRegistro"],
-									  "password"=>$_POST["passwordRegistro"],
+									  "password"=>$encriptar,
 										"email"=>$_POST["emailRegistro"],
 										"type"=>$_POST["typeRegistro"],
 										"status"=>$_POST["statusRegistro"]
@@ -59,24 +62,55 @@ class MvcController{
   //******************************************************
 	public function ingresoUsuarioController(){
 		if(isset($_POST["usuarioIngreso"])){
-		$datosController = array("usuario"=>$_POST["usuarioIngreso"],
-										"password"=>$_POST["passwordIngreso"]
+
+		$encriptar = md5($_POST["passwordIngreso"]);
+
+		$datosController = array("usuario"=>$_POST["usuarioIngreso"]
+										//"password"=>$encriptar
 									);
 
 		$respuesta = Datos::ingresoUsuarioModel($datosController, "users");
 
+		$intentos = $respuesta["attempts"];
+		$maximoIntentos = 2;
 
-		if($respuesta["user_name"] == $_POST["usuarioIngreso"] && $respuesta["password"] == $_POST["passwordIngreso"] ){
-			session_start();
-			$tipoUsuario= $respuesta["type"];
-			$_SESSION["validar"]=true;
-			$_SESSION["typeUser"]=$respuesta["type"];
+		if($intentos < $maximoIntentos){
 
-			header("location:index.php?action=ok");
+			if($respuesta["user_name"] == $_POST["usuarioIngreso"] && $respuesta["password"] == $encriptar){
+				session_start();
+
+				$tipoUsuario= $respuesta["type"];
+				$_SESSION["validar"]=true;
+				$_SESSION["typeUser"]=$respuesta["type"];
+
+				$intentos=0;
+
+				$datosController= array ("usuarioId"=>$respuesta ["user_id"],
+																	"intentos" => $intentos);
+
+				$respuesta = Datos::intentosUsuarioModel($datosController,"users");
+				
+				header("location:index.php?action=ok");
+			}else{
+				$intentos++;
+
+				$datosController= array ("usuarioId"=>$respuesta ["user_id"],
+																	"intentos" => $intentos);
+
+				$respuesta = Datos::intentosUsuarioModel($datosController,"users");
+
+				header("location:index.php?action=fallo");
+			}
 		}else{
-			header("location:index.php?action=fallo");
-		}
+			$intentos=0;
 
+			$datosController= array ("usuarioId"=>$respuesta ["user_id"],
+																"intentos" => $intentos);
+
+			$respuesta = Datos::intentosUsuarioModel($datosController,"users");
+
+			header("location:index.php?action=fallo3intentos");
+		}
 		}
 
 	}
@@ -111,6 +145,8 @@ class MvcController{
 					<input type="text" value="'.$respuesta["user_name"].'" placeholder="Usuario" name="usuarioEditar" required>
 					<input type="password" value="'.$respuesta["password"].'" placeholder="Contraseña" name="passwordEditar" required>
 					<input type="email" value="'.$respuesta["email"].'" placeholder="Email" name="emailEditar" required>
+					<input type="input" value="'.$respuesta["type"].'"  name="typeEditar" required>
+					<input type="input" value="'.$respuesta["status"].'" name="statusEditar" required>
 					<input type="submit" value="Actualizar">
 		';
 		//echo $respuesta[1];
@@ -122,10 +158,15 @@ class MvcController{
 	//*********************************************************
 	public function actualizarUsuarioController(){
 		if(isset($_POST["usuarioEditar"])){
+
+			$encriptar = md5($_POST["passwordEditar"]);
+
 			$datosController =  array("id"=>$_POST["idEditar"],
 											"usuario"=>$_POST["usuarioEditar"],
-											"password"=>$_POST["passwordEditar"],
+											"password"=>$encriptar,
 											"email"=>$_POST["emailEditar"],
+											"type"=>$_POST["typeEditar"],
+											"status"=>$_POST["statusEditar"]
 			);
 
 		$respuesta = Datos::actualizarUsuarioModel($datosController,"users");

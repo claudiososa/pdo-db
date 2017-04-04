@@ -31,7 +31,11 @@ $ingreso->ingresoUsuarioController();
 
 if(isset($_GET["action"])){
 	if($_GET["action"]=="fallo"){
-		echo "Datos Incorrectos";
+		echo "<div>Datos Incorrectos</div>";
+	}
+
+	if($_GET["action"]=="fallo3intentos"){
+		echo "<div>Debe hacer el captcha</div>";
 	}
 }
  ?>

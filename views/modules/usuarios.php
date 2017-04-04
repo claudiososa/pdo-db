@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 if($_SESSION["typeUser"]<>'Admin'){
 	header("location:index.php?action=ingresar");

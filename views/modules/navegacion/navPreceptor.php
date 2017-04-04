@@ -14,8 +14,7 @@
 		<li><a href="index.php?action=salir">Salir</a></li>
 		<li><a href='#'>
 
-		<?php
-		session_start();
+		<?php		
 
 		if(isset($_SESSION["typeUser"])){
 			echo 'Tipo de usuario: '.$_SESSION["typeUser"];
