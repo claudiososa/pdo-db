@@ -5,7 +5,9 @@ class Paginas{
 	public function enlacesPaginasModel($enlaces){
 
 
-		if($enlaces == "ingresar" || $enlaces == "usuarios" || $enlaces == "editar" || $enlaces == "salir"){
+		if($enlaces == "ingresar" || $enlaces == "usuarios"
+			|| $enlaces == "editar" || $enlaces == "salir" || $enlaces == "person" || $enlaces == "editarPerson"
+			|| $enlaces == "createPerson"  ){
 
 			$module =  "views/modules/".$enlaces.".php";
 
@@ -35,6 +37,11 @@ class Paginas{
 		else if($enlaces == "cambio"){
 
 			$module =  "views/modules/usuarios.php";
+
+		}
+		else if($enlaces == "cambioperson"){
+
+			$module =  "views/modules/person.php";
 
 		}
 

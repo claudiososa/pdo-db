@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>S-W Colegio 5159</title>
-	<script src="views/js/bootstrap.min.js"></script>
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
