@@ -25,14 +25,7 @@ if($_SESSION["typeUser"]<>'Admin'){
 			<input type="password" placeholder="Contraseña" name="passwordRegistro" id="passwordRegistro" required>
 		</div>
 	</div>
-	<div class="form-group">
-		<div class="col-md-12">
-			<label class="control-label" for="email">Email</label>
-	  </div>
-		<div class="col-md-12">
-		<input type="email" placeholder="Email" name="emailRegistro"  id="emailRegistro" required>
-	</div>
-</div>
+
 	<div class="form-group">
 		<label class="control-label" for="type">Tipo de Usuario</label>
 		<select  class="form-control" name="typeRegistro">

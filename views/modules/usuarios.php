@@ -16,7 +16,6 @@ if($_SESSION["typeUser"]<>'Admin'){
 			<tr>
 				<th>Usuario</th>
 				<th>Contraseña</th>
-				<th>Email</th>
 				<th>Tipo</th>
 				<th>Estado</th>
 				<th></th>

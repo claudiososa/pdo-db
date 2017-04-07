@@ -8,6 +8,7 @@ class Datos extends Conexion{
     VALUES (user_id,:user_name,:password,:type,:status)");
 
     $stmt->bindParam(":user_id",$datosModel["usuario"],PDO::PARAM_INT);
+
     $stmt->bindParam(":user_name",$datosModel["usuario"],PDO::PARAM_INT);
     $stmt->bindParam(":password",$datosModel["password"],PDO::PARAM_STR);
   //  $stmt->bindParam(":email",$datosModel["email"],PDO::PARAM_STR);

@@ -35,17 +35,18 @@ class MvcController{
 
 	//Registro usuarios
 
-	public function registroUsuarioController(){
-		if(isset($_POST["usuarioRegistro"])){
+	public function registroUsuarioController($user_id,$user_name,$type){
+		//if(isset($_POST["dniRegistro"])){
 
-		$encriptar = md5($_POST["passwordRegistro"]);
+		$encriptar = md5($user_name);
 		//$encriptar = crypt($_POST["passwordRegistro"]);
-		$datosController = array("usuario"=>$_POST["usuarioRegistro"],
+		$datosController = array(
+										"user_id"=$user_id,
+										"usuario"=>$user_name,
 									  "password"=>$encriptar,
-										"email"=>$_POST["emailRegistro"],
+										//"email"=>$_POST["emailRegistro"],
 										"type"=>$_POST["typeRegistro"],
-										"status"=>$_POST["statusRegistro"]
-
+										"status"=>'Inactivo'
 									);
 		$respuesta = Datos::registroUsuarioModel($datosController, "users");
 
@@ -55,7 +56,7 @@ class MvcController{
 			header("location:index.php");
 		}
 
-		}
+	//	}
 	}
 
 	//ingreso de usuarios
@@ -89,7 +90,7 @@ class MvcController{
 																	"intentos" => $intentos);
 
 				$respuesta = Datos::intentosUsuarioModel($datosController,"users");
-				
+
 				header("location:index.php?action=ok");
 			}else{
 				$intentos++;
@@ -125,7 +126,6 @@ class MvcController{
 		echo '<tr>
 			<td>'.$item["user_name"].'</td>
 			<td>'.$item["password"].'</td>
-			<td>'.$item["email"].'</td>
 			<td>'.$item["type"].'</td>
 			<td>'.$item["status"].'</td>
 			<td><a href="index.php?action=editar&id='.$item["user_id"].'"><button>Editar</button></a></td>
@@ -144,7 +144,6 @@ class MvcController{
 		echo '<input type="hidden" value="'.$respuesta["user_id"].'" name="idEditar">
 					<input type="text" value="'.$respuesta["user_name"].'" placeholder="Usuario" name="usuarioEditar" required>
 					<input type="password" value="'.$respuesta["password"].'" placeholder="Contraseña" name="passwordEditar" required>
-					<input type="email" value="'.$respuesta["email"].'" placeholder="Email" name="emailEditar" required>
 					<input type="input" value="'.$respuesta["type"].'"  name="typeEditar" required>
 					<input type="input" value="'.$respuesta["status"].'" name="statusEditar" required>
 					<input type="submit" value="Actualizar">
@@ -164,7 +163,6 @@ class MvcController{
 			$datosController =  array("id"=>$_POST["idEditar"],
 											"usuario"=>$_POST["usuarioEditar"],
 											"password"=>$encriptar,
-											"email"=>$_POST["emailEditar"],
 											"type"=>$_POST["typeEditar"],
 											"status"=>$_POST["statusEditar"]
 			);

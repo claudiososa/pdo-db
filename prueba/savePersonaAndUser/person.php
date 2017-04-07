@@ -1,5 +1,6 @@
 <?php
 require_once "conexion.php";
+require_once "user.php";
 class Person extends Conexion{
   //Registro de usuarios
 
@@ -18,7 +19,28 @@ class Person extends Conexion{
     $stmt->bindParam(":email",$datosModel["email"],PDO::PARAM_STR);
     $stmt->bindParam(":address",$datosModel["address"],PDO::PARAM_STR);
 
+
   if($stmt->execute()){
+       $result = $stmt->fetch();
+       /*
+      $datosController = array(
+                  "user_id"=$user_id,
+                  "usuario"=>$user_name,
+                  "password"=>$encriptar,
+                  //"email"=>$_POST["emailRegistro"],
+                  "type"=>$_POST["typeRegistro"],
+                  "status"=>'Inactivo'
+                );
+    $respuesta = Datos::registroUsuarioModel($datosController, "users");
+
+    if ($respuesta =="success") {
+      header("location:index.php?action=ok");
+    }else{
+      header("location:index.php");
+    }
+    */
+    var_dump($result);
+     echo '<br>'.$result['person_id'].'<br>';
       //return $stmt;
       return "success";
     }else{
