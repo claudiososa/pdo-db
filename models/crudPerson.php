@@ -4,10 +4,11 @@ class Person extends Conexion{
   //Registro de usuarios
 
   public function registroPersonModel($datosModel,$tabla){
-    $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (person_id, dni, cuil, lastname, firstname, birthday, sexo, phone, movil, email, address)
+    $conexion = new Conexion();
+    $stmt = $conexion->prepare("INSERT INTO $tabla (person_id, dni, cuil, lastname, firstname, birthday, sexo, phone, movil, email, address)
     VALUES (null, :dni, :cuil, :lastname, :firstname, :birthday, :sexo, :phone, :movil, :email, :address)");
 
-    $stmt->bindParam(":dni",$datosModel["dni"],PDO::PARAM_INT);
+    $stmt->bindParam(":dni",$datosModel["dni"],PDO::PARAM_STR);
     $stmt->bindParam(":cuil",$datosModel["cuil"],PDO::PARAM_STR);
     $stmt->bindParam(":lastname",$datosModel["lastname"],PDO::PARAM_STR);
     $stmt->bindParam(":firstname",$datosModel["firstname"],PDO::PARAM_STR);
@@ -31,7 +32,8 @@ class Person extends Conexion{
     //Vista de usuarios
     //******************************
         public function vistaPersonModel($tabla){
-          $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ");
+          $conexion = new Conexion();
+          $stmt = $conexion->prepare("SELECT * FROM $tabla ");
           $stmt->execute();
           return $stmt->fetchAll();
           $stmt->close();
@@ -40,7 +42,8 @@ class Person extends Conexion{
     //Editar usuarios
     //************************************************
     public function editarPersonModel($datos,$tabla){
-      $stmt = Conexion::conectar()->prepare("SELECT person_id, dni, cuil, lastname, firstname, birthday, sexo, phone, movil, email, address
+      $conexion = new Conexion();
+      $stmt = $conexion->prepare("SELECT person_id, dni, cuil, lastname, firstname, birthday, sexo, phone, movil, email, address
                                             FROM $tabla
                                             WHERE person_id=:person_id");
       $stmt->bindParam(":person_id",$datos,PDO::PARAM_INT);
@@ -52,7 +55,8 @@ class Person extends Conexion{
     //Actualizar usuarios
     //************************************************
     public function actualizarPersonModel($datosModel,$tabla){
-      $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET dni=:dni, cuil=:cuil, lastname=:lastname,
+      $conexion = new Conexion();
+      $stmt = $conexion->prepare("UPDATE $tabla SET dni=:dni, cuil=:cuil, lastname=:lastname,
                                             firstname=:firstname, birthday=:birthday,
                                             sexo=:sexo, phone=:phone, movil=:movil, email=:email, address=:address
                                             WHERE person_id=:person_id");
@@ -80,7 +84,8 @@ class Person extends Conexion{
     //Actualizar usuarios
     //************************************************
     public function borrarPersonModel($datos,$tabla){
-      $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE person_id=:person_id");
+      $conexion = new Conexion();
+      $stmt = $conexion->prepare("DELETE FROM $tabla WHERE person_id=:person_id");
       $stmt->bindParam(":person_id",$datos,PDO::PARAM_INT);
 
     if($stmt->execute()){

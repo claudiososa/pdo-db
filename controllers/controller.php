@@ -41,7 +41,7 @@ class MvcController{
 		$encriptar = md5($user_name);
 		//$encriptar = crypt($_POST["passwordRegistro"]);
 		$datosController = array(
-										"user_id"=$user_id,
+										"user_id"=>$user_id,
 										"usuario"=>$user_name,
 									  "password"=>$encriptar,
 										//"email"=>$_POST["emailRegistro"],

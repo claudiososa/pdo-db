@@ -1,14 +1,16 @@
 <?php
 require_once "conexion.php";
 require_once "user.php";
+
 class Person extends Conexion{
   //Registro de usuarios
 
   public function registroPersonModel($datosModel,$tabla){
-    $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (person_id, dni, cuil, lastname, firstname, birthday, sexo, phone, movil, email, address)
+    $conexion = new Conexion();
+    $stmt = $conexion->prepare("INSERT INTO $tabla (person_id, dni, cuil, lastname, firstname, birthday, sexo, phone, movil, email, address)
     VALUES (null, :dni, :cuil, :lastname, :firstname, :birthday, :sexo, :phone, :movil, :email, :address)");
 
-    $stmt->bindParam(":dni",$datosModel["dni"],PDO::PARAM_INT);
+    $stmt->bindParam(":dni",$datosModel["dni"],PDO::PARAM_STR);
     $stmt->bindParam(":cuil",$datosModel["cuil"],PDO::PARAM_STR);
     $stmt->bindParam(":lastname",$datosModel["lastname"],PDO::PARAM_STR);
     $stmt->bindParam(":firstname",$datosModel["firstname"],PDO::PARAM_STR);
@@ -21,33 +23,47 @@ class Person extends Conexion{
 
 
   if($stmt->execute()){
-       $result = $stmt->fetch();
-       /*
+    $lastId = $conexion->lastInsertId();
+    echo $lastId;
+    $conexion = new Conexion();
+    $stmt = $conexion->prepare("SELECT * FROM persons WHERE person_id=$lastId");
+    //var_dump($sentencia);
+    $stmt->execute();
+    $row = $stmt->fetchobject();
+    //echo $fila->lastname;
+    var_dump($row);
+
+    //$fila = $stmt->fetch();
+
+     //
+    	$encriptar = md5($row->dni);
       $datosController = array(
-                  "user_id"=$user_id,
-                  "usuario"=>$user_name,
+                  "user_id"=>$row->person_id,
+                  "usuario"=>$row->dni,
                   "password"=>$encriptar,
                   //"email"=>$_POST["emailRegistro"],
-                  "type"=>$_POST["typeRegistro"],
+                  "type"=>"Alumno",
                   "status"=>'Inactivo'
                 );
+    var_dump($datosController);
     $respuesta = Datos::registroUsuarioModel($datosController, "users");
 
     if ($respuesta =="success") {
-      header("location:index.php?action=ok");
+      echo "-----Guardo Usuario correctamente";
     }else{
-      header("location:index.php");
+      echo "-----NOOOOO Guardo Usuario";
     }
-    */
-    var_dump($result);
-     echo '<br>'.$result['person_id'].'<br>';
+
+    //var_dump($result);
+    // echo '<br>'.$result['person_id'].'<br>';
       //return $stmt;
+      //return "success";
       return "success";
     }else{
       return "error";
     }
 
-    $stmt->close();
+    //$stmt->close();
   }
 
     //Vista de usuarios
