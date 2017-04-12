@@ -9,6 +9,29 @@ if($_SESSION["typeUser"]<>'Admin'){
 <h4>Formulario Crear Persona</h4>
 <form method="post" onsubmit="return validarRegistro()">
 	<input type="hidden" name="personRegistro" id="personRegistro" required>
+
+	<div class="form-group">
+		<div class="col-md-12"><label class="control-label" for="lastnameRegistro">Tipo de Usuario</label></div>
+		<div class="col-md-12">
+			<select class="control-form" name="typeRegistro">
+					<option value="Alumno">Alumno</option>
+					<option value="Docente">Docente</option>
+					<option value="Tutor">Tutor</option>
+					<option value="Director/a">Director/a</option>
+					<option value="Admin">Administrador</option>
+			</select>
+  	</div>
+
+
+	<div class="col-md-12"><label class="control-label" for="lastnameRegistro">Estado de Usuario</label></div>
+	<div class="col-md-12">
+		<select class="control-form" name="statusRegistro">
+				<option value="Inactivo">Inactivo</option>
+				<option value="Activo">Activo</option>
+		</select>
+	</div>
+
+
 	<div class="form-group">
 		<div class="col-md-12"><label class="control-label" for="lastnameRegistro">Apellido</label></div>
 		<div class="col-md-12">

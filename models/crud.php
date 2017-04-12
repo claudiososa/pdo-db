@@ -6,9 +6,9 @@ class Datos extends Conexion{
   public function registroUsuarioModel($datosModel,$tabla){
     $conexion = new Conexion();
     $stmt = $conexion->prepare("INSERT INTO $tabla (user_id, user_name, password, type, status)
-    VALUES (user_id,:user_name,:password,:type,:status)");
+    VALUES (:user_id,:user_name,:password,:type,:status)");
 
-    $stmt->bindParam(":user_id",$datosModel["usuario"],PDO::PARAM_INT);
+    $stmt->bindParam(":user_id",$datosModel["user_id"],PDO::PARAM_INT);
     $stmt->bindParam(":user_name",$datosModel["usuario"],PDO::PARAM_STR);
     $stmt->bindParam(":password",$datosModel["password"],PDO::PARAM_STR);
   //  $stmt->bindParam(":email",$datosModel["email"],PDO::PARAM_STR);
@@ -16,8 +16,8 @@ class Datos extends Conexion{
     $stmt->bindParam(":status",$datosModel["status"],PDO::PARAM_STR);
 
   if($stmt->execute()){
-      return $stmt;
-      //return "success";
+      //return $stmt;
+      return "success";
     }else{
       return "error";
     }

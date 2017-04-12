@@ -116,6 +116,7 @@ class MvcController{
 
 	}
 
+
 	//Vista de usuarios
 	//*******************************
   public function vistaUsuariosController(){

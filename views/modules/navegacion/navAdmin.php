@@ -25,7 +25,8 @@
  		?>
 		<li><a href="index.php?action=usuarios">Usuarios</a></li>
 		<li><a href="index.php?action=createPerson">Crear Personas</a></li>
-		<li><a href="index.php?action=person">Listar Personas</a></li>
+		<li><a href="index.php?action=person">Listar Personas</a></li>\
+		<li><a href="index.php?action=searchPerson">Buscar Persona</a></li>
 
 
 		<li><a href="index.php?action=salir">Salir</a></li>

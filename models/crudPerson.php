@@ -18,15 +18,52 @@ class Person extends Conexion{
     $stmt->bindParam(":movil",$datosModel["movil"],PDO::PARAM_STR);
     $stmt->bindParam(":email",$datosModel["email"],PDO::PARAM_STR);
     $stmt->bindParam(":address",$datosModel["address"],PDO::PARAM_STR);
-
+var_dump($datosModel);
   if($stmt->execute()){
-      //return $stmt;
+
+    $lastId = $conexion->lastInsertId();
+    echo $lastId;
+    $conexion = new Conexion();
+    $stmt = $conexion->prepare("SELECT * FROM persons WHERE person_id=$lastId");
+    //var_dump($sentencia);
+    $stmt->execute();
+    $row = $stmt->fetchobject();
+    //echo $fila->lastname;
+    //var_dump($row);
+
+    //$fila = $stmt->fetch();
+
+     //
+      $encriptar = md5($row->dni);
+      $datosController = array(
+                  "user_id"=>$row->person_id,
+                  "usuario"=>$row->dni,
+                  "password"=>$encriptar,
+                  //"email"=>$_POST["emailRegistro"],
+                  "type"=>$datosModel["type"],
+                  "status"=>$datosModel["status"]
+                );
+  //  var_dump($datosController);
+    $respuesta = Datos::registroUsuarioModel($datosController, "users");
+
+    if ($respuesta =="success") {
+      echo "-----Guardo Usuario correctamente";
+    }else{
+      echo "-----NOOOOO Guardo Usuario";
+    }
+
+
       return "success";
     }else{
       return "error";
     }
 
     $stmt->close();
+  }
+
+  //buscar personas
+  public function searchPersonModel(){
+
   }
 
     //Vista de usuarios

@@ -7,13 +7,13 @@ class Paginas{
 
 		if($enlaces == "ingresar" || $enlaces == "usuarios"
 			|| $enlaces == "editar" || $enlaces == "salir" || $enlaces == "person" || $enlaces == "editarPerson"
-			|| $enlaces == "createPerson"  ){
+			|| $enlaces == "createPerson" ){
 
 			$module =  "views/modules/".$enlaces.".php";
 
-		}
-
-		else if($enlaces == "index"){
+		}elseif($enlaces == "searchPerson"){
+			$module =  "views/modules/person/".$enlaces.".php";
+		}	else if($enlaces == "index"){
 
 			$module =  "views/modules/registro.php";
 

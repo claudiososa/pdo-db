@@ -33,6 +33,17 @@ class ControllerPerson{
 
 	}
 
+
+	/**
+	 * Buscar personas
+	 */
+	public function searchPersonController(){
+		if(isset($_POST['searchPersonSubmit'])){
+			$result = Person::searchPersonModel($_POST['firstname'],$_POST['lastname']);
+			return $result;
+		}
+
+	}
 	//Registro usuarios
 
 	public function registroPersonController(){
@@ -49,7 +60,9 @@ class ControllerPerson{
                       "phone"=>$_POST["phoneRegistro"],
                       "movil"=>$_POST["movilRegistro"],
   									  "email"=>$_POST["emailRegistro"],
-  										"address"=>$_POST["addressRegistro"]
+  										"address"=>$_POST["addressRegistro"],
+											"type"=>$_POST["typeRegistro"],
+											"status"=>$_POST["statusRegistro"]
 
   									);
   		$respuesta = Person::registroPersonModel($datosController, "persons");
