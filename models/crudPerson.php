@@ -62,8 +62,60 @@ var_dump($datosModel);
   }
 
   //buscar personas
-  public function searchPersonModel(){
+  public function searchPersonModel($datos,$tabla){
+    $conexion = new Conexion();
+    $sentencia = 'SELECT * FROM '.$tabla.' WHERE';
+    $carga=0;
+    if($datos['firstname']<>''){
+      $sentencia.=' firstname LIKE :firstname && ';
 
+      $carga=1;
+    }
+
+    if($datos['lastname']<>''){
+      $sentencia.=' lastname LIKE :lastname && ';
+
+      $carga=1;
+    }
+
+    if($datos['dni']<>''){
+      $sentencia.=' dni LIKE :dni && ';
+
+      $carga=1;
+    }
+
+    if ($carga==1){
+      $sentencia=substr($sentencia,0,strlen($sentencia)-3);
+    }else{
+      $sentencia.=' 1';
+    }
+    $sentencia.='  ORDER BY person_id';
+
+
+    //WHERE lastname LIKE :lastname OR firstname LIKE :firstname';
+
+
+
+
+    $stmt = $conexion->prepare($sentencia);
+    $lastname='%'.trim($datos['lastname']).'%';
+    $firstname='%'.trim($datos['firstname']).'%';
+    $dni='%'.trim($datos['dni']).'%';
+    if($datos['dni']<>"")
+      $stmt->bindParam(':dni',$dni, PDO::PARAM_STR);
+    if($datos['lastname']<>"")
+      $stmt->bindParam(':lastname',$lastname, PDO::PARAM_STR);
+    if($datos['firstname']<>"")
+      $stmt->bindParam(':firstname',$firstname, PDO::PARAM_STR);
+
+
+    //$stmt->bindParam(':lastname',"%$datos['lastname']%");
+
+    $stmt->execute();
+
+
+    return $stmt->fetchAll();
+    $stmt->close();
   }
 
     //Vista de usuarios

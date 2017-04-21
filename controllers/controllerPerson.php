@@ -39,10 +39,14 @@ class ControllerPerson{
 	 */
 	public function searchPersonController(){
 		if(isset($_POST['searchPersonSubmit'])){
-			$result = Person::searchPersonModel($_POST['firstname'],$_POST['lastname']);
+			$datosController = array (
+															'firstname'=>$_POST['firstname'],
+															'lastname'=>$_POST['lastname'],
+															'dni'=>$_POST['dni']
+														);
+			$result = Person::searchPersonModel($datosController,'persons');
 			return $result;
 		}
-
 	}
 	//Registro usuarios
 
