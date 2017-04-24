@@ -13,42 +13,22 @@ class Paginas{
 
 		}elseif($enlaces == "searchPerson"){
 			$module =  "views/modules/person/".$enlaces.".php";
+		}elseif($enlaces == "createCourse" || $enlaces == "editCourse"){
+			$module =  "views/modules/course/".$enlaces.".php";
 		}	else if($enlaces == "index"){
-
 			$module =  "views/modules/registro.php";
-
-		}
-
-		else if($enlaces == "ok"){
-
+		}else if($enlaces == "ok"){
 			$module =  "views/modules/inicio.php";
-
-		}
-		else if($enlaces == "fallo"){
-
+		}else if($enlaces == "fallo"){
 			$module =  "views/modules/ingresar.php";
-
-		}
-		else if($enlaces == "fallo3intentos"){
-
+		}else if($enlaces == "fallo3intentos"){
 			$module =  "views/modules/ingresar.php";
-
-		}
-		else if($enlaces == "cambio"){
-
+		}else if($enlaces == "cambio"){
 			$module =  "views/modules/usuarios.php";
-
-		}
-		else if($enlaces == "cambioperson"){
-
+		}else if($enlaces == "cambioperson"){
 			$module =  "views/modules/person.php";
-
-		}
-
-		else{
-
+		}else{
 			$module =  "views/modules/registro.php";
-
 		}
 
 		return $module;

@@ -1,8 +1,11 @@
 <?php
 require_once "conexion.php";
-class General extends Conexion{
+class General extends Conexion {
+
   public static function camposet($campo,$tabla){
-    $stmt = Conexion::conectar()->prepare("SHOW COLUMNS FROM $tabla LIKE '$campo'");
+
+    $conexion = new Conexion();
+    $stmt = $conexion->prepare("SHOW COLUMNS FROM $tabla LIKE '$campo'");
     $stmt->execute();
 
     $result = $stmt->fetchAll();

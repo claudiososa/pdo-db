@@ -9,7 +9,7 @@ if($_SESSION["typeUser"]<>'Admin'){
  ?>
 <h1>Personas</h1>
 
-	<table border="1">
+	<table class="table table-condensed">
 
 		<thead>
 

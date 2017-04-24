@@ -14,7 +14,7 @@
 
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	<ul class="nav navbar-nav">
-		<li><a href="index.php">Registro</a></li>
+		<li><a href="index.php?action=createCourse">Crear Curso</a></li>
 		<?php
 		if(isset($_SESSION["typeUser"]))
 		{
