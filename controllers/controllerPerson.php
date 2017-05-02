@@ -49,6 +49,16 @@ class ControllerPerson{
 			return $result;
 		}
 	}
+
+	public function typePersonController($type=NULL){
+		if(isset($type)){
+			$datosController = array (
+															'type'=>$_POST['typeuser'],
+														);
+			$result = Person::typePersonModel($datosController,'persons');
+			return $result;
+		}
+	}
 	//Registro usuarios
 
 	public function registroPersonController(){

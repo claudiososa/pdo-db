@@ -10,6 +10,7 @@
 					<option value="Docente">Docente</option>
 					<option value="Tutor">Tutor</option>
 					<option value="Director/a">Director/a</option>
+					<option value="Preceptor/a">Preceptor/a</option>
 					<option value="Admin">Administrador</option>
 			</select>
   	</div>
