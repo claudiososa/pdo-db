@@ -1,4 +1,14 @@
 <form class="" action="" method="post">
+  <div class="col-md-12"><label class="control-label" for="lastnameRegistro">Tipo de Usuario</label></div>
+  <div class="col-md-12">
+    <select class="control-form" name="typeuser">
+        <option value="Alumno">Alumno</option>
+        <option value="Docente">Docente</option>
+        <option value="Tutor">Tutor</option>
+        <option value="Director/a">Director/a</option>
+        <option value="todos">Todos</option>
+    </select>
+  </div>
   <label for="">Apellido</label>
   <input type="text" name="lastname" value="">
   <label for="">Nombre</label>
@@ -14,7 +24,17 @@ if($_POST){
   $resultado = new ControllerPerson();
   $dato=$resultado->searchPersonController();
   //var_dump($dato);
-  echo '<table border="1">';
+  echo '<table class="table table-condensed">';
+  echo '<thead>
+              <tr>
+                <th>Id</th>
+                <th>Apellido</th>
+                <th>Nombre</th>
+                <th>DNI</th>
+                <th>CUIL</th>
+                <th>Tipo</th>
+                <th>Tutor1</th>
+                <th>Tutor2</th>';
   foreach ($dato as $key => $item) {
     echo '<tr>
       <td>'.$item["person_id"].'</td>
@@ -22,13 +42,9 @@ if($_POST){
       <td>'.$item["firstname"].'</td>
       <td>'.$item["dni"].'</td>
       <td>'.$item["cuil"].'</td>
-      <td>'.$item["birthday"].'</td>
-      <td>'.$item["sexo"].'</td>
-      <td>'.$item["phone"].'</td>
-      <td>'.$item["movil"].'</td>
-      <td>'.$item["email"].'</td>
-      <td>'.$item["address"].'</td>
-
+      <td>'.$item["type"].'</td>
+      <td>tutor1</td>
+      <td>tutor2</td>
       <td><a href="index.php?action=editarPerson&id='.$item["person_id"].'"><button>Editar</button></a></td>
       <td><a href="index.php?action=person&idBorrar='.$item["person_id"].'"><button>Borrar</button></a></td>
     </tr>';

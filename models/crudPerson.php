@@ -18,11 +18,11 @@ class Person extends Conexion{
     $stmt->bindParam(":movil",$datosModel["movil"],PDO::PARAM_STR);
     $stmt->bindParam(":email",$datosModel["email"],PDO::PARAM_STR);
     $stmt->bindParam(":address",$datosModel["address"],PDO::PARAM_STR);
-var_dump($datosModel);
+//var_dump($datosModel);
   if($stmt->execute()){
 
     $lastId = $conexion->lastInsertId();
-    echo $lastId;
+    //echo $lastId;
     $conexion = new Conexion();
     $stmt = $conexion->prepare("SELECT * FROM persons WHERE person_id=$lastId");
     //var_dump($sentencia);
@@ -44,13 +44,35 @@ var_dump($datosModel);
                   "status"=>$datosModel["status"]
                 );
   //  var_dump($datosController);
-    $respuesta = Datos::registroUsuarioModel($datosController, "users");
+  //
+  //
+   $respuesta = Datos::registroUsuarioModel($datosController, "users");
 
-    if ($respuesta =="success") {
+    if ($datosModel["type"]=='Alumno'){
+      $datosController = array(
+                  "person_id"=>$row->person_id
+                  );
+                  //  var_dump($datosController);
+     $respuesta = Datos::registroStudentModel($datosController, "students");
+    }
+
+    if ($datosModel["type"]=='Tutor'){
+      $datosController = array(
+                  "person_id"=>$row->person_id
+                  );
+                  //  var_dump($datosController);
+     $respuesta = Datos::registroTutorModel($datosController, "tutors");
+    }
+
+
+
+
+
+    /*if ($respuesta =="success") {
       echo "-----Guardo Usuario correctamente";
     }else{
       echo "-----NOOOOO Guardo Usuario";
-    }
+    }*/
 
 
       return "success";
@@ -62,9 +84,16 @@ var_dump($datosModel);
   }
 
   //buscar personas
+  //SELECT *
+  //FROM persons
+  //JOIN users
+  //ON (users.user_name = persons.dni)
+  //WHERE firstname LIKE '%'
+  //AND   users.type ='Docente' AND users.status='Inactivo'
+  //
   public function searchPersonModel($datos,$tabla){
     $conexion = new Conexion();
-    $sentencia = 'SELECT * FROM '.$tabla.' WHERE';
+    $sentencia = 'SELECT * FROM '.$tabla.' JOIN users ON (users.user_name = persons.dni) WHERE';
     $carga=0;
     if($datos['firstname']<>''){
       $sentencia.=' firstname LIKE :firstname && ';
@@ -89,6 +118,10 @@ var_dump($datosModel);
     }else{
       $sentencia.=' 1';
     }
+    if($datos['type']<>'todos')
+    {
+      $sentencia.='  AND   users.type = :type ';
+    }
     $sentencia.='  ORDER BY person_id';
 
 
@@ -107,8 +140,10 @@ var_dump($datosModel);
       $stmt->bindParam(':lastname',$lastname, PDO::PARAM_STR);
     if($datos['firstname']<>"")
       $stmt->bindParam(':firstname',$firstname, PDO::PARAM_STR);
-
-
+      if($datos['type']<>'todos')
+      {
+        $stmt->bindParam(':type',$datos['type'], PDO::PARAM_STR);
+      }
     //$stmt->bindParam(':lastname',"%$datos['lastname']%");
 
     $stmt->execute();
@@ -120,9 +155,21 @@ var_dump($datosModel);
 
     //Vista de usuarios
     //******************************
-        public function vistaPersonModel($tabla){
+        public function vistaPersonModel($tabla,$tipo=NULL){
           $conexion = new Conexion();
-          $stmt = $conexion->prepare("SELECT * FROM $tabla ");
+          if(isset($tipo)){
+            $sentencia = 'SELECT * FROM ';
+            $sentencia .= $tabla;
+            $sentencia .= ' JOIN users ON (';
+            $sentencia .= $tabla;
+            $sentencia .= '.person_id=users.user_id)';
+            $sentencia .= ' WHERE users.type="';
+            $sentencia .= $tipo.'"';
+            $stmt = $conexion->prepare($sentencia);
+          }else{
+            $stmt = $conexion->prepare("SELECT * FROM $tabla ");
+          }
+          //var_dump($stmt);
           $stmt->execute();
           return $stmt->fetchAll();
           $stmt->close();

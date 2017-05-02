@@ -1,4 +1,4 @@
-<h1>Editar Curso</h1>
+<h4>Editar Curso</h4>
 
 <form method="post">
 	<?php

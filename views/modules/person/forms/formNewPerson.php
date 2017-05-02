@@ -1,11 +1,3 @@
-<?php
-
-if($_SESSION["typeUser"]<>'Admin'){
-	header("location:index.php?action=ingresar");
-	exit();
-}
-
-?>
 <h4>Formulario Crear Persona</h4>
 <form method="post" onsubmit="return validarRegistro()">
 	<input type="hidden" name="personRegistro" id="personRegistro" required>
@@ -107,16 +99,3 @@ if($_SESSION["typeUser"]<>'Admin'){
 		<input type="submit" value="Guardar">
   </div>
 </form>
-
-<?php
-
-$registro = new ControllerPerson();
-$registro->registroPersonController();
-
-if(isset($_GET["action"])){
-	if($_GET["action"]=="ok"){
-		echo "Registro Exitoso";
-	}
-}
-
- ?>

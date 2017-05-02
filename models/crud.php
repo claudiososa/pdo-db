@@ -1,8 +1,61 @@
 <?php
 require_once "conexion.php";
 class Datos extends Conexion{
-  //Registro de usuarios
 
+  public function migrationUsersModel($datosModel,$tabla){
+
+
+    $conexion = new Conexion();
+    $stmt = $conexion->prepare("INSERT INTO $tabla (student_id)
+    VALUES (:person_id)");
+    $stmt->bindParam(":person_id",$datosModel["person_id"],PDO::PARAM_INT);
+
+
+  if($stmt->execute()){
+      //return $stmt;
+      return "success";
+    }else{
+      return "error";
+    }
+
+    $stmt->close();
+  }
+
+
+  public function registroStudentModel($datosModel,$tabla){
+    $conexion = new Conexion();
+    $stmt = $conexion->prepare("INSERT INTO $tabla (student_id)
+    VALUES (:person_id)");
+    $stmt->bindParam(":person_id",$datosModel["person_id"],PDO::PARAM_INT);
+
+
+  if($stmt->execute()){
+      //return $stmt;
+      return "success";
+    }else{
+      return "error";
+    }
+
+    $stmt->close();
+  }
+
+  public function registroTutorModel($datosModel,$tabla){
+    $conexion = new Conexion();
+    $stmt = $conexion->prepare("INSERT INTO $tabla (tutor_id)
+    VALUES (:person_id)");
+    $stmt->bindParam(":person_id",$datosModel["person_id"],PDO::PARAM_INT);
+
+
+  if($stmt->execute()){
+      //return $stmt;
+      return "success";
+    }else{
+      return "error";
+    }
+
+    $stmt->close();
+  }
+//Registro de usuarios
   public function registroUsuarioModel($datosModel,$tabla){
     $conexion = new Conexion();
     $stmt = $conexion->prepare("INSERT INTO $tabla (user_id, user_name, password, type, status)

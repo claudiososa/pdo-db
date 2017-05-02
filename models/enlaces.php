@@ -6,16 +6,17 @@ class Paginas{
 
 
 		if($enlaces == "ingresar" || $enlaces == "usuarios"
-			|| $enlaces == "editar" || $enlaces == "salir" || $enlaces == "person" || $enlaces == "editarPerson"
-			|| $enlaces == "createPerson" ){
+			|| $enlaces == "editar" || $enlaces == "salir" || $enlaces == "person" || $enlaces == "editarPerson"){
 
 			$module =  "views/modules/".$enlaces.".php";
 
-		}elseif($enlaces == "searchPerson"){
+		}elseif($enlaces == "searchPerson" || $enlaces == "createPerson"){
 			$module =  "views/modules/person/".$enlaces.".php";
 		}elseif($enlaces == "createCourse" || $enlaces == "editCourse"){
 			$module =  "views/modules/course/".$enlaces.".php";
-		}	else if($enlaces == "index"){
+		}elseif($enlaces == "migration_users" || $enlaces == "migration_students"){
+			$module =  "views/modules/migration/".$enlaces.".php";
+		}elseif($enlaces == "index"){
 			$module =  "views/modules/registro.php";
 		}else if($enlaces == "ok"){
 			$module =  "views/modules/inicio.php";

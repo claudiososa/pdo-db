@@ -192,6 +192,27 @@ public function borrarUsuarioController(){
 	}
 }
 
+// Migrar usuarios
+//*********************************************************
+public function migrationUsersController(){
+	$respuesta = Person::vistaPersonModel("persons");
+	foreach ($respuesta as $key => $item) {
+		$encriptar = md5($item["dni"]);
+		$datosController = array(
+										"user_id"=>$item["person_id"],
+										"usuario"=>$item["dni"],
+										"password"=>$encriptar,
+										//"email"=>$_POST["emailRegistro"],
+										"type"=>'Alumno',
+										"status"=>'Inactivo'
+									);
+		$guardarUser = Datos::registroUsuarioModel($datosController, "users");
+
+		
+	}
+
+}
+
 
 }
 

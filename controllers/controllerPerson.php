@@ -40,6 +40,7 @@ class ControllerPerson{
 	public function searchPersonController(){
 		if(isset($_POST['searchPersonSubmit'])){
 			$datosController = array (
+															'type'=>$_POST['typeuser'],
 															'firstname'=>$_POST['firstname'],
 															'lastname'=>$_POST['lastname'],
 															'dni'=>$_POST['dni']
@@ -72,9 +73,9 @@ class ControllerPerson{
   		$respuesta = Person::registroPersonModel($datosController, "persons");
 
   		if ($respuesta =="success") {
-  			header("location:index.php?action=ok");
+  			return "success";
   		}else{
-  			header("location:index.php");
+  			return "error";
   		}
 
 		}

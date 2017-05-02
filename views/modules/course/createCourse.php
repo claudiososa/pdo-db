@@ -1,59 +1,58 @@
 <?php
-
+/**
+ * Verificar si el usuario es de tipo Admin para acceder a este archivo
+ * en el caso que no sea asi se redireccion a pagina ingresar
+ */
 if($_SESSION["typeUser"]<>'Admin'){
 	header("location:index.php?action=ingresar");
 	exit();
 }
 
+
 $registro = new ControllerCourse();
 
 /**
- * Inclusion de script de formulario para nuevo curso
+ * Inclusion de formulario de crear nuevo en el caso de que
+ * la url contenga la variable create sino solo muestra boton nuevo curso
  */
 
-var_dump($_POST);
+ if(isset($_GET['create'])){
+ 	include_once 'forms/formNewCourse.php';
+ }else{
+ 	echo '<a href="index.php?action=createCourse&create"><label class="btn btn-primary">Nuevo Curso</label></a>';
+ }
+
+
+/**
+ * Verifica si viene por variable tipo Post algun contenido
+ */
 if(!empty($_POST)){
-	if(!empty($_POST['saveCourse'])){
+	// Si la variable saveCourse no esta vacia, realiza proceso de guardado de nuevo curso.
+	if(!empty($_POST['saveCourse']))
+	{
 		$newCourse = $registro->newCourseController();
 		if($newCourse=='saved')
 	  {
 	    echo "El curso fue con Exito";
 	  }
 		include_once 'forms/formNewCourse.php';
-	}
-}elseif(!empty($_POST['updateCourse'])){
-	$respuesta = $registro->editCourseController();
-	$updateCourse = $registro->updateCourseController();
-	include_once 'forms/formEditCourse.php';
-	if($updateCourse=='saved')
-	{
-		//header("location:index.php?action=createCourse&savedUpdate=".$_POST['course_idEditar']);
-		echo "El curso fue actualizado con Exito";
-	//	include_once 'forms/formNewCourse.php';
-	}
-//	if($updateCourse=='saved')
-	//{
-	  //header("location:index.php?action=createCourse&savedUpdate=".$_POST['course_idEditar']);
-	  echo "El curso fue actualizado con Exito";
-		include_once 'forms/formNewCourse.php';
-//	}
-}elseif(isset($_GET['edit'])){
-	$respuesta = $registro->editCourseController();
-	$updateCourse = $registro->updateCourseController();
-	include_once 'forms/formEditCourse.php';
-	if($updateCourse=='saved')
-	{
-		//header("location:index.php?action=createCourse&savedUpdate=".$_POST['course_idEditar']);
-		echo "El curso fue actualizado con Exito";
-	//	include_once 'forms/formNewCourse.php';
-	}
-}else{
-	include_once 'forms/formNewCourse.php';
 
+		// Si la variable updateCourse no esta vacia, realiza proceso de actualizacion de curso.
+	}elseif(!empty($_POST['updateCourse'])){
+		$respuesta = $registro->editCourseController();
+		$updateCourse = $registro->updateCourseController();
+		include_once 'forms/formEditCourse.php';
+		if($updateCourse=='saved')
+		{
+			echo "El curso fue actualizado con Exito";
+		}
+	}
 }
 
-
-
+if(isset($_GET['edit'])){
+	$respuesta = $registro->editCourseController();
+	include_once 'forms/formEditCourse.php';
+}
 
 /**
  * Lista de Cursos creados con la boton de Editar y Eliminar
@@ -64,14 +63,19 @@ if(isset($_GET['savedUpdate']))
   echo 'Se actualizo con exito';
 }
 
+/**
+ * Lista de cursos existentes actuales
+ */
+
 $viewCourse = $registro->viewCourseController();
+
 echo '<table class="table table-condensed">
       <thead>
       <th>Id</th>
       <th>Nombre del Curso</th>
       <th>Turno</th>
-      <th>Editar</th>
-      <th>Borrar</th>
+      <th>Accion</th>
+
       <th></th>
       </thead>
       <tbody>';
@@ -90,8 +94,8 @@ foreach ($viewCourse as $key => $item) {
   <td>'.$item["course_id"].'</td>
   <td>'.$item["name"].'</td>
   <td>'.$item["turn"].'</td>
-  <td><a class="btn btn-primary" href="index.php?action=createCourse&id='.$item["course_id"].'&edit='.$item["course_id"].'">Editar</a></td>
-  <td><a  class="btn btn-primary" href="index.php?action=deleteCourse&id='.$item["course_id"].'">Borrar</a></td>';
+  <td><a class="btn btn-primary" href="index.php?action=createCourse&id='.$item["course_id"].'&edit='.$item["course_id"].'">Modificar</a></td>';
+  //<td><a  class="btn btn-primary" href="index.php?action=deleteCourse&id='.$item["course_id"].'">Borrar</a></td>';
 
   if(isset($_POST['updateCourse'])){
     if ($item["course_id"]==$_POST["course_idEditar"]){
