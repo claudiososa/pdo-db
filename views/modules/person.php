@@ -10,9 +10,7 @@ if($_SESSION["typeUser"]<>'Admin'){
 <h1>Personas</h1>
 
 	<table class="table table-condensed">
-
 		<thead>
-
 			<tr>
 				<th>Id</th>
 				<th>Apellido</th>
@@ -28,14 +26,34 @@ if($_SESSION["typeUser"]<>'Admin'){
 				<th></th>
 				<th></th>
 			</tr>
-
 		</thead>
-
 		<tbody>
 			<?php
 			$ver = new ControllerPerson();
-			$ver->vistaPersonController();
+			//$lista = $ver->vistaPersonController('persons','Preceptor/a');
+			$lista = $ver->vistaPersonController('persons');
 			$ver->borrarPersonController();
+
+			foreach ($lista as $key => $item) {
+				# code...
+
+			echo '<tr>
+				<td>'.$item["person_id"].'</td>
+	      <td>'.$item["lastname"].'</td>
+	      <td>'.$item["firstname"].'</td>
+	      <td>'.$item["dni"].'</td>
+	      <td>'.$item["cuil"].'</td>
+	      <td>'.$item["birthday"].'</td>
+	      <td>'.$item["sexo"].'</td>
+	      <td>'.$item["phone"].'</td>
+				<td>'.$item["movil"].'</td>
+				<td>'.$item["email"].'</td>
+				<td>'.$item["address"].'</td>
+
+				<td><a href="index.php?action=editarPerson&id='.$item["person_id"].'"><button>Editar</button></a></td>
+				<td><a href="index.php?action=person&idBorrar='.$item["person_id"].'"><button>Borrar</button></a></td>
+			</tr>';
+			}
 
 			 ?>
 

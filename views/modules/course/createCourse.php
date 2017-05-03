@@ -10,6 +10,8 @@ if($_SESSION["typeUser"]<>'Admin'){
 
 
 $registro = new ControllerCourse();
+$ver = new ControllerPerson();
+$lista = $ver->vistaPersonController('persons','Preceptor/a');
 
 /**
  * Inclusion de formulario de crear nuevo en el caso de que
@@ -74,14 +76,15 @@ echo '<table class="table table-condensed">
       <th>Id</th>
       <th>Nombre del Curso</th>
       <th>Turno</th>
-      <th>Accion</th>
-
-      <th></th>
+      <th>Preceptor</th>
+			<th>Accion</th>
+			<th>Inscribir</th>
       </thead>
       <tbody>';
-
+$resultado = new ControllerPerson();
 foreach ($viewCourse as $key => $item) {
 
+  $dato=$resultado->searchPersonController('person_id',$item["preceptor"]);
   echo '<tr';
   if(isset($_POST['updateCourse'])){
     if ($item["course_id"]==$_POST["course_idEditar"]){
@@ -93,9 +96,19 @@ foreach ($viewCourse as $key => $item) {
   echo '
   <td>'.$item["course_id"].'</td>
   <td>'.$item["name"].'</td>
-  <td>'.$item["turn"].'</td>
-  <td><a class="btn btn-primary" href="index.php?action=createCourse&id='.$item["course_id"].'&edit='.$item["course_id"].'">Modificar</a></td>';
-  //<td><a  class="btn btn-primary" href="index.php?action=deleteCourse&id='.$item["course_id"].'">Borrar</a></td>';
+  <td>'.$item["turn"].'</td>';
+	if($dato<>NULL){
+		foreach ($dato as $key => $value)
+		{
+			echo '<td>'.$value["lastname"].', '.$value["firstname"].'</td>';
+		}
+	}else{
+		echo '<td>Sin asignar</td>';
+	}
+
+	echo '<td><a class="btn btn-primary" href="index.php?action=createCourse&id='.$item["course_id"].'&edit='.$item["course_id"].'">Modificar</a></td>';
+  echo '<td><a class="btn btn-primary" href="index.php?action=inscription&id='.$item["course_id"].'">Inscribir Alumnos</a></td>';
+	//<td><a  class="btn btn-primary" href="index.php?action=deleteCourse&id='.$item["course_id"].'">Borrar</a></td>';
 
   if(isset($_POST['updateCourse'])){
     if ($item["course_id"]==$_POST["course_idEditar"]){

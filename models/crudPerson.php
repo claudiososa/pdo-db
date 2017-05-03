@@ -95,21 +95,23 @@ class Person extends Conexion{
     $conexion = new Conexion();
     $sentencia = 'SELECT * FROM '.$tabla.' JOIN users ON (users.user_name = persons.dni) WHERE';
     $carga=0;
+    if($datos['person_id']<>''){
+      $sentencia.=' person_id=:person_id && ';
+      $carga=1;
+    }
+
     if($datos['firstname']<>''){
       $sentencia.=' firstname LIKE :firstname && ';
-
       $carga=1;
     }
 
     if($datos['lastname']<>''){
       $sentencia.=' lastname LIKE :lastname && ';
-
       $carga=1;
     }
 
     if($datos['dni']<>''){
       $sentencia.=' dni LIKE :dni && ';
-
       $carga=1;
     }
 
@@ -118,7 +120,7 @@ class Person extends Conexion{
     }else{
       $sentencia.=' 1';
     }
-    if($datos['type']<>'todos')
+    if($datos['type']<>'todos' AND $datos['type']<>'')
     {
       $sentencia.='  AND   users.type = :type ';
     }
@@ -136,18 +138,20 @@ class Person extends Conexion{
     $dni='%'.trim($datos['dni']).'%';
     if($datos['dni']<>"")
       $stmt->bindParam(':dni',$dni, PDO::PARAM_STR);
+    if($datos['person_id']<>"")
+        $stmt->bindParam(':person_id',$datos['person_id'], PDO::PARAM_INT);
     if($datos['lastname']<>"")
       $stmt->bindParam(':lastname',$lastname, PDO::PARAM_STR);
     if($datos['firstname']<>"")
       $stmt->bindParam(':firstname',$firstname, PDO::PARAM_STR);
-      if($datos['type']<>'todos')
+      if($datos['type']<>'todos' AND $datos['type']<>'' )
       {
         $stmt->bindParam(':type',$datos['type'], PDO::PARAM_STR);
       }
     //$stmt->bindParam(':lastname',"%$datos['lastname']%");
 
     $stmt->execute();
-
+    //var_dump($stmt);
 
     return $stmt->fetchAll();
     $stmt->close();

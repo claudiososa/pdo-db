@@ -33,7 +33,8 @@ class ControllerCourse{
   		$datosController = array(
                       //"Course"=>$_POST["CourseRegistro"],
                       "name"=>$_POST["nameRegistro"],
-                      "turn"=>$_POST["turnRegistro"]
+                      "turn"=>$_POST["turnRegistro"],
+											"preceptor"=>$_POST["preceptorRegistro"]
   									);
   		$respuesta = Courses::newCourseModel($datosController, "courses");
 
@@ -47,33 +48,19 @@ class ControllerCourse{
 		}
 	}
 
-	//Vista de usuarios
+	//Vista de Cursos
 	//*******************************
   public function viewCourseController(){
 		$respuesta = Courses::viewCourseModel("courses");
     return $respuesta;
-    /*
-		foreach ($respuesta as $key => $item) {
-			# code...
+		//var_dump($respuesta[1][2]);
+	}
 
-		echo '<tr>
-			<td>'.$item["course_id"].'</td>
-      <td>'.$item["lastname"].'</td>
-      <td>'.$item["firstname"].'</td>
-      <td>'.$item["name"].'</td>
-      <td>'.$item["turn"].'</td>
-      <td>'.$item["birthday"].'</td>
-      <td>'.$item["sexo"].'</td>
-      <td>'.$item["phone"].'</td>
-			<td>'.$item["movil"].'</td>
-			<td>'.$item["email"].'</td>
-			<td>'.$item["address"].'</td>
-
-			<td><a href="index.php?action=editarCourse&id='.$item["course_id"].'"><button>Editar</button></a></td>
-			<td><a href="index.php?action=Course&idBorrar='.$item["course_id"].'"><button>Borrar</button></a></td>
-		</tr>';
-  }*/
-
+	//Vista de Alumnos del curso
+	//*******************************
+  public function viewStudentController($course){
+		$respuesta = Courses::viewCourseModel("students_courses",$course);
+    return $respuesta;
 		//var_dump($respuesta[1][2]);
 	}
 
@@ -111,7 +98,8 @@ class ControllerCourse{
 			$datosController =  array(
                       "course_id"=>$_POST["course_idEditar"],
                       "name"=>$_POST["nameEditar"],
-                      "turn"=>$_POST["turnEditar"]
+                      "turn"=>$_POST["turnEditar"],
+											"preceptor"=>$_POST["preceptorEditar"]
 
 			);
 

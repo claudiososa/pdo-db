@@ -22,5 +22,23 @@
   echo 'value="Tarde">Tarde</option>';
 
   echo '</select>';
+
+	echo '<div class="form-group">
+		<div class="col-md-12"><label for="turnRegistro">Preceptor/a</label></div>
+		<div class="col-md-12">
+			<select class="control-label" name="preceptorEditar">';
+
+				foreach ($lista as $key => $value):
+					echo '<option value="'.$value['user_id'].'" ';
+					if($respuesta["preceptor"]==$value['user_id']){
+						echo 'selected';
+					}
+					echo '>'.$value['lastname'].', '.$value['firstname'].'</option>';
+				endforeach;
+
+	echo '</select>
+		</div>
+	</div>';
+
   echo '<input type="submit" name="updateCourse" value="Actualizar">';
 echo '</form>';

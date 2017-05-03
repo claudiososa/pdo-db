@@ -37,17 +37,39 @@ class ControllerPerson{
 	/**
 	 * Buscar personas
 	 */
-	public function searchPersonController(){
-		if(isset($_POST['searchPersonSubmit'])){
-			$datosController = array (
-															'type'=>$_POST['typeuser'],
-															'firstname'=>$_POST['firstname'],
-															'lastname'=>$_POST['lastname'],
-															'dni'=>$_POST['dni']
+	public function searchPersonController($typeSearch=NULL,$person_id=NULL){
+		switch ($typeSearch) {
+			case 'form':
+				if(isset($_POST['searchPersonSubmit'])){
+					$datosController = array (
+																	'person_id'=>'',
+																	'type'=>$_POST['typeuser'],
+																	'firstname'=>$_POST['firstname'],
+																	'lastname'=>$_POST['lastname'],
+																	'dni'=>$_POST['dni']
+																);
+					$result = Person::searchPersonModel($datosController,'persons');
+					return $result;
+				}
+				break;
+
+			case 'person_id':
+				$datosController = array (
+															'person_id'=>$person_id,
+															'type'=>'',
+															'firstname'=>'',
+															'lastname'=>'',
+															'dni'=>''
 														);
-			$result = Person::searchPersonModel($datosController,'persons');
-			return $result;
+					$result = Person::searchPersonModel($datosController,'persons');
+					return $result;
+					break;
+
+			default:
+				# code...
+				break;
 		}
+
 	}
 
 	public function typePersonController($type=NULL){
@@ -93,28 +115,9 @@ class ControllerPerson{
 
 	//Vista de usuarios
 	//*******************************
-  public function vistaPersonController(){
-		$respuesta = Person::vistaPersonModel("persons");
-		foreach ($respuesta as $key => $item) {
-			# code...
-
-		echo '<tr>
-			<td>'.$item["person_id"].'</td>
-      <td>'.$item["lastname"].'</td>
-      <td>'.$item["firstname"].'</td>
-      <td>'.$item["dni"].'</td>
-      <td>'.$item["cuil"].'</td>
-      <td>'.$item["birthday"].'</td>
-      <td>'.$item["sexo"].'</td>
-      <td>'.$item["phone"].'</td>
-			<td>'.$item["movil"].'</td>
-			<td>'.$item["email"].'</td>
-			<td>'.$item["address"].'</td>
-
-			<td><a href="index.php?action=editarPerson&id='.$item["person_id"].'"><button>Editar</button></a></td>
-			<td><a href="index.php?action=person&idBorrar='.$item["person_id"].'"><button>Borrar</button></a></td>
-		</tr>';
-		}
+  public function vistaPersonController($table,$type=NULL){
+		$respuesta = Person::vistaPersonModel($table,$type);
+		return $respuesta;
 		//var_dump($respuesta[1][2]);
 	}
 

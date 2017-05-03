@@ -1,15 +1,6 @@
+<h4>Inscripción de Alumnos</h4>
 <form class="" action="" method="post">
-  <div class="col-md-12"><label class="control-label" for="lastnameRegistro">Tipo de Usuario</label></div>
-  <div class="col-md-12">
-    <select class="control-form" name="typeuser">
-        <option value="Alumno">Alumno</option>
-        <option value="Docente">Docente</option>
-        <option value="Tutor">Tutor</option>
-        <option value="Director/a">Director/a</option>
-        <option value="Preceptor/a">Preceptor/a</option>
-        <option value="todos">Todos</option>
-    </select>
-  </div>
+  <input type="hidden" name="typeuser" value="Alumno">
   <label for="">Apellido</label>
   <input type="text" name="lastname" value="">
   <label for="">Nombre</label>
@@ -46,10 +37,25 @@ if($_POST){
       <td>'.$item["type"].'</td>
       <td>tutor1</td>
       <td>tutor2</td>
-      <td><a href="index.php?action=editarPerson&id='.$item["person_id"].'"><button>Editar</button></a></td>
-      <td><a href="index.php?action=person&idBorrar='.$item["person_id"].'"><button>Borrar</button></a></td>
+      <td><a href="index.php?action=editarPerson&id='.$item["person_id"].'"><button>Inscribir</button></a></td>      
     </tr>';
   }
   echo '</table>';
+}
+if($_GET['action']=='inscription' AND $_GET['id'] ){
+  $registro = new ControllerCourse();
+  $viewCourse = $registro->viewStudentController($_GET['id']);
+  echo '<table class="table table-condensed">
+        <thead>
+        <th>Id</th>
+        </thead>
+        <tbody>';
+        foreach ($viewCourse as $key => $item) {
+          echo '<tr><td>';
+          echo $item['student_id'];
+          echo '</td></tr>';
+        }
+  echo '</tbody></table>';
+  echo 'tiene todo';
 }
 ?>
