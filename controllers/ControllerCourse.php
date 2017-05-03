@@ -48,10 +48,48 @@ class ControllerCourse{
 		}
 	}
 
+	// Nuevo inscripto a Curso
+
+	public function newInscriptionController(){
+		if($_GET["person_id"]){
+
+  		$datosController = array(
+                      //"Course"=>$_POST["CourseRegistro"],
+                      "course_id"=>$_GET["id"],
+                      "student_id"=>$_GET["person_id"]
+  									);
+  		$respuesta = Courses::newInscriptionModel($datosController, "students_courses");
+
+  		if ($respuesta =="success") {
+        return "saved";
+  			//header("location:index.php?action=ok");
+  		}else{
+  			header("location:index.php");
+  		}
+
+		}
+	}
+
 	//Vista de Cursos
 	//*******************************
   public function viewCourseController(){
-		$respuesta = Courses::viewCourseModel("courses");
+		if(!isset($_GET['id'])){
+			$respuesta = Courses::viewCourseModel("courses");
+		}else{
+			$respuesta = Courses::viewCourseModel("courses",$_GET['id']);
+		}
+    return $respuesta;
+		//var_dump($respuesta[1][2]);
+	}
+
+	//Vista de Cursos
+	//*******************************
+  public function viewCourseStudentController(){
+		if(isset($_GET['edit'])){
+			$respuesta = Courses::viewCourseModel("courses");
+		}else{
+			$respuesta = Courses::viewCourseStudentModel("courses",$_GET['id']);
+		}
     return $respuesta;
 		//var_dump($respuesta[1][2]);
 	}

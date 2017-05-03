@@ -69,7 +69,7 @@ if(isset($_GET['savedUpdate']))
  * Lista de cursos existentes actuales
  */
 
-$viewCourse = $registro->viewCourseController();
+$viewCourse = $registro->viewCourseStudentController();
 
 echo '<table class="table table-condensed">
       <thead>

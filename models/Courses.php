@@ -21,11 +21,59 @@ class Courses extends Conexion{
 
     $stmt->close();
   }
+
+  public function newInscriptionModel($datosModel,$tabla){
+    $conexion = new Conexion();
+    $stmt = $conexion->prepare("INSERT INTO $tabla (student_course_id, course_id,student_id)
+    VALUES (null, :course_id, :student_id)");
+
+    $stmt->bindParam(":course_id",$datosModel["course_id"],PDO::PARAM_INT);
+    $stmt->bindParam(":student_id",$datosModel["student_id"],PDO::PARAM_INT);
+
+//var_dump($datosModel);
+    if($stmt->execute()){
+      return "success";
+    }else{
+      return "error";
+    }
+
+    $stmt->close();
+  }
+
+
   //Vista de cursos
   //******************************
-    public function viewCourseModel($tabla){
+    public function viewCourseModel($tabla,$id){
       $conexion = new Conexion();
-      $stmt = $conexion->prepare("SELECT * FROM $tabla ");
+      if(!isset($id)){
+        $stmt = $conexion->prepare("SELECT * FROM $tabla ");
+      }else{
+        $prepareStmt = "SELECT *
+                        FROM $tabla
+                        JOIN persons
+                        ON (students_courses.student_id = persons.person_id)
+                        WHERE course_id=:course_id";
+        $stmt = $conexion->prepare($prepareStmt);
+        $stmt->bindParam(":course_id",$id,PDO::PARAM_INT);
+      }
+
+      $stmt->execute();
+      return $stmt->fetchAll();
+      $stmt->close();
+    }
+
+    public function viewCourseStudentModel($tabla,$id){
+      $conexion = new Conexion();
+      if(!isset($id)){
+        $stmt = $conexion->prepare("SELECT * FROM $tabla ");
+      }else{
+        $prepareStmt = "SELECT *
+                        FROM $tabla                        
+                        WHERE course_id=:course_id";
+        $stmt = $conexion->prepare($prepareStmt);
+        $stmt->bindParam(":course_id",$id,PDO::PARAM_INT);
+      }
+
       $stmt->execute();
       return $stmt->fetchAll();
       $stmt->close();
