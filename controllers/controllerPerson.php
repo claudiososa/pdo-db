@@ -52,6 +52,19 @@ class ControllerPerson{
 					return $result;
 				}
 				break;
+				case 'inscription':
+					if(isset($_POST['searchPersonSubmit'])){
+						$datosController = array (
+																		'person_id'=>'',
+																		'type'=>$_POST['typeuser'],
+																		'firstname'=>$_POST['firstname'],
+																		'lastname'=>$_POST['lastname'],
+																		'dni'=>$_POST['dni']
+																	);
+						$result = Person::searchPersonModel($datosController,'persons','inscription');
+						return $result;
+					}
+					break;
 
 			case 'person_id':
 				$datosController = array (

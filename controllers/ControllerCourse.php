@@ -72,13 +72,28 @@ class ControllerCourse{
 
 	//Vista de Cursos
 	//*******************************
-  public function viewCourseController(){
+  public function viewCourseController($person_id=NULL){
 		if(!isset($_GET['id'])){
-			$respuesta = Courses::viewCourseModel("courses");
+			if(!isset($person_id)){
+				$respuesta = Courses::viewCourseModel("courses");
+			}else{
+				$respuesta = Courses::viewCourseModel("courses",$person_id);
+			}
 		}else{
 			$respuesta = Courses::viewCourseModel("courses",$_GET['id']);
 		}
+
+
     return $respuesta;
+		//var_dump($respuesta[1][2]);
+	}
+
+	//busqueda de curso de un alumno determinado
+	//*******************************
+	public function searchStudentInCourseController($id){
+		$respuesta = Courses::searchStudentInCourseModel("students_courses",$id);
+
+		return $respuesta;
 		//var_dump($respuesta[1][2]);
 	}
 
@@ -165,6 +180,28 @@ public function deleteCourseController(){
 	}
 }
 
+
+// Borar usuarios
+//*********************************************************
+public function deleteStudentCourseController($id){
+		$respuesta= Courses::deleteStudentCourseModel($id,"students_courses");
+
+		if($respuesta == "success"){
+			header("location:index.php?action=inscription&id=1");
+			return $respuesta;
+		}
+}
+
+// devuelve los cursos de un preceptor en particular
+//*********************************************************
+public function myCoursesController($id){
+		$respuesta= Courses::myCoursesModel($id,"courses");
+
+		if($respuesta == "success"){
+			//header("location:index.php?action=inscription&id=1");
+			return $respuesta;
+		}
+}
 
 }
 

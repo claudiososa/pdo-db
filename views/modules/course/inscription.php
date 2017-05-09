@@ -30,8 +30,12 @@ if(isset($_GET)){
 
 <?php
 if($_POST){
+
+	/**
+	 * toma los datos de post para realizar busqueda en tabla persona. muestra informacion en formato tabla
+	 */
   $resultado = new ControllerPerson();
-  $dato=$resultado->searchPersonController('form');
+  $dato=$resultado->searchPersonController('inscription');
   //var_dump($dato);
   echo '<table class="table table-condensed">';
   echo '<thead>
@@ -74,9 +78,15 @@ if($_GET['action']=='inscription' AND $_GET['id'] AND $_GET['person_id']  ){
   echo '</tbody></table>';*/
   echo 'tiene lista para guardar';
 }
+if($_GET['action']=='inscription' AND isset($_GET['delete'])){
+	$registro = new ControllerCourse();
+	$delete = $registro->deleteStudentCourseController($_GET['student_id']);
+	//var_dump($delete);
+}
 
 if($_GET['action']=='inscription' AND $_GET['id'] ){
-  $registro = new ControllerCourse();
+
+	$registro = new ControllerCourse();
   $viewCourse = $registro->viewStudentController($_GET['id']);
   //var_dump($viewCourse);
   echo '<table class="table table-condensed">
@@ -85,6 +95,7 @@ if($_GET['action']=='inscription' AND $_GET['id'] ){
         <th>Apellido</th>
         <th>Nombre</th>
         <th>DNI</th>
+				<th>Acción</th>
         </thead>
         <tbody>';
         foreach ($viewCourse as $key => $item) {
@@ -93,6 +104,7 @@ if($_GET['action']=='inscription' AND $_GET['id'] ){
           echo '<td>'.$item['lastname'].'</td>';
           echo '<td>'.$item['firstname'].'</td>';
           echo '<td>'.$item['dni'].'</td>';
+					echo '<td><a class="btn btn-primary" href="index.php?action=inscription&delete&student_id='.$item['student_id'].'">Eliminar Inscripción</a></td>';
           echo '</tr>';
         }
   echo '</tbody></table>';

@@ -40,6 +40,24 @@ class Courses extends Conexion{
     $stmt->close();
   }
 
+  //buscar curso de un alumno determinado
+  //******************************
+    public function searchStudentInCourseModel($tabla,$id){
+      $conexion = new Conexion();
+      $prepareStmt = "SELECT courses.name,courses.turn
+                        FROM $tabla
+                        JOIN courses
+                        ON (courses.course_id = students_courses.course_id)
+                        WHERE student_id=:student_id";
+        $stmt = $conexion->prepare($prepareStmt);
+        $stmt->bindParam(":student_id",$id,PDO::PARAM_INT);
+
+      //var_dump($stmt);
+      $stmt->execute();
+      return $stmt->fetchAll();
+      $stmt->close();
+    }
+
 
   //Vista de cursos
   //******************************
@@ -56,7 +74,7 @@ class Courses extends Conexion{
         $stmt = $conexion->prepare($prepareStmt);
         $stmt->bindParam(":course_id",$id,PDO::PARAM_INT);
       }
-
+      //var_dump($stmt);
       $stmt->execute();
       return $stmt->fetchAll();
       $stmt->close();
@@ -68,7 +86,7 @@ class Courses extends Conexion{
         $stmt = $conexion->prepare("SELECT * FROM $tabla ");
       }else{
         $prepareStmt = "SELECT *
-                        FROM $tabla                        
+                        FROM $tabla
                         WHERE course_id=:course_id";
         $stmt = $conexion->prepare($prepareStmt);
         $stmt->bindParam(":course_id",$id,PDO::PARAM_INT);
@@ -135,6 +153,36 @@ class Courses extends Conexion{
 
     if($stmt->execute()){
         return "success";
+      }else{
+        return "error";
+      }
+
+      $stmt->close();
+    }
+
+    //elminar alumno de curso.
+    //************************************************
+    public function deleteStudentCourseModel($id,$tabla){
+      $conexion = new Conexion();
+      $stmt = $conexion->prepare("DELETE FROM $tabla WHERE student_id=:student_id");
+      $stmt->bindParam(":student_id",$id,PDO::PARAM_INT);
+
+    if($stmt->execute()){
+        return "success";
+      }else{
+        return "error";
+      }
+
+      $stmt->close();
+    }
+
+    public function myCoursesModel($id,$tabla){
+      $conexion = new Conexion();
+      $stmt = $conexion->prepare("SELECT * FROM $tabla WHERE person_id=:person_id");
+      $stmt->bindParam(":person_id",$id,PDO::PARAM_INT);
+
+    if($stmt->execute()){
+      return $stmt->fetchAll();    
       }else{
         return "error";
       }

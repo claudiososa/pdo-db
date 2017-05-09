@@ -83,6 +83,7 @@ class MvcController{
 				$tipoUsuario= $respuesta["type"];
 				$_SESSION["validar"]=true;
 				$_SESSION["typeUser"]=$respuesta["type"];
+				$_SESSION["user_id"]=$respuesta["user_id"];
 
 				$intentos=0;
 
@@ -208,7 +209,7 @@ public function migrationUsersController(){
 									);
 		$guardarUser = Datos::registroUsuarioModel($datosController, "users");
 
-		
+
 	}
 
 }

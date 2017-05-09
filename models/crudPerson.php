@@ -91,9 +91,13 @@ class Person extends Conexion{
   //WHERE firstname LIKE '%'
   //AND   users.type ='Docente' AND users.status='Inactivo'
   //
-  public function searchPersonModel($datos,$tabla){
+  public function searchPersonModel($datos,$tabla,$type=NULL){
     $conexion = new Conexion();
-    $sentencia = 'SELECT * FROM '.$tabla.' JOIN users ON (users.user_name = persons.dni) WHERE';
+    $sentencia = 'SELECT * FROM '.$tabla.' JOIN users ON (users.user_name = persons.dni)';
+    /*if($datos['type']=='Alumno' AND !isset($type)){
+      $sentencia .=" JOIN students_courses ON (students_courses.student_id=users.user_id)";
+    }*/
+    $sentencia .=' WHERE';
     $carga=0;
     if($datos['person_id']<>''){
       $sentencia.=' person_id=:person_id && ';
@@ -115,6 +119,7 @@ class Person extends Conexion{
       $carga=1;
     }
 
+
     if ($carga==1){
       $sentencia=substr($sentencia,0,strlen($sentencia)-3);
     }else{
@@ -124,6 +129,17 @@ class Person extends Conexion{
     {
       $sentencia.='  AND   users.type = :type ';
     }
+    if(isset($type)){
+      switch ($type) {
+        case 'inscription':
+          $sentencia.=" AND persons.person_id NOT IN (SELECT student_id FROM students_courses) ";
+          break;
+        default:
+          # code...
+          break;
+      }
+    }
+
     $sentencia.='  ORDER BY person_id';
 
 

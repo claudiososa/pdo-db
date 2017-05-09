@@ -34,6 +34,7 @@ if($_POST){
                 <th>DNI</th>
                 <th>CUIL</th>
                 <th>Tipo</th>
+                <th>Curso</th>
                 <th>Tutor1</th>
                 <th>Tutor2</th>';
   foreach ($dato as $key => $item) {
@@ -43,8 +44,25 @@ if($_POST){
       <td>'.$item["firstname"].'</td>
       <td>'.$item["dni"].'</td>
       <td>'.$item["cuil"].'</td>
-      <td>'.$item["type"].'</td>
-      <td>tutor1</td>
+      <td>'.$item["type"].'</td>';
+      echo '<td>';
+      if($item["type"]=='Alumno'){
+        $inscription = new ControllerCourse();
+        //var_dump($inscription);
+        $verificar = $inscription->searchStudentInCourseController($item["person_id"]);
+        if($verificar){
+          echo $verificar[0]['name'].' '.$verificar[0]['turn'];
+        }else{
+          echo "Sin Asignar";
+        }
+
+
+          //var_dump($verificar);
+
+
+      }
+      echo '</td>';
+      echo '<td>tutor1</td>
       <td>tutor2</td>
       <td><a href="index.php?action=editarPerson&id='.$item["person_id"].'"><button>Editar</button></a></td>
       <td><a href="index.php?action=person&idBorrar='.$item["person_id"].'"><button>Borrar</button></a></td>

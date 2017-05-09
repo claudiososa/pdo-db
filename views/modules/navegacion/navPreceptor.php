@@ -10,11 +10,12 @@
      echo '<li><a href="index.php?action=ingresar">Ingreso</a></li>';
 		}
  		?>
+		<li><a href="index.php?action=mycourses">Mis Cursos</a></li>
 		<li><a href="index.php?action=usuarios">Usuarios</a></li>
 		<li><a href="index.php?action=salir">Salir</a></li>
 		<li><a href='#'>
 
-		<?php		
+		<?php
 
 		if(isset($_SESSION["typeUser"])){
 			echo 'Tipo de usuario: '.$_SESSION["typeUser"];

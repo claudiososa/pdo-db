@@ -12,7 +12,7 @@ class Paginas{
 
 		}elseif($enlaces == "searchPerson" || $enlaces == "createPerson"){
 			$module =  "views/modules/person/".$enlaces.".php";
-		}elseif($enlaces == "createCourse" || $enlaces == "inscription"){
+		}elseif($enlaces == "createCourse" || $enlaces == "inscription" || $enlaces == "mycourses"){
 			$module =  "views/modules/course/".$enlaces.".php";
 		}elseif($enlaces == "migration_users" || $enlaces == "migration_students"){
 			$module =  "views/modules/migration/".$enlaces.".php";
