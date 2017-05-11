@@ -178,11 +178,11 @@ class Courses extends Conexion{
 
     public function myCoursesModel($id,$tabla){
       $conexion = new Conexion();
-      $stmt = $conexion->prepare("SELECT * FROM $tabla WHERE person_id=:person_id");
+      $stmt = $conexion->prepare("SELECT * FROM $tabla WHERE preceptor=:person_id");
       $stmt->bindParam(":person_id",$id,PDO::PARAM_INT);
-
+//return 'Hola mundo';
     if($stmt->execute()){
-      return $stmt->fetchAll();    
+        return $stmt->fetchAll();
       }else{
         return "error";
       }

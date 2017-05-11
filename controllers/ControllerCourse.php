@@ -197,10 +197,10 @@ public function deleteStudentCourseController($id){
 public function myCoursesController($id){
 		$respuesta= Courses::myCoursesModel($id,"courses");
 
-		if($respuesta == "success"){
+		//if($respuesta == "success"){
 			//header("location:index.php?action=inscription&id=1");
 			return $respuesta;
-		}
+		//}
 }
 
 }

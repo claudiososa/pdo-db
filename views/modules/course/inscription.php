@@ -4,7 +4,7 @@
  * Verificar si el usuario es de tipo Admin para acceder a este archivo
  * en el caso que no sea asi se redireccion a pagina ingresar
  */
-if($_SESSION["typeUser"]<>'Admin'){
+if($_SESSION["typeUser"]<>'Admin' && $_SESSION["typeUser"]<>'Preceptor/a'){
 	header("location:index.php?action=ingresar");
 	exit();
 }
