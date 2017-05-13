@@ -1,3 +1,4 @@
+
 <?php
 
 /**
@@ -15,19 +16,23 @@ if(isset($_GET)){
 }
 
  ?>
-<h4>Inscripción de Alumnos para el Curso: <?php echo '<label class="btn btn-primary">'.$viewCourse[0]['name'].'</label>'; ?> Turno: <?php echo '<label class="btn btn-primary">'.$viewCourse[0]['turn'].'</label>'; ?></h4>
-<form class="" action="" method="post">
-  <input type="hidden" name="typeuser" value="Alumno">
-  <label for="">Apellido</label>
-  <input type="text" name="lastname" value="">
-  <label for="">Nombre</label>
-  <input type="text" name="firstname" value="">
-  <label for="">DNI</label>
-  <input type="text" name="dni" value="">
-  <input type="submit" name="searchPersonSubmit" value="Buscar">
+<h4>Inscripción de Alumnos para el Curso: <?php echo '<label class="btn btn-primary">'.$viewCourse[0]['name'].'</label>'; ?> Turno: <?php echo '<label class="btn btn-primary">'.$viewCourse[0]['turn'].'</label>'; ?></h4><br>
+<center>
+<form class="navbar-form navbar" role="search" action="" method="post">
+	<input type="hidden" name="typeuser" value="Alumno">
+            <div class="form-group">
+              <input type="text" name="lastname" placeholder="Apellido"  value="" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" name="firstname"placeholder="Nombre" value="" class="form-control">
+            </div>
+						<div class="form-group">
+              <input type="text" name="dni" placeholder="DNI" value="" class="form-control">
+            </div>
 
-</form>
-
+            <button type="submit" name="searchPersonSubmit" value="Buscar" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Buscar </button>
+  </form>
+					<center>
 <?php
 if($_POST){
 
