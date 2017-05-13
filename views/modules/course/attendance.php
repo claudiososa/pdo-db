@@ -1,3 +1,4 @@
+<script type="text/javascript" src="views/modules/course/js/validateAttendance.js"></script>
 <?php
 echo '<label class="btn btn-success">Tomar Asistencia para...</label>';
 $course = new ControllerCourse();
@@ -24,7 +25,7 @@ echo '<table class="table table-bordered">
         echo '<td>'.$item['lastname'].'</td>';
         echo '<td>'.$item['firstname'].'</td>';
         echo '<td>'.$item['dni'].'</td>';
-        echo '<td><a class="btn btn-primary" href="index.php?action=inscription&delete&student_id='.$item['student_id'].'">Presente</a></td>';
+        echo '<td><a id="bt'.$item['student_id'].'" class="btn btn-success" href="index.php?action=inscription&delete&student_id='.$item['student_id'].'">Presente</a></td>';
         echo '</tr>';
       }
 echo '</tbody></table>';
