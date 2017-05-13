@@ -9,7 +9,7 @@ echo '<br><br>';
 $registro = new ControllerCourse();
 $viewCourse = $registro->viewStudentController($_GET['id']);
 //var_dump($viewCourse);
-echo '<table class="table">
+echo '<table class="table table-bordered">
       <thead>
       <th>Id</th>
       <th>Apellido</th>
@@ -19,8 +19,8 @@ echo '<table class="table">
       </thead>
       <tbody>';
       foreach ($viewCourse as $key => $item) {
-        echo '<tr>';
-        echo '<td>'.$item['student_id'].'</td>';
+        echo '<tr class="bg-success" id="tr'.$item["student_id"].'">';
+        echo '<th scope="row">'.$item['student_id'].'</th>';
         echo '<td>'.$item['lastname'].'</td>';
         echo '<td>'.$item['firstname'].'</td>';
         echo '<td>'.$item['dni'].'</td>';

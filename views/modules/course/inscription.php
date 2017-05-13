@@ -70,7 +70,7 @@ if($_POST){
   echo '</tbody></table>';
 }
 
-if($_GET['action']=='inscription' AND $_GET['id'] AND $_GET['person_id']  ){
+if($_GET['action']=='inscription' AND isset($_GET['id']) AND isset($_GET['person_id'])  ){
   $registro = new ControllerCourse();
   $viewCourse = $registro->newInscriptionController();
   $url = 'location:index.php?action=inscription&id='.$_GET['id'];
