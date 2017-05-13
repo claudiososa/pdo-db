@@ -1,8 +1,9 @@
 
-<nav class="navbar ">
-<div class="container-fluid">
+<nav class="navbar navbar-default">
+
+
 	<div class="navbar-header">
-		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1" aria-expanded="false" aria-controls="navbar">
 			<span class="sr-only">Toggle navigation</span>
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
@@ -12,20 +13,21 @@
 	</div>
 
 
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <div class="navbar-collapse collapse" id="navbar1">
 	<ul class="nav navbar-nav">
-		<li><a href="index.php?action=createCourse">Cursos</a></li>
+
 		<?php
 		if(isset($_SESSION["typeUser"]))
 		{
-			echo '<li><a href="index.php?action=ok">Inicio</a></li>';
+			echo '<li class="active"><a href="index.php?action=ok">Inicio</a></li>';
 		}else{
      echo '<li><a href="index.php?action=ingresar">Ingreso</a></li>';
 		}
  		?>
+		<li><a href="index.php?action=createCourse">Cursos</a></li>
 		<li><a href="index.php?action=usuarios">Usuarios</a></li>
 		<li><a href="index.php?action=createPerson">Crear Personas</a></li>
-		<li><a href="index.php?action=person">Listar Personas</a></li>\
+		<li><a href="index.php?action=person">Listar Personas</a></li>
 		<li><a href="index.php?action=searchPerson">Buscar Persona</a></li>
 
 
@@ -40,8 +42,8 @@
 
 		}
 		 ?>
-		 </a></li>
+	 </a></li>
 	</ul>
 </div>
-</div>
+
 </nav>
