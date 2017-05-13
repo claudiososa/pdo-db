@@ -82,8 +82,6 @@ class ControllerCourse{
 		}else{
 			$respuesta = Courses::viewCourseModel("courses",$_GET['id']);
 		}
-
-
     return $respuesta;
 		//var_dump($respuesta[1][2]);
 	}

@@ -74,6 +74,7 @@ class Courses extends Conexion{
         $stmt = $conexion->prepare($prepareStmt);
         $stmt->bindParam(":course_id",$id,PDO::PARAM_INT);
       }
+      //echo $id.'<br>';
       //var_dump($stmt);
       $stmt->execute();
       return $stmt->fetchAll();

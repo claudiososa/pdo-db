@@ -132,7 +132,7 @@ class Person extends Conexion{
     if(isset($type)){
       switch ($type) {
         case 'inscription':
-          $sentencia.=" AND persons.person_id NOT IN (SELECT student_id FROM students_courses) ";
+          //$sentencia.=" AND persons.person_id NOT IN (SELECT student_id FROM students_courses) ";
           break;
         default:
           # code...

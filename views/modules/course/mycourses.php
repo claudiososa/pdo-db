@@ -20,7 +20,7 @@
     echo '<tr><td>'.$value["course_id"].'</td>';
     echo '<td>'.$value["name"].'</td>';
     echo '<td>'.$value["turn"].'</td>';
-    echo '<td><a class="btn btn-primary" href="index.php?action=attendance&course='.$value["course_id"].'">Tomar Asistencia</a></td>';
+    echo '<td><a class="btn btn-primary" href="index.php?action=attendance&id='.$value["course_id"].'">Tomar Asistencia</a></td>';
     echo '<td><a class="btn btn-primary" href="index.php?action=inscription&id='.$value["course_id"].'">Inscribir Alumnos</a></td>';
 
   }

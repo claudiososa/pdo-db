@@ -37,27 +37,37 @@ if($_POST){
   $resultado = new ControllerPerson();
   $dato=$resultado->searchPersonController('inscription');
   //var_dump($dato);
-  echo '<table class="table table-condensed">';
-  echo '<thead>
-              <tr>
-                <th>Id</th>
-                <th>Apellido</th>
-                <th>Nombre</th>
-                <th>DNI</th>
-                <th>Tipo</th>
-                <th>Tutor1</th>';
+
+	echo '<table class="table">
+        <thead>
+        <th>Id</th>
+        <th>Apellido</th>
+        <th>Nombre</th>
+        <th>DNI</th>
+				<th>Acción</th>
+        </thead>
+        <tbody>';
   foreach ($dato as $key => $item) {
     echo '<tr>
       <td>'.$item["person_id"].'</td>
       <td>'.$item["lastname"].'</td>
       <td>'.$item["firstname"].'</td>
-      <td>'.$item["dni"].'</td>
-      <td>'.$item["type"].'</td>
-      <td>tutor1</td>
-      <td><a href="index.php?action=inscription&id='.$_GET['id'].'&person_id='.$item["person_id"].'"><button>Inscribir</button></a></td>
-    </tr>';
+      <td>'.$item["dni"].'</td>';
+			echo '<td>';
+      if($item["type"]=='Alumno'){
+        $inscription = new ControllerCourse();
+        //var_dump($inscription);
+        $verificar = $inscription->searchStudentInCourseController($item["person_id"]);
+        if($verificar){
+          echo $verificar[0]['name'].' '.$verificar[0]['turn'];
+        }else{
+					echo '<a class="btn btn-primary" href="index.php?action=inscription&id='.$_GET['id'].'&person_id='.$item["person_id"].'">Inscribir</a>';
+        }
+      }
+			echo '</td>
+						</tr>';
   }
-  echo '</table>';
+  echo '</tbody></table>';
 }
 
 if($_GET['action']=='inscription' AND $_GET['id'] AND $_GET['person_id']  ){
@@ -65,17 +75,6 @@ if($_GET['action']=='inscription' AND $_GET['id'] AND $_GET['person_id']  ){
   $viewCourse = $registro->newInscriptionController();
   $url = 'location:index.php?action=inscription&id='.$_GET['id'];
   header($url);
-  /*echo '<table class="table table-condensed">
-        <thead>
-        <th>Id</th>
-        </thead>
-        <tbody>';
-        foreach ($viewCourse as $key => $item) {
-          echo '<tr><td>';
-          echo $item['student_id'];
-          echo '</td></tr>';
-        }
-  echo '</tbody></table>';*/
   echo 'tiene lista para guardar';
 }
 if($_GET['action']=='inscription' AND isset($_GET['delete'])){
@@ -89,7 +88,7 @@ if($_GET['action']=='inscription' AND $_GET['id'] ){
 	$registro = new ControllerCourse();
   $viewCourse = $registro->viewStudentController($_GET['id']);
   //var_dump($viewCourse);
-  echo '<table class="table table-condensed">
+  echo '<table class="table">
         <thead>
         <th>Id</th>
         <th>Apellido</th>
@@ -108,6 +107,5 @@ if($_GET['action']=='inscription' AND $_GET['id'] ){
           echo '</tr>';
         }
   echo '</tbody></table>';
-  echo 'tiene todo';
 }
 ?>
