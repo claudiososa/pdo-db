@@ -17,22 +17,20 @@ if(isset($_GET)){
 
  ?>
 <h4>Inscripción de Alumnos para el Curso: <?php echo '<label class="btn btn-primary">'.$viewCourse[0]['name'].'</label>'; ?> Turno: <?php echo '<label class="btn btn-primary">'.$viewCourse[0]['turn'].'</label>'; ?></h4><br>
-<center>
-<form class="navbar-form navbar" role="search" action="" method="post">
-	<input type="hidden" name="typeuser" value="Alumno">
-            <div class="form-group">
-              <input type="text" name="lastname" placeholder="Apellido"  value="" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="text" name="firstname"placeholder="Nombre" value="" class="form-control">
-            </div>
-						<div class="form-group">
-              <input type="text" name="dni" placeholder="DNI" value="" class="form-control">
-            </div>
 
-            <button type="submit" name="searchPersonSubmit" value="Buscar" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Buscar </button>
-  </form>
-					<center>
+<form class="form-inline"role="search" action="" method="post">
+	<input type="hidden" name="typeuser" value="Alumno">
+	<!--<label class="sr-only" for="inlineFormInput">Name</label>-->
+<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="lastname" placeholder="Apellido" value"">
+
+<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="firstname"placeholder="Nombre" value="">
+
+<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="dni" placeholder="DNI" value="">
+
+  <button type="submit" name="searchPersonSubmit" value="Buscar" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Buscar </button>
+
+</form>
+
 <?php
 if($_POST){
 
