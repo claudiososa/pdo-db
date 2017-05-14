@@ -71,15 +71,6 @@ $mvc -> enlacesPaginasController();
 
 </footer>
 </div>
-<<<<<<< HEAD
-
-
-	<script src="views/js/bootstrap.min.js"></script>
-=======
-<!--
-	<script src="views/js/jquery-3.1.0.min.js"></script>
-	<script src="views/js/bootstrap.min.js"></script>-->
->>>>>>> origin/master
 <script src="views/js/validarRegistro.js" type="text/javascript">
 
 </script>	<!-- Latest compiled and minified JavaScript -->
