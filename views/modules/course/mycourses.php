@@ -1,9 +1,11 @@
+<div class="card">
 <?php
 
   $courses = new ControllerCourse();
   $mycourses = $courses->myCoursesController($_SESSION["user_id"]);
   //var_dump($mycourses);
-  echo '<table class="table">
+  echo '<div class="table-responsive">
+  <table class="table">
           <thead>
             <tr>
               <th>Id</th>
@@ -26,6 +28,7 @@
   }
   echo '
         </tbody>
-        </table>';
+        </table></div>';
 
 ?>
+</div>
