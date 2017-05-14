@@ -8,6 +8,7 @@
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="views/css/bootstrap.css" type="text/css">
+	<script src="views/js/jquery-3.1.0.min.js"></script>
 <link rel="stylesheet" href="img/css/estilos.css" type="text/css">
 <title>S-W Colegio 5159</title>
 
@@ -71,7 +72,7 @@ $mvc -> enlacesPaginasController();
 </footer>
 </div>
 
-	<script src="views/js/jquery-3.1.0.min.js"></script>
+
 	<script src="views/js/bootstrap.min.js"></script>
 <script src="views/js/validarRegistro.js" type="text/javascript">
 
