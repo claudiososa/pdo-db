@@ -1,29 +1,22 @@
-<div class="container" >
-		<div class="row">
-		<div class="Absolute-Center is-Responsive">
-		<div class="col-md-4 col-md-offset-4">
-<form action="" name="iniciosesion"method="POST">
-	<label class="">Inicio de Sesión</label>
+<div class="container">
+	<div class="row justify-content-md-center">
+<div class="col-md-4 col-md-offset-4">
+		 <form class="form-signin" action="" name="iniciosesion"method="POST">
+			 <h3 class="form-signin-heading">Inicio de Sesión</h3>
 
-		<div class="form-group input-group">
-			<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-		<input class="form-control" type="text" name="usuarioIngreso"  placeholder="Ingrese Usuario" id="formulario"  size="50" required>
-		</div>
+			 <label for="" class="sr-only">Usuario:</label>
+			 <input class="form-control" type="text" name="usuarioIngreso"  placeholder="Ingrese Usuario" id="formulario"  size="50" required autofocus>
 
-		<!--<div id="alerta" style="display:none;"><font color="crimsol">Ingrese 8 caracteres (solo números)</font></div>-->
-		<div class="form-group input-group">
-				<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+			 <label for="" class="sr-only">Contraseña:</label>
 				<input class="form-control" type="password" name="passwordIngreso" placeholder="Ingrese Contraseña" size="50" required>
-		</div>
 
-		<div class="form-group" "input-group">
-				<button class="btn btn-lg btn-primary btn-block" type="submit" id="btnvalidar" value="Ingresar">Ingresar</button>
-		</div>
-</form>
-		</div>
-		</div>
-		</div>
+			 <button class="btn btn-md btn-primary btn-block" type="submit"id="btnvalidar" value="Ingresar">Ingresar</button>
+		 </form>
 </div>
+</div>
+	 </div>
+
+
 <?php
 
 $ingreso = new MvcController();
