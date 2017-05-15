@@ -16,6 +16,7 @@ if(isset($_GET)){
 }
 
  ?>
+ <br>
 <h4>Inscripción de Alumnos para el Curso: <?php echo '<label class="btn btn-primary">'.$viewCourse[0]['name'].'</label>'; ?> Turno: <?php echo '<label class="btn btn-primary">'.$viewCourse[0]['turn'].'</label>'; ?></h4><br>
 
 <form class="form-inline"role="search" action="" method="post">
@@ -30,6 +31,12 @@ if(isset($_GET)){
   <button type="submit" name="searchPersonSubmit" value="Buscar" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Buscar </button>
 
 </form>
+<br>
+
+<div class="card">
+
+
+
 
 <?php
 if($_POST){
@@ -41,7 +48,8 @@ if($_POST){
   $dato=$resultado->searchPersonController('inscription');
   //var_dump($dato);
 
-	echo '<table class="table">
+	echo '<div class="table-responsive">
+	<table class="table">
         <thead>
         <th>Id</th>
         <th>Apellido</th>
@@ -70,7 +78,7 @@ if($_POST){
 			echo '</td>
 						</tr>';
   }
-  echo '</tbody></table>';
+  echo '</tbody></table></div>';
 }
 
 if($_GET['action']=='inscription' AND isset($_GET['id']) AND isset($_GET['person_id'])  ){
@@ -91,7 +99,10 @@ if($_GET['action']=='inscription' AND $_GET['id'] ){
 	$registro = new ControllerCourse();
   $viewCourse = $registro->viewStudentController($_GET['id']);
   //var_dump($viewCourse);
-  echo '<table class="table">
+  echo '
+	<div class="table-responsive">
+	<table class="table">
+
         <thead>
         <th>Id</th>
         <th>Apellido</th>
@@ -109,6 +120,7 @@ if($_GET['action']=='inscription' AND $_GET['id'] ){
 					echo '<td><a class="btn btn-primary" href="index.php?action=inscription&delete&student_id='.$item['student_id'].'">Eliminar Inscripción</a></td>';
           echo '</tr>';
         }
-  echo '</tbody></table>';
+  echo '</tbody></table></div>';
 }
 ?>
+</div>

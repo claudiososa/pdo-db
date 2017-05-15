@@ -1,14 +1,21 @@
 <div class="container">
+
 	<div class="row justify-content-md-center">
-<div class="col-md-4 col-md-offset-4">
-		 <form class="form-signin" action="" name="iniciosesion"method="POST">
+<div class="col-md-6 col-md-offset-6 col-lg-4">
+
+			 <form class="form-signin" action="" name="iniciosesion"method="POST">
 			 <h3 class="form-signin-heading">Inicio de Sesión</h3>
 
-			 <label for="" class="sr-only">Usuario:</label>
-			 <input class="form-control" type="text" name="usuarioIngreso"  placeholder="Ingrese Usuario" id="formulario"  size="50" required autofocus>
+			 <div class="input-group margin-bottom-sm">
+			   <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i>
+</span>
+			<input class="form-control" type="text" name="usuarioIngreso"  placeholder="Ingrese Usuario" id="formulario"  size="50" required autofocus>
+			 </div>
 
-			 <label for="" class="sr-only">Contraseña:</label>
-				<input class="form-control" type="password" name="passwordIngreso" placeholder="Ingrese Contraseña" size="50" required>
+		   <div class="input-group">
+			   <span class="input-group-addon"><i class="fa fa-key fa-fw" aria-hidden="true"></i></span>
+		<input class="form-control" type="password" name="passwordIngreso" placeholder="Ingrese Contraseña" size="50" required>
+			 </div>
 
 			 <button class="btn btn-md btn-primary btn-block" type="submit"id="btnvalidar" value="Ingresar">Ingresar</button>
 		 </form>
