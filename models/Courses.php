@@ -81,7 +81,7 @@ class Courses extends Conexion{
       $stmt->close();
     }
 
-    public function viewCourseStudentModel($tabla,$id){
+    public function viewCourseStudentModel($tabla,$id=null){
       $conexion = new Conexion();
       if(!isset($id)){
         $stmt = $conexion->prepare("SELECT * FROM $tabla ");

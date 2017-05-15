@@ -100,8 +100,10 @@ class ControllerCourse{
   public function viewCourseStudentController(){
 		if(isset($_GET['edit'])){
 			$respuesta = Courses::viewCourseModel("courses");
-		}else{
+		}elseif(isset($_GET['id'])){
 			$respuesta = Courses::viewCourseStudentModel("courses",$_GET['id']);
+		}else{
+			$respuesta = Courses::viewCourseStudentModel("courses");
 		}
     return $respuesta;
 		//var_dump($respuesta[1][2]);
