@@ -19,7 +19,12 @@ if($_POST){
 				case 'Media F.':
 						$status='M';
 						break;
-
+				case 'Justificada':
+								$status='J';
+								break;
+				case 'Doble Ausente':
+								$status='AA';
+								break;
 				default:
 					# code...
 					break;
@@ -89,14 +94,30 @@ echo "<script>
       echo '$("#tr'.$item['student_id'].'").addClass("bg-info text-white");';
       echo '$("#bt'.$item['student_id'].'").removeClass("btn btn-danger");';
       echo '$("#bt'.$item['student_id'].'").addClass("btn btn-info");';
-    echo '}else{';
-			echo '$(this).attr("value","Presente");';
-			echo '$("#'.$item['student_id'].'").attr("value","Presente");';
+    echo '}else if($(this).attr("value")=="Media F."){';
+			echo '$(this).attr("value","Justificada");';
+			echo '$("#'.$item['student_id'].'").attr("value","Justificada");';
       //echo 'alert($(this).attr("value"));';
       echo '$("#tr'.$item['student_id'].'").removeClass("bg-info text-white");';
-      echo '$("#tr'.$item['student_id'].'").addClass("text-black");';
-      echo '$("#bt'.$item['student_id'].'").removeClass("btn btn-danger");';
-      echo '$("#bt'.$item['student_id'].'").addClass("btn btn-success");';
+      echo '$("#tr'.$item['student_id'].'").addClass("bg-warning text-white");';
+      echo '$("#bt'.$item['student_id'].'").removeClass("btn btn-info");';
+      echo '$("#bt'.$item['student_id'].'").addClass("btn btn-warning");';
+			echo '}else if($(this).attr("value")=="Justificada"){';
+				echo '$(this).attr("value","Doble Ausente");';
+				echo '$("#'.$item['student_id'].'").attr("value","Doble Ausente");';
+	      //echo 'alert($(this).attr("value"));';
+	      echo '$("#tr'.$item['student_id'].'").removeClass("bg-warning text-white");';
+	      echo '$("#tr'.$item['student_id'].'").addClass("bg-inverse text-white");';
+	      echo '$("#bt'.$item['student_id'].'").removeClass("btn btn-warning");';
+	      echo '$("#bt'.$item['student_id'].'").addClass("btn btn-inverse");';
+			echo '}else{';
+				echo '$(this).attr("value","Presente");';
+				echo '$("#'.$item['student_id'].'").attr("value","Presente");';
+	      //echo 'alert($(this).attr("value"));';
+	      echo '$("#tr'.$item['student_id'].'").removeClass("bg-inverse text-white");';
+	      echo '$("#tr'.$item['student_id'].'").addClass("text-black");';
+	      echo '$("#bt'.$item['student_id'].'").removeClass("btn btn-inverse");';
+	      echo '$("#bt'.$item['student_id'].'").addClass("btn btn-success");';
 		echo '}
 
 		});';
@@ -105,8 +126,8 @@ echo "<script>
 
 
 echo "</script>";
+echo '<div class="panel panel-success"><h4>Tomar Asistencia para...</h4></div>';
 
-echo '<label class="btn btn-success">Tomar Asistencia para...</label>';
 
 $attendanceStudent = new ControllerAttendance();
 
@@ -144,6 +165,12 @@ echo '<table class="table table-sm table-bordered">
 							case 'M':
 									echo '<tr class="bg-info text-white" id="tr'.$item["student_id"].'">';
 											break;
+						  case 'J':
+									echo '<tr class="bg-warning text-white" id="tr'.$item["student_id"].'">';
+									break;
+							case 'AA':
+									echo '<tr class="bg-inverse text-white" id="tr'.$item["student_id"].'">';
+									break;
 							default:
 
 								break;
@@ -173,9 +200,17 @@ echo '<table class="table table-sm table-bordered">
 								echo '<td><input  type="hidden" id="'.$item['student_id'].'" name="'.$item['student_id'].'" value="Ausente"></td>';
 								echo '<td><input class="btn btn-danger" type="button" id="bt'.$item['student_id'].'" name="bt'.$item['student_id'].'" value="Ausente"></td>';
 									break;
+							case 'M':
+										echo '<td><input  type="hidden" id="'.$item['student_id'].'" name="'.$item['student_id'].'" value="Media F."></td>';
+										echo '<td><input class="btn btn-info" type="button" id="bt'.$item['student_id'].'" name="bt'.$item['student_id'].'" value="Media F."></td>';
+											break;
+							case 'AA':
+										echo '<td><input  type="hidden" id="'.$item['student_id'].'" name="'.$item['student_id'].'" value="Doble Ausente"></td>';
+										echo '<td><input class="btn btn-inverse" type="button" id="bt'.$item['student_id'].'" name="bt'.$item['student_id'].'" value="Doble Ausente"></td>';
+										break;
 							default:
-								echo '<td><input  type="hidden" id="'.$item['student_id'].'" name="'.$item['student_id'].'" value="Media F."></td>';
-								echo '<td><input class="btn btn-info" type="button" id="bt'.$item['student_id'].'" name="bt'.$item['student_id'].'" value="Media F."></td>';
+								echo '<td><input  type="hidden" id="'.$item['student_id'].'" name="'.$item['student_id'].'" value="Justificada"></td>';
+								echo '<td><input class="btn btn-warning" type="button" id="bt'.$item['student_id'].'" name="bt'.$item['student_id'].'" value="Justificada"></td>';
 								break;
 						}
 				}else{
