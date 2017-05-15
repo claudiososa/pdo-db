@@ -70,7 +70,7 @@ class Courses extends Conexion{
                         FROM $tabla
                         JOIN persons
                         ON (students_courses.student_id = persons.person_id)
-                        WHERE course_id=:course_id";
+                        WHERE course_id=:course_id ORDER BY persons.lastname ASC";
         $stmt = $conexion->prepare($prepareStmt);
         $stmt->bindParam(":course_id",$id,PDO::PARAM_INT);
       }

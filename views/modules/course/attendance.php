@@ -7,12 +7,7 @@ if($_POST){
 	//echo '<br><br>';
 	//echo count($_POST);
 	//
-foreach ($_POST as $key => $value) {
-	//echo $_POST[$key]."<br>";
-	//echo $key."<br>";
-}
 	foreach ($_POST as $key => $value) {
-
 		if ($key <> "date" AND $key <> "submitAttendance"){
 			switch ($_POST[$key]) {
 				case 'Presente':
@@ -29,25 +24,39 @@ foreach ($_POST as $key => $value) {
 					# code...
 					break;
 			}
-			//if ($key <> "Presente" AND $key <> "Ausente" AND $key <> "Media F."){
-					$searchAttendance1 = $attendanceStudent1->viewAttendanceStudentController($key,date("Y-m-d"));
-					if(isset($searchAttendance1)){
-						if(count($searchAttendance1)>0){
-							$attendance->updateAttendanceController($searchAttendance1[0]['attendance_id'],$key,$status);
-					  }else{
-							$attendance->newAttendanceController($key,$status);
-						}
-				  }
+			$searchAttendance1 = $attendanceStudent1->viewAttendanceStudentController($key,$_POST['date']);
+				if(isset($searchAttendance1)){
+					if(count($searchAttendance1)>0){
+						$attendance->updateAttendanceController($searchAttendance1[0]['attendance_id'],$key,$status);
+				  }else{
+						$attendance->newAttendanceController($key,$status);
+					}
+			  }
 		}
 	}
-}
+	$variablephp = "index.php?action=mycourses";
+	?>
 
+	<script type="text/javascript">
+/*
+		if (guardado=='agregarcompleto') {
+			alert ("Aula Satelite fue creada");
+		}else if(guardado=='editarcompleto'){
+			alert ("Aula Satelite fue modificada");
+		}else{
+			alert ("Erro al guardar");
+		}*/
+		alert("Se guardo con éxito");
+		var variablejs = "<?php echo $variablephp; ?>" ;
+		 function redireccion(){window.location=variablejs;}
+		 setTimeout ("redireccion()", 0);
+	</script>
+	<?php
+}
 
 $registro = new ControllerCourse();
 $viewCourse = $registro->viewStudentController($_GET['id']);
 $studends = count($viewCourse);
-
-
 
 echo "<script>
 	$(document).ready(function () {";
@@ -109,7 +118,7 @@ echo '<br><br>';
 
 echo '<br><br>';
 echo '<form class="formAttendance" action="" method="post">';
-echo '<input type="date" readonly name="date" value="'.date("Y-m-d").'">';
+echo '<input type="date"  name="date" value="'.date("Y-m-d").'">';
 //var_dump($viewCourse);
 echo '<table class="table table-sm table-bordered">
       <thead>
@@ -173,15 +182,9 @@ echo '<table class="table table-sm table-bordered">
 					echo '<td><input  type="hidden" id="'.$item['student_id'].'" name="'.$item['student_id'].'" value="Presente"></td>';
 						echo '<td><input class="btn btn-success" type="button" id="bt'.$item['student_id'].'" name="bt'.$item['student_id'].'" value="Presente"></td>';
 				}
-				//echo '<input  type="hidden" id="'.$item['student_id'].'" name="'.$item['student_id'].'" value="Presente">';
-				//echo '<td>'.var_dump($searchAttendance).'<br><br></td>';
-
-        //echo '<td><a id="bt'.$item['student_id'].'" class="btn btn-success" href="">Presente</a></td>';
-
         echo '</tr>';
       }
 echo '</tbody></table>';
-//var_dump($nameCourse);
 ?>
-<input type="submit" name="submitAttendance" value="Guardar Asistencia">
+<input type="submit" class="btn btn-success" name="submitAttendance" value="Guardar Asistencia">
 </form>
