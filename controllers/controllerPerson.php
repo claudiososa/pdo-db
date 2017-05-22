@@ -139,8 +139,8 @@ class ControllerPerson{
 	public function editarPersonController(){
 		$datos = $_GET["id"];
 		$respuesta=Person::editarPersonModel($datos,"persons");
-
-		echo '<input type="hidden" value="'.$respuesta["person_id"].'" name="person_IdEditar">
+		include_once 'views/modules/person/forms/formNewPerson.php';
+		/*echo '<input type="hidden" value="'.$respuesta["person_id"].'" name="person_IdEditar">
 					<input type="text" value="'.$respuesta["dni"].'" placeholder="DNI" name="dniEditar" required>
           <input type="text" value="'.$respuesta["cuil"].'" placeholder="CUIL" name="cuilEditar" required>
           <input type="text" value="'.$respuesta["lastname"].'" placeholder="Apellidos" name="lastnameEditar" required>
@@ -153,7 +153,7 @@ class ControllerPerson{
           <input type="text" value="'.$respuesta["address"].'" placeholder="Dirección" name="addressEditar" required>
 
 					<input type="submit" value="Actualizar">
-		';
+		';*/
 		//echo $respuesta[1];
 		//return $respuesta;
 		//var_dump($respuesta);

@@ -6,11 +6,11 @@ class Paginas{
 
 
 		if($enlaces == "ingresar" || $enlaces == "usuarios"
-			|| $enlaces == "editar" || $enlaces == "salir" || $enlaces == "person" || $enlaces == "editarPerson"){
+			|| $enlaces == "editar" || $enlaces == "salir" || $enlaces == "person" ){
 
 			$module =  "views/modules/".$enlaces.".php";
 
-		}elseif($enlaces == "searchPerson" || $enlaces == "createPerson"){
+		}elseif($enlaces == "searchPerson" || $enlaces == "createPerson" || $enlaces == "editarPerson"){
 			$module =  "views/modules/person/".$enlaces.".php";
 		}elseif($enlaces == "createCourse" || $enlaces == "inscription" || $enlaces == "mycourses" || $enlaces == "attendance"){
 			$module =  "views/modules/course/".$enlaces.".php";

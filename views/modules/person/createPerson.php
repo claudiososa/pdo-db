@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION["typeUser"]<>'Admin'){
+if($_SESSION["typeUser"]<>'Admin' && $_SESSION["typeUser"]<>'Preceptor/a'){
 	header("location:index.php?action=ingresar");
 	exit();
 }

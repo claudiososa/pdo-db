@@ -5,51 +5,95 @@
 	<div class="form-group">
 		<div class="col-md-12"><label class="control-label" for="lastnameRegistro">Tipo de Usuario</label></div>
 		<div class="col-md-12">
-			<select class="control-form" name="typeRegistro">
-					<option value="Alumno">Alumno</option>
-					<option value="Docente">Docente</option>
-					<option value="Tutor">Tutor</option>
-					<option value="Director/a">Director/a</option>
-					<option value="Preceptor/a">Preceptor/a</option>
-					<option value="Admin">Administrador</option>
-			</select>
+			<?php
+			if($_SESSION["typeUser"]=='Preceptor/a'){
+				echo '<input type="text" name="typeRegistro" Value="Alumno" readonly>';
+			}else{
+				?>
+				<select class="control-form" name="typeRegistro">
+						<option value="Alumno">Alumno</option>
+						<option value="Docente">Docente</option>
+						<option value="Tutor">Tutor</option>
+						<option value="Director/a">Director/a</option>
+						<option value="Preceptor/a">Preceptor/a</option>
+						<option value="Admin">Administrador</option>
+				</select>
+
+			<?php
+			}
+
+			?>
+
   	</div>
+  <?php
+		if($_SESSION["typeUser"]<>'Preceptor/a'){
+				echo '<div class="col-md-12"><label class="control-label" for="lastnameRegistro">Estado de Usuario</label></div>';
+		}
+	?>
 
-
-	<div class="col-md-12"><label class="control-label" for="lastnameRegistro">Estado de Usuario</label></div>
 	<div class="col-md-12">
+		<?php
+		 if($_SESSION["typeUser"]=='Preceptor/a'){
+			echo '<input type="hidden" name="statusRegistro" Value="Inactivo" readonly>';
+		}else{
+			?>
 		<select class="control-form" name="statusRegistro">
 				<option value="Inactivo">Inactivo</option>
 				<option value="Activo">Activo</option>
 		</select>
+		<?php
+		}
+
+		?>
+
 	</div>
 
 
 	<div class="form-group">
 		<div class="col-md-12"><label class="control-label" for="lastnameRegistro">Apellido</label></div>
 		<div class="col-md-12">
-			<input type="text" placeholder="Apellido" name="lastnameRegistro" id="lastnameRegistro" required>
+			<input type="text" placeholder="Apellido" name="lastnameRegistro"
+			<?php
+			if(isset($_GET['id'])){
+				echo "value='".$respuesta['lastname']."'";
+			} ?>
+			id="lastnameRegistro" required autofocus>
   	</div>
 	</div>
 
 	<div class="form-group">
 		<div class="col-md-12"><label class="control-label" for="firstnameRegistro">Nombre</label></div>
 		<div class="col-md-12">
-			<input type="text" placeholder="Nombre" name="firstnameRegistro" id="firstnameRegistro" required>
+			<input type="text" placeholder="Nombre" name="firstnameRegistro"
+			<?php
+			if(isset($_GET['id'])){
+				echo "value='".$respuesta['firstname']."'";
+			} ?>
+			 id="firstnameRegistro" required>
 		</div>
 	</div>
 
 	<div class="form-group">
 		<div class="col-md-12"><label class="control-label" for="dniRegistro">DNI</label></div>
 		<div class="col-md-12">
-		  <input type="text" placeholder="DNI" name="dniRegistro"  id="dniRegistro" required>
+		  <input type="text" placeholder="DNI" name="dniRegistro"
+			<?php
+			if(isset($_GET['id'])){
+				echo "value='".$respuesta['dni']."'";
+			} ?>
+			 id="dniRegistro" required>
 	  </div>
   </div>
 
   <div class="form-group">
     <div class="col-md-12"><label class="control-label" for="cuilRegistro">CUIL</label></div>
     <div class="col-md-12">
-      <input type="text" placeholder="CUIT" name="cuilRegistro"  id="cuilRegistro" required>
+      <input type="text" placeholder="CUIT" name="cuilRegistro"
+			<?php
+			if(isset($_GET['id'])){
+				echo "value='".$respuesta['cuil']."'";
+			} ?>
+			  id="cuilRegistro" required>
     </div>
   </div>
 
@@ -63,7 +107,25 @@
   <div class="form-group">
     <div class="col-md-12"><label class="control-label" for="sexoRegistro">Sexo</label></div>
     <div class="col-md-12">
-      <input type="text" placeholder="Sexo" name="sexoRegistro"  id="sexoRegistro" required>
+			<select class="control-form" name="sexoRegistro" id="sexoRegistro">
+				<?php
+				if(isset($_GET['id'])){
+					if($respuesta['sexo']=="M"){
+					echo '<option value="M" selected>Masculino</option>';
+					echo '<option value="F">Femenino</option>';
+					}else{
+					echo '<option value="M">Masculino</option>';
+					echo '<option value="F" selected>Femenino</option>';
+					}
+				}else{
+					echo '<option value="M">Masculino</option>';
+					echo '<option value="F">Femenino</option>';
+				}
+
+				?>
+
+			</select>
+
     </div>
   </div>
 

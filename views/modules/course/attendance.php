@@ -139,7 +139,7 @@ echo '<br><br>';
 
 echo '<br><br>';
 echo '<form class="formAttendance" action="" method="post">';
-echo '<input type="date"  name="date" value="'.date("Y-m-d").'">';
+echo '<input type="date" readonly name="date" value="'.date("Y-m-d").'">';
 //var_dump($viewCourse);
 echo '<table class="table table-sm table-bordered">
       <thead>
@@ -214,7 +214,7 @@ echo '<table class="table table-sm table-bordered">
 								break;
 						}
 				}else{
-					echo '<td><input  type="hidden" id="'.$item['student_id'].'" name="'.$item['student_id'].'" value="Presente"></td>';
+					echo '<input  type="hidden" id="'.$item['student_id'].'" name="'.$item['student_id'].'" value="Presente">';
 						echo '<td><input class="btn btn-success" type="button" id="bt'.$item['student_id'].'" name="bt'.$item['student_id'].'" value="Presente"></td>';
 				}
         echo '</tr>';

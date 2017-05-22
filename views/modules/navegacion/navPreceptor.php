@@ -20,7 +20,7 @@
         <a class="nav-link" href="index.php?action=mycourses">Mis Cursos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="index.php?action=usuarios">Usuarios</a>
+        <a class="nav-link" href="index.php?action=createPerson">Crear Personas</a>
       </li>
 			<li class="nav-item">
         <a class="nav-link" href="index.php?action=salir">Salir</a>
