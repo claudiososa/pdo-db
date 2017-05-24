@@ -166,7 +166,18 @@ class ControllerPerson{
 
 			$datosController =  array(
                       "person_id"=>$_POST["person_IdEditar"],
-                      "dni"=>$_POST["dniEditar"],
+											"dni"=>$_POST["dniRegistro"],
+                      "cuil"=>$_POST["cuilRegistro"],
+                      "lastname"=>$_POST["lastnameRegistro"],
+                      "firstname"=>$_POST["firstnameRegistro"],
+                      "birthday"=>$_POST["birthdayRegistro"],
+                      "sexo"=>$_POST["sexoRegistro"],
+                      "phone"=>$_POST["phoneRegistro"],
+                      "movil"=>$_POST["movilRegistro"],
+  									  "email"=>$_POST["emailRegistro"],
+  										"address"=>$_POST["addressRegistro"],
+
+                      /*"dni"=>$_POST["dniEditar"],
                       "cuil"=>$_POST["cuilEditar"],
                       "lastname"=>$_POST["lastnameEditar"],
                       "firstname"=>$_POST["firstnameEditar"],
@@ -175,14 +186,14 @@ class ControllerPerson{
                       "phone"=>$_POST["phoneEditar"],
                       "movil"=>$_POST["movilEditar"],
   									  "email"=>$_POST["emailEditar"],
-  										"address"=>$_POST["addressEditar"],
+  										"address"=>$_POST["addressEditar"],*/
 			);
 
 		$respuesta = Person::actualizarPersonModel($datosController,"persons");
 		if($respuesta == "success"){
-			header("location:index.php?action=cambioperson");
+			return 'success';
 		}else {
-			echo "Error";
+			return "error";
 		}
 		//echo $respuesta;
 	}

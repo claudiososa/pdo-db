@@ -1,6 +1,13 @@
 <h4>Formulario Crear Persona</h4>
 <form method="post" onsubmit="return validarRegistro()">
-	<input type="hidden" name="personRegistro" id="personRegistro" required>
+	<?php
+	if (isset($_GET['id'])) {
+		echo '<input type="hidden" name="person_IdEditar" value='.$_GET["id"].'>';
+	}else {
+		echo '<input type="hidden" name="personRegistro" id="personRegistro">';
+	}
+	 ?>
+
 
 	<div class="form-group">
 		<div class="col-md-12"><label class="control-label" for="lastnameRegistro">Tipo de Usuario</label></div>
@@ -80,6 +87,9 @@
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['dni']."'";
+				if ($_SESSION['typeUser']=='Preceptor/a') {
+					echo " readonly ";
+				}
 			} ?>
 			 id="dniRegistro" required>
 	  </div>
@@ -100,7 +110,12 @@
   <div class="form-group">
     <div class="col-md-12"><label class="control-label" for="birthdayRegistro">Fecha Nac</label></div>
     <div class="col-md-12">
-      <input type="date" placeholder="Fecha Nacimiento" name="birthdayRegistro"  id="birthdayRegistro" required>
+      <input type="date" placeholder="Fecha Nacimiento" name="birthdayRegistro"
+			<?php
+			if(isset($_GET['id'])){
+				echo "value='".$respuesta['birthday']."'";
+			} ?>
+			 id="birthdayRegistro" >
     </div>
   </div>
 
@@ -132,28 +147,48 @@
   <div class="form-group">
     <div class="col-md-12"><label class="control-label" for="phoneRegistro">Telefono Fijo</label></div>
     <div class="col-md-12">
-      <input type="text" placeholder="Teléfono Fijo" name="phoneRegistro"  id="phoneRegistro" required>
+      <input type="text" placeholder="Teléfono Fijo" name="phoneRegistro"
+			<?php
+			if(isset($_GET['id'])){
+				echo "value='".$respuesta['phone']."'";
+			} ?>
+			  id="phoneRegistro">
     </div>
   </div>
 
   <div class="form-group">
     <div class="col-md-12"><label class="control-label" for="movilRegistro">Teléfono Celular</label></div>
     <div class="col-md-12">
-      <input type="text" placeholder="Teléfono Celular" name="movilRegistro"  id="movilRegistro" required>
+      <input type="text" placeholder="Teléfono Celular" name="movilRegistro"
+			<?php
+			if(isset($_GET['id'])){
+				echo "value='".$respuesta['movil']."'";
+			} ?>
+			id="movilRegistro" >
     </div>
   </div>
 
   <div class="form-group">
     <div class="col-md-12"><label class="control-label" for="emailRegistro">Email</label></div>
     <div class="col-md-12">
-      <input type="email" placeholder="Email" name="emailRegistro"  id="emailRegistro" required>
+      <input type="email" placeholder="Email" name="emailRegistro"
+			<?php
+			if(isset($_GET['id'])){
+				echo "value='".$respuesta['email']."'";
+			} ?>
+			id="emailRegistro" >
     </div>
   </div>
 
   <div class="form-group">
     <div class="col-md-12"><label class="control-label" for="direccionRegistro">Dirección</label></div>
     <div class="col-md-12">
-      <input type="text" placeholder="Dirección" name="addressRegistro"  id="addressRegistro" required>
+      <input type="text" placeholder="Dirección" name="addressRegistro"
+			<?php
+			if(isset($_GET['id'])){
+				echo "value='".$respuesta['address']."'";
+			} ?>
+			 id="addressRegistro" >
     </div>
   </div>
 

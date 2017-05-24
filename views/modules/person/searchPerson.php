@@ -1,14 +1,41 @@
+<?php
+if($_SESSION["typeUser"]<>'Admin' && $_SESSION["typeUser"]<>'Preceptor/a'){
+	header("location:index.php?action=ingresar");
+	exit();
+}
+?>
+<div class="alert alert-info" >
+ <label for="">Agregar alumno a la base de datos</label>
+</div>
+<div>
+ <a  class="btn btn-primary" href="index.php?action=createPerson">Nuevo Alumno</a>
+</div>
+<div class="alert alert-info" >
+ <label for="">Buscar y modificar datos de Alumno</label>
+</div>
+
 <form class="" action="" method="post">
   <div class="col-md-12"><label class="control-label" for="lastnameRegistro">Tipo de Usuario</label></div>
   <div class="col-md-12">
-    <select class="control-form" name="typeuser">
-        <option value="Alumno">Alumno</option>
-        <option value="Docente">Docente</option>
-        <option value="Tutor">Tutor</option>
-        <option value="Director/a">Director/a</option>
-        <option value="Preceptor/a">Preceptor/a</option>
-        <option value="todos">Todos</option>
-    </select>
+    <?php
+    if($_SESSION["typeUser"]=='Preceptor/a'){
+      echo '<input type="text" name="typeuser" Value="Alumno" readonly>';
+    }else{
+      ?>
+      <select class="control-form" name="typeuser">
+          <option value="Alumno">Alumno</option>
+          <option value="Docente">Docente</option>
+          <option value="Tutor">Tutor</option>
+          <option value="Director/a">Director/a</option>
+          <option value="Preceptor/a">Preceptor/a</option>
+          <option value="Admin">Administrador</option>
+      </select>
+
+    <?php
+    }
+
+    ?>
+
   </div>
   <label for="">Apellido</label>
   <input type="text" name="lastname" value="">
@@ -64,9 +91,9 @@ if($_POST){
       echo '</td>';
       echo '<td>tutor1</td>
       <td>tutor2</td>
-      <td><a href="index.php?action=editarPerson&id='.$item["person_id"].'"><button>Editar</button></a></td>
-      <td><a href="index.php?action=person&idBorrar='.$item["person_id"].'"><button>Borrar</button></a></td>
-    </tr>';
+      <td><a href="index.php?action=editarPerson&id='.$item["person_id"].'"><button>Editar</button></a></td>';
+      //echo ' <td><a href="index.php?action=person&idBorrar='.$item["person_id"].'"><button>Borrar</button></a></td>';
+    echo '</tr>';
   }
   echo '</table>';
 }

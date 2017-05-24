@@ -12,7 +12,13 @@ if(!$_SESSION["validar"]){
 	<?php
 	$editar = new ControllerPerson();
 	$editar->editarPersonController();
-	$editar->actualizarPersonController();
+	$save = $editar->actualizarPersonController();
+	if ($save=="success") {
+		echo '<script> alert("Los datos fueron modificados correctamente");
+		window.location.href = "index.php?action=searchPerson";
+
+		</script>';
+	}
  ?>
 
 </form>

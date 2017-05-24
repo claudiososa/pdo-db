@@ -12,7 +12,10 @@ $save = $registro->registroPersonController();
 
 if($_POST){
 	if($save=="success"){
-		echo "Se guardo correctamente";
+		echo '<script> alert("Los datos fueron guardados correctamente");
+		window.location.href = "index.php?action=searchPerson";
+
+		</script>';
 	}else{
 		echo "Error al guardar";
 	}
