@@ -4,25 +4,38 @@ if($_SESSION["typeUser"]<>'Admin' && $_SESSION["typeUser"]<>'Preceptor/a'){
 	exit();
 }
 ?>
-<div class="alert alert-info" >
- <label for="">Agregar alumno a la base de datos</label>
-</div>
-<div>
- <a  class="btn btn-primary" href="index.php?action=createPerson">Nuevo Alumno</a>
-</div>
-<div class="alert alert-info" >
- <label for="">Buscar y modificar datos de Alumno</label>
+<br><br>
+<div class="card">
+	<div class="card-block">
+
+
+<h5	 class="card-title" align="center">Agregar alumno a la base de datos:
+
+</h5></div>
+<div class="card-block" align="center"><a class="btn btn-primary"  href="index.php?action=createPerson" >Nuevo Alumno</a></div>
 </div>
 
-<form class="" action="" method="post">
-  <div class="col-md-12"><label class="control-label" for="lastnameRegistro">Tipo de Usuario</label></div>
-  <div class="col-md-12">
+
+<br><br>
+
+
+<div class="card">
+	<div class="card-block">
+		<h5 class="card-title" align="center">Buscar y modificar datos de Alumno:</h5>
+
+	</div>
+<div class="card-block">
+
+
+	<form class="form-inline" action="" method="post">
+	  <label for="lastnameRegistro">Tipo de Usuario:&nbsp;</label>
+
     <?php
     if($_SESSION["typeUser"]=='Preceptor/a'){
-      echo '<input type="text" name="typeuser" Value="Alumno" readonly>';
+      echo '<input type="text" name="typeuser" class="form-control mb-2 mr-sm-2 mb-sm-0" Value="Alumno" readonly>';
     }else{
       ?>
-      <select class="control-form" name="typeuser">
+      <select class="form-control" name="typeuser">
           <option value="Alumno">Alumno</option>
           <option value="Docente">Docente</option>
           <option value="Tutor">Tutor</option>
@@ -35,23 +48,25 @@ if($_SESSION["typeUser"]<>'Admin' && $_SESSION["typeUser"]<>'Preceptor/a'){
     }
 
     ?>
+<br><br><br>
+  <label class="sr-only" for="inlineFormInput">Apellido</label>
+  <input type="text" name="lastname" value="" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Apellido">
 
-  </div>
-  <label for="">Apellido</label>
-  <input type="text" name="lastname" value="">
-  <label for="">Nombre</label>
-  <input type="text" name="firstname" value="">
-  <label for="">DNI</label>
-  <input type="text" name="dni" value="">
-  <input type="submit" name="searchPersonSubmit" value="Buscar">
-
+  <label class="sr-only" for="">Nombre</label>
+  <input type="text" name="firstname" value="" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Nombre">
+  <label class="sr-only" for="">DNI</label>
+  <input type="text" name="dni" value="" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="DNI">
+<div class="card-block"align="center">
+<button type="submit" class="btn btn-primary" name="searchPersonSubmit"value="Buscar">&nbsp;&nbsp;Buscar&nbsp;&nbsp;</button></div>
 </form>
-
+<br><br>
 <?php
 if($_POST){
   $resultado = new ControllerPerson();
   $dato=$resultado->searchPersonController('form');
   //var_dump($dato);
+	echo '<div class="card">';
+	echo '<div class="table-responsive">';
   echo '<table class="table table-condensed">';
   echo '<thead>
               <tr>
@@ -96,5 +111,10 @@ if($_POST){
     echo '</tr>';
   }
   echo '</table>';
+	echo '</div>';
+	echo '</div';
 }
 ?>
+</div>
+</div>
+<br><br>

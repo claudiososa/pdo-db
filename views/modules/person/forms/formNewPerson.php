@@ -1,4 +1,4 @@
-<h4>Formulario Crear Persona</h4>
+<br><br><h4>Formulario Crear Persona</h4><br>
 <form method="post" onsubmit="return validarRegistro()">
 	<?php
 	if (isset($_GET['id'])) {
@@ -10,14 +10,14 @@
 
 
 	<div class="form-group">
-		<div class="col-md-12"><label class="control-label" for="lastnameRegistro">Tipo de Usuario</label></div>
-		<div class="col-md-12">
+		<label class="control-label" for="lastnameRegistro">Tipo de Usuario:</label>
+
 			<?php
 			if($_SESSION["typeUser"]=='Preceptor/a'){
-				echo '<input type="text" name="typeRegistro" Value="Alumno" readonly>';
+				echo '<input type="text" name="typeRegistro" Value="Alumno" class="form-control mb-2 mr-sm-2 mb-sm-0" readonly>';
 			}else{
 				?>
-				<select class="control-form" name="typeRegistro">
+				<select class="form-control" name="typeRegistro">
 						<option value="Alumno">Alumno</option>
 						<option value="Docente">Docente</option>
 						<option value="Tutor">Tutor</option>
@@ -31,7 +31,6 @@
 
 			?>
 
-  	</div>
   <?php
 		if($_SESSION["typeUser"]<>'Preceptor/a'){
 				echo '<div class="col-md-12"><label class="control-label" for="lastnameRegistro">Estado de Usuario</label></div>';
@@ -55,35 +54,34 @@
 
 	</div>
 
-
+<br>
 	<div class="form-group">
-		<div class="col-md-12"><label class="control-label" for="lastnameRegistro">Apellido</label></div>
-		<div class="col-md-12">
-			<input type="text" placeholder="Apellido" name="lastnameRegistro"
+		<label for="lastnameRegistro">Apellido:</label>
+			<input type="text" class="form-control" placeholder="Apellido" name="lastnameRegistro"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['lastname']."'";
 			} ?>
 			id="lastnameRegistro" required autofocus>
-  	</div>
+
 	</div>
 
 	<div class="form-group">
-		<div class="col-md-12"><label class="control-label" for="firstnameRegistro">Nombre</label></div>
-		<div class="col-md-12">
-			<input type="text" placeholder="Nombre" name="firstnameRegistro"
+	<label for="firstnameRegistro">Nombre:</label>
+
+			<input type="text" class="form-control" placeholder="Nombre" name="firstnameRegistro"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['firstname']."'";
 			} ?>
 			 id="firstnameRegistro" required>
-		</div>
+
 	</div>
 
 	<div class="form-group">
-		<div class="col-md-12"><label class="control-label" for="dniRegistro">DNI</label></div>
-		<div class="col-md-12">
-		  <input type="text" placeholder="DNI" name="dniRegistro"
+		<label for="dniRegistro">DNI:</label>
+
+		  <input type="text" class="form-control" placeholder="DNI" name="dniRegistro"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['dni']."'";
@@ -92,37 +90,37 @@
 				}
 			} ?>
 			 id="dniRegistro" required>
-	  </div>
+
   </div>
 
   <div class="form-group">
-    <div class="col-md-12"><label class="control-label" for="cuilRegistro">CUIL</label></div>
-    <div class="col-md-12">
-      <input type="text" placeholder="CUIT" name="cuilRegistro"
+    <label  for="cuilRegistro">CUIL:</label>
+
+      <input type="text" class="form-control" placeholder="CUIT" name="cuilRegistro"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['cuil']."'";
 			} ?>
 			  id="cuilRegistro" required>
-    </div>
+
   </div>
 
   <div class="form-group">
-    <div class="col-md-12"><label class="control-label" for="birthdayRegistro">Fecha Nac</label></div>
-    <div class="col-md-12">
-      <input type="date" placeholder="Fecha Nacimiento" name="birthdayRegistro"
+  <label class="control-label" for="birthdayRegistro">Fecha Nac:</label>
+
+      <input type="date" class="form-control" placeholder="Fecha Nacimiento" name="birthdayRegistro"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['birthday']."'";
 			} ?>
 			 id="birthdayRegistro" >
-    </div>
+
   </div>
 
   <div class="form-group">
-    <div class="col-md-12"><label class="control-label" for="sexoRegistro">Sexo</label></div>
-    <div class="col-md-12">
-			<select class="control-form" name="sexoRegistro" id="sexoRegistro">
+<label class="control-label" for="sexoRegistro">Sexo:</label>
+
+			<select class="form-control" name="sexoRegistro" id="sexoRegistro">
 				<?php
 				if(isset($_GET['id'])){
 					if($respuesta['sexo']=="M"){
@@ -141,59 +139,58 @@
 
 			</select>
 
-    </div>
+
   </div>
 
   <div class="form-group">
-    <div class="col-md-12"><label class="control-label" for="phoneRegistro">Telefono Fijo</label></div>
-    <div class="col-md-12">
-      <input type="text" placeholder="Teléfono Fijo" name="phoneRegistro"
+    <label class="control-label" for="phoneRegistro">Telefono Fijo</label>
+
+      <input type="text" class="form-control" placeholder="Teléfono Fijo" name="phoneRegistro"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['phone']."'";
 			} ?>
 			  id="phoneRegistro">
-    </div>
+
   </div>
 
   <div class="form-group">
-    <div class="col-md-12"><label class="control-label" for="movilRegistro">Teléfono Celular</label></div>
-    <div class="col-md-12">
-      <input type="text" placeholder="Teléfono Celular" name="movilRegistro"
+    <label for="movilRegistro">Teléfono Celular</label>
+
+      <input type="text" class="form-control" placeholder="Teléfono Celular" name="movilRegistro"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['movil']."'";
 			} ?>
 			id="movilRegistro" >
-    </div>
+
   </div>
 
   <div class="form-group">
-    <div class="col-md-12"><label class="control-label" for="emailRegistro">Email</label></div>
-    <div class="col-md-12">
-      <input type="email" placeholder="Email" name="emailRegistro"
+<label  for="emailRegistro">Email</label>
+
+      <input type="email" class="form-control" placeholder="Email" name="emailRegistro"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['email']."'";
 			} ?>
 			id="emailRegistro" >
-    </div>
+
   </div>
 
   <div class="form-group">
-    <div class="col-md-12"><label class="control-label" for="direccionRegistro">Dirección</label></div>
-    <div class="col-md-12">
-      <input type="text" placeholder="Dirección" name="addressRegistro"
+    <label for="direccionRegistro">Dirección</label>
+      <input type="text" class="form-control" placeholder="Dirección" name="addressRegistro"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['address']."'";
 			} ?>
 			 id="addressRegistro" >
-    </div>
   </div>
 
 
-	<div class="form-group">
-		<input type="submit" value="Guardar">
+	<div class="form-group" align="center">
+		<button type="submit" class="btn btn-primary" value="Guardar">Guardar</button>
   </div>
 </form>
+<br><br>

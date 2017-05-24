@@ -141,7 +141,11 @@ echo '<br><br>';
 echo '<form class="formAttendance" action="" method="post">';
 echo '<input type="date" readonly name="date" value="'.date("Y-m-d").'">';
 //var_dump($viewCourse);
-echo '<table class="table table-sm table-bordered">
+echo '<br><br>';
+echo '<div class="card">';
+echo '<div class="table-responsive">
+
+<table class="table table-sm table-bordered">
       <thead>
       <th>Id</th>
       <th>Apellido</th>
@@ -219,7 +223,7 @@ echo '<table class="table table-sm table-bordered">
 				}
         echo '</tr>';
       }
-echo '</tbody></table>';
+echo '</tbody></table></div></card>';
 ?>
 <input type="submit" class="btn btn-success" name="submitAttendance" value="Guardar Asistencia">
 </form>
