@@ -58,7 +58,7 @@
 <br>
 	<div class="form-group">
 		<label for="lastnameRegistro">Apellido:</label>
-			<input type="text" class="form-control" placeholder="Apellido. (Solo mayúsculas)." name="lastnameRegistro"
+			<input type="text" class="form-control" placeholder="Apellido" name="lastnameRegistro"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['lastname']."'";
@@ -70,7 +70,7 @@
 	<div class="form-group">
 	<label for="firstnameRegistro">Nombre:</label>
 
-			<input type="text" class="form-control" placeholder="Nombre. (Solo mayúsculas)." name="firstnameRegistro"
+			<input type="text" class="form-control" placeholder="Nombre" name="firstnameRegistro"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['firstname']."'";
@@ -170,7 +170,7 @@
   <div class="form-group">
 <label  for="emailRegistro">Email</label>
 
-      <input type="email" class="form-control" placeholder="Email. (Mayúsculas)." name="emailRegistro"
+      <input type="email" class="form-control" placeholder="Email" name="emailRegistro"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['email']."'";
@@ -181,7 +181,7 @@
 
   <div class="form-group">
     <label for="direccionRegistro">Dirección</label>
-      <input type="text" class="form-control" placeholder="Dirección. (Mayúsculas)." name="addressRegistro"
+      <input type="text" class="form-control" placeholder="Dirección" name="addressRegistro"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['address']."'";
