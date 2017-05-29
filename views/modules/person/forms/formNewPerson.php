@@ -1,3 +1,4 @@
+<script type="text/javascript" src="views/modules/person/js/formNewPerson.js"></script>
 <br><br><h4>Formulario Crear Persona</h4><br>
 <form method="post" onsubmit="return validarRegistro()">
 	<?php
@@ -57,7 +58,7 @@
 <br>
 	<div class="form-group">
 		<label for="lastnameRegistro">Apellido:</label>
-			<input type="text" class="form-control" placeholder="Apellido" name="lastnameRegistro"
+			<input type="text" class="form-control" placeholder="Apellido. (Solo mayúsculas)." name="lastnameRegistro"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['lastname']."'";
@@ -69,7 +70,7 @@
 	<div class="form-group">
 	<label for="firstnameRegistro">Nombre:</label>
 
-			<input type="text" class="form-control" placeholder="Nombre" name="firstnameRegistro"
+			<input type="text" class="form-control" placeholder="Nombre. (Solo mayúsculas)." name="firstnameRegistro"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['firstname']."'";
@@ -81,7 +82,7 @@
 	<div class="form-group">
 		<label for="dniRegistro">DNI:</label>
 
-		  <input type="text" class="form-control" placeholder="DNI" name="dniRegistro"
+		  <input type="text" class="form-control" placeholder="DNI" name="dniRegistro" maxlength="8"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['dni']."'";
@@ -96,7 +97,7 @@
   <div class="form-group">
     <label  for="cuilRegistro">CUIL:</label>
 
-      <input type="text" class="form-control" placeholder="CUIT" name="cuilRegistro"
+      <input type="text" class="form-control" placeholder="CUIL" name="cuilRegistro" maxlength="15"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['cuil']."'";
@@ -145,7 +146,7 @@
   <div class="form-group">
     <label class="control-label" for="phoneRegistro">Telefono Fijo</label>
 
-      <input type="text" class="form-control" placeholder="Teléfono Fijo" name="phoneRegistro"
+      <input type="text" class="form-control" placeholder="Teléfono Fijo" name="phoneRegistro" maxlength="15"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['phone']."'";
@@ -157,7 +158,7 @@
   <div class="form-group">
     <label for="movilRegistro">Teléfono Celular</label>
 
-      <input type="text" class="form-control" placeholder="Teléfono Celular" name="movilRegistro"
+      <input type="text" class="form-control" placeholder="Teléfono Celular" name="movilRegistro" maxlength="15"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['movil']."'";
@@ -169,7 +170,7 @@
   <div class="form-group">
 <label  for="emailRegistro">Email</label>
 
-      <input type="email" class="form-control" placeholder="Email" name="emailRegistro"
+      <input type="email" class="form-control" placeholder="Email. (Mayúsculas)." name="emailRegistro"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['email']."'";
@@ -180,7 +181,7 @@
 
   <div class="form-group">
     <label for="direccionRegistro">Dirección</label>
-      <input type="text" class="form-control" placeholder="Dirección" name="addressRegistro"
+      <input type="text" class="form-control" placeholder="Dirección. (Mayúsculas)." name="addressRegistro"
 			<?php
 			if(isset($_GET['id'])){
 				echo "value='".$respuesta['address']."'";
@@ -190,7 +191,7 @@
 
 
 	<div class="form-group" align="center">
-		<button type="submit" class="btn btn-primary" value="Guardar">Guardar</button>
+		<button type="submit" class="btn btn-primary" id="submitRegistro" value="Guardar">Guardar</button>
   </div>
 </form>
 <br><br>

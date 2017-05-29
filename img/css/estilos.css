@@ -12,3 +12,6 @@
 .text-muted {
     color: #04515d;
 }
+.error{
+  color: red;
+}
