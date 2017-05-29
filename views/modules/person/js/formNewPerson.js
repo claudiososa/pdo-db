@@ -1,8 +1,8 @@
 $(document).ready(function() {
-var valLetras = /^[A-ZÁÉÍÓÚÑÜ_\s-]+$/;
+var valLetras = /^[a-zA-ZáéíóñúüÁÉÍÓÚÑÜ\s]+$/;
 var valNumeros = /^[0-9]+$/;
-var valCorreo = /^[A-Z0-9\._-]+@[A-Z0-9-]{2,}[.][A-Z]{2,4}|[.][A-Z]{2,4}$/;
-var valDireccion = /^[A-ZÁÉÍÓÚÑÜ0-9\s._-]+$/;
+var valCorreo = /^[a-zA-Z0-9\._-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,4}|[.][a-zA-Z]{2,4}$/;
+var valDireccion = /^[a-zA-ZáéíóúüñÁÉÍÓÚÑÜ0-9\s._-]+$/;
 
   $("#submitRegistro").click(function(event) {
     /* Act on the event */
@@ -10,7 +10,7 @@ $("#error").remove();
 
 
 if ( $("#lastnameRegistro").val() =="" || !valLetras.test($("#lastnameRegistro").val())) {
-$("#lastnameRegistro").focus().after("<span class='error'>Campo obligatorio. (Solo letras mayúsculas)</span");
+$("#lastnameRegistro").focus().after("<span class='error'>Campo obligatorio.Solo letras.</span");
 
   return false;
 }else {
@@ -18,13 +18,13 @@ $(".error").fadeOut();
  }
 
 if ( $("#firstnameRegistro").val() =="" || !valLetras.test($("#firstnameRegistro").val())) {
-$("#firstnameRegistro").focus().after("<span class='error'>Campo obligatorio.Solo letras mayúsculas.</span");
+$("#firstnameRegistro").focus().after("<span class='error'>Campo obligatorio.Solo letras.</span");
      return false
 }else {
 $(".error").fadeOut();
   }
 
-if ($("#dniRegistro").val() =="" || !valNumeros.test($("#dniRegistro").val() )) {  $("#dniRegistro").focus().after("<span class='error'>Campo obligatorio. Solo números.</span>");
+if ($("#dniRegistro").val() =="" || !valNumeros.test($("#dniRegistro").val() )) {  $("#dniRegistro").focus().after("<span class='error'>Campo obligatorio.Solo números.</span>");
   return false
 }else {
   $(".error").fadeOut();
@@ -53,14 +53,14 @@ return false
 }
 
 if ($("#emailRegistro").val() != "" && !valCorreo.test($("#emailRegistro").val())) {
-  $("#emailRegistro").focus().after("<span class='error'>Ingrese formato de email válido en mayúsculas. (Ejemplo: MICORREO@GMAIL.COM , MI CORREO@HOTMAIL.COM)");
+  $("#emailRegistro").focus().after("<span class='error'>Ingrese formato de email válido. (Ejemplo: MICORREO@GMAIL.COM , MI CORREO@HOTMAIL.COM)");
   return false
 }else {
   $(".error").fadeOut();
 }
 
 if ($("#addressRegistro").val() == "" || !valDireccion.test($("#addressRegistro").val())) {
-  $("#addressRegistro").focus().after("<span class='error'>Campo obligatorio.Letras mayusculas y/o números");
+  $("#addressRegistro").focus().after("<span class='error'>Campo obligatorio.Letras y/o números");
   return false
 }else {
   $(".error").fadeOut();
@@ -72,7 +72,7 @@ if ($("#addressRegistro").val() == "" || !valDireccion.test($("#addressRegistro"
 
 
 $("#lastnameRegistro").keyup(function(){
-if ($(this).val() != "" && (valLetras.test($(this).val() ))){
+if ($(this).val() != "" && (valLetras.test($(this).val($(this).val().toUpperCase()) ))){
     $(".error").fadeOut();
       return false;
 }
@@ -80,7 +80,7 @@ if ($(this).val() != "" && (valLetras.test($(this).val() ))){
 
 $("#firstnameRegistro").keyup(function() {
   /* Act on the event */
-if ($(this).val() != "" && (valLetras.test($(this).val() ))) {
+if ($(this).val() != "" && (valLetras.test($(this).val($(this).val().toUpperCase()) ))) {
   $(".error").fadeOut();
   return false;
 }
@@ -112,7 +112,7 @@ if ($(this).val() != "" && (valNumeros.test($(this).val() ))) {
 
 $("#emailRegistro").keyup(function() {
   /* Act on the event */
-if ($(this).val() != "" && (valCorreo.test($(this).val() ))) {
+if ($(this).val() != "" && (valCorreo.test($(this).val($(this).val().toUpperCase()) ))) {
   $(".error").fadeOut();
   return false;
 }
@@ -121,7 +121,7 @@ if ($(this).val() != "" && (valCorreo.test($(this).val() ))) {
 
 $("#addressRegistro").keyup(function() {
   /* Act on the event */
-if ($(this).val() != "" && (valDireccion.test($(this).val() ))) {
+if ($(this).val() != "" && (valDireccion.test($(this).val($(this).val().toUpperCase()) ))) {
   $(".error").fadeOut();
   return false;
 }
