@@ -106,7 +106,7 @@ if($_POST){
       echo '</td>';
       echo '<td>tutor1</td>
       <td>tutor2</td>
-      <td><a href="index.php?action=editarPerson&id='.$item["person_id"].'"><button>Editar</button></a></td>';
+      <td><a href="index.php?action=editarPerson&id='.$item["person_id"].'"><button class="btn btn-primary">Editar</button></a></td>';
       //echo ' <td><a href="index.php?action=person&idBorrar='.$item["person_id"].'"><button>Borrar</button></a></td>';
     echo '</tr>';
   }
