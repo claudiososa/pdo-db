@@ -10,9 +10,10 @@ class Paginas{
 
 			$module =  "views/modules/".$enlaces.".php";
 
-		}elseif($enlaces == "searchPerson" || $enlaces == "createPerson" || $enlaces == "editarPerson"){
+		}elseif($enlaces == "searchPerson" || $enlaces == "createPerson" || $enlaces == "editarPerson" || $enlaces == "searchPersonDirector"){
 			$module =  "views/modules/person/".$enlaces.".php";
-		}elseif($enlaces == "createCourse" || $enlaces == "inscription" || $enlaces == "mycourses" || $enlaces == "attendance"){
+		}elseif($enlaces == "createCourse" || $enlaces == "inscription" || $enlaces == "mycourses" || $enlaces == "attendance" || $enlaces == "coursesDirector"
+		 || $enlaces == "viewStudentsCourse"){
 			$module =  "views/modules/course/".$enlaces.".php";
 		}elseif($enlaces == "migration_users" || $enlaces == "migration_students"){
 			$module =  "views/modules/migration/".$enlaces.".php";

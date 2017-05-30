@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0, minimum-scale=1.0">
 <!--<link rel="stylesheet" href="views/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css" type="text/css">-->
 	<link rel="stylesheet" href="views/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.css" type="text/css">
-	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css"> 
+	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 
 
 	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">-->
@@ -49,8 +49,13 @@ if(isset($_SESSION["typeUser"])){
 		case 'Preceptor/a':
 						include "modules/navegacion/navPreceptor.php";
 						break;
-
-		default:
+		case 'Director/a':
+						include "modules/navegacion/navDirector.php";
+						break;
+		case 'Vicedirector/a':
+						include "modules/navegacion/navVicedirector.php";
+						break;
+			default:
 			# code...
 			break;
 	}
