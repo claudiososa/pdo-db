@@ -144,7 +144,7 @@ $dateSelect=date("Y-m-d",strtotime($_POST["date"]));
 
   echo '<br><br>';
   echo '<form class="formAttendance" action="" method="post">';
-  echo '<input type="date" name="date" value="'.$dateSelect.'">';
+  echo '<input type="date"  name="date" value="'.$dateSelect.'">';
   //var_dump($viewCourse);
   echo '<br><br>';
   echo '<div class="card">';
