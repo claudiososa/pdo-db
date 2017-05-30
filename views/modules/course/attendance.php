@@ -139,7 +139,7 @@ echo '<br><br>';
 
 echo '<br><br>';
 echo '<form class="formAttendance" action="" method="post">';
-echo '<input type="date" readonly name="date" value="'.date("Y-m-d").'">';
+echo '<input type="date" name="date" value="'.date("Y-m-d").'">';
 //var_dump($viewCourse);
 echo '<br><br>';
 echo '<div class="card">';
