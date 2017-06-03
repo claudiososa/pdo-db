@@ -13,7 +13,7 @@ class Paginas{
 		}elseif($enlaces == "searchPerson" || $enlaces == "createPerson" || $enlaces == "editarPerson" || $enlaces == "searchPersonDirector"){
 			$module =  "views/modules/person/".$enlaces.".php";
 		}elseif($enlaces == "createCourse" || $enlaces == "inscription" || $enlaces == "mycourses"
-		|| $enlaces == "attendance" || $enlaces == "attendanceDate" || $enlaces == "coursesDirector"
+		|| $enlaces == "attendance" || $enlaces == "attendanceDate" || $enlaces == "coursesDirector" || $enlaces == "statisDirector"
 		 || $enlaces == "viewStudentsCourse"){
 			$module =  "views/modules/course/".$enlaces.".php";
 		}elseif($enlaces == "migration_users" || $enlaces == "migration_students"){
