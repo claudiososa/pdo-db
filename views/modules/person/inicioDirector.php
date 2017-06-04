@@ -1,9 +1,9 @@
 <section id="portfolio">
     <div class="container">
-        <h2 class="text-center">MIS CURSOS</h2>
+        <h2 class="text-center">CURSOS</h2>
         <hr class="star-primary">
         <?php
-        include_once 'views/modules/course/mycourses.php';
+        include_once 'views/modules/course/coursesDirector.php';
 
          ?>
         </div>
@@ -17,5 +17,13 @@
       <?php
       include_once 'views/modules/person/searchPerson.php';
        ?>
+    </div>
+</section>
+<!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <h2 class="text-center">ESTADISTICAS</h2>
+        <hr class="star-primary">
+
     </div>
 </section>
