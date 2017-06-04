@@ -13,6 +13,7 @@
               <th>Turno</th>
               <th>Asistencia</th>
               <th>Administrar Alumnos</th>
+              <th>Asistencia Anterior</th>
             </tr>
           </thead>
           <tbody>
@@ -24,6 +25,8 @@
     echo '<td>'.$value["turn"].'</td>';
     echo '<td><a class="btn btn-primary" href="index.php?action=attendance&id='.$value["course_id"].'">Tomar Asistencia</a></td>';
     echo '<td><a class="btn btn-primary" href="index.php?action=inscription&id='.$value["course_id"].'">Inscribir Alumnos</a></td>';
+    echo '<td><a class="btn btn-primary" href="index.php?action=attendanceDate&id='.$value["course_id"].'">Asistencia Anterior</a></td>';
+
 
   }
   echo '

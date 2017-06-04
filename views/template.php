@@ -48,8 +48,13 @@ if(isset($_SESSION["typeUser"])){
 		case 'Preceptor/a':
 						include "modules/navegacion/navPreceptor.php";
 						break;
-
-		default:
+		case 'Director/a':
+						include "modules/navegacion/navDirector.php";
+						break;
+		case 'Vicedirector/a':
+						include "modules/navegacion/navVicedirector.php";
+						break;
+			default:
 			# code...
 			break;
 	}

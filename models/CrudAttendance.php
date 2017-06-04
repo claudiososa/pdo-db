@@ -66,7 +66,7 @@ class CrudAttendance extends Conexion{
                                       date_update=:date_update
                                   WHERE attendance_id=:attendance_id");
 
-      $stmt->bindParam(":attendance_id",$datosModel["attendance_id"],PDO::PARAM_INT);                                  
+      $stmt->bindParam(":attendance_id",$datosModel["attendance_id"],PDO::PARAM_INT);
       $stmt->bindParam(":student_id",$datosModel["student_id"],PDO::PARAM_INT);
       $stmt->bindParam(":date_attendance",$datosModel["date_attendance"]);
       $stmt->bindParam(":status",$datosModel["status"],PDO::PARAM_STR);

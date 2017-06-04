@@ -134,17 +134,18 @@ $attendanceStudent = new ControllerAttendance();
 $course = new ControllerCourse();
 $nameCourse = $course->viewCourseStudentController();
 echo 'Curso: '.$nameCourse [0] ['name'].' Turno: '.$nameCourse [0] ['turn'];
-//echo date("d-m-Y");
+echo date("d-m-Y");
 echo '<br><br>';
 
 echo '<br><br>';
 echo '<form class="formAttendance" action="" method="post">';
-echo '<input type="date" readonly name="date" value="'.date("Y-m-d").'">';
+echo '<input type="date" name="date" value="'.date("Y-m-d").'">';
 //var_dump($viewCourse);
 echo '<br><br>';
 echo '<div class="card">';
 echo '<div class="table-responsive">
 
+echo $_POST['date'];
 <table class="table table-sm table-bordered">
       <thead>
       <th>Id</th>
@@ -154,6 +155,7 @@ echo '<div class="table-responsive">
       <th>Acción</th>
       </thead>
       <tbody>';
+
       foreach ($viewCourse as $key => $item) {
 				$searchAttendance = $attendanceStudent->viewAttendanceStudentController($item["student_id"],date("Y-m-d"));
 				if(isset($searchAttendance)){
