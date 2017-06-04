@@ -1,5 +1,5 @@
 <?php
-if($_SESSION["typeUser"]<>'Admin' && $_SESSION["typeUser"]<>'Preceptor/a'){
+if($_SESSION["typeUser"]<>'Admin' && $_SESSION["typeUser"]<>'Preceptor/a' &&  $_SESSION["typeUser"]<>'Director/a'){
 	header("location:index.php?action=ingresar");
 	exit();
 }

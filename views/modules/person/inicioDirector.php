@@ -14,9 +14,9 @@
     <div class="container">
         <h2 class="text-center">ALUMNOS</h2>
         <hr class="star-light">
-      <?php
-      include_once 'views/modules/person/searchPerson.php';
-       ?>
+        <?php
+        include_once 'views/modules/person/searchPerson.php';
+         ?>
     </div>
 </section>
 <!-- Contact Section -->
@@ -24,6 +24,8 @@
     <div class="container">
         <h2 class="text-center">ESTADISTICAS</h2>
         <hr class="star-primary">
-
+        <?php
+        include_once 'views/modules/course/statisDirector.php';
+         ?>
     </div>
 </section>

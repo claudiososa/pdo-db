@@ -16,13 +16,12 @@
 //echo $_SESSION["typeUser"];
 if(isset($_SESSION["typeUser"])){
 	switch ($_SESSION["typeUser"]) {
-
       case 'Preceptor/a':
             include "views/modules/person/inicioPreceptor.php";
             break;
-//      case 'Director/a':
-//            include "views/modules/person/inicioDirector.php";
-//            break;
+      case 'Director/a':
+            include "views/modules/person/inicioDirector.php";
+            break;
 
       default:
       # code...
