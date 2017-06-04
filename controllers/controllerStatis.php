@@ -1,6 +1,6 @@
 <?php
-
-class ControllerStatis{
+require_once "models/General.php";
+class ControllerStatis extends General{
 
 	#LLAMADA A LA PLANTILLA
 	#-------------------------------------
@@ -25,28 +25,107 @@ class ControllerStatis{
 	}
 
 
-	// Nuevo Curso
+	/**
+	 * Metodo para verificar total de alumnos del colegio y por turno
+	 * si desea de un turno especifico debe pasar por parametro el turno,
+	 * si desea de todo el colegio
+	 * debe pasar por parametro allArray
+	 */
 
-	public function newCourseController(){
-		if(isset($_POST["nameRegistro"])){
+	public function totalStudentsController($turn=NULL){
+		if(isset($turn)){
+			if($turn=='Tarde' || $turn=='Mañana'){
+				$datosController = $turn;
+				$respuesta = Statis::totalStudentsModel($datosController, "students_courses");
+			}elseif($turn=='allArray'){
+				$datosController = $turn;
+				$respuesta = Statis::totalStudentsModel($datosController, "attendances");
+			}
+		}else{
+			$respuesta = Statis::totalStudentsModel(null,"students_courses");
+		}
 
-  		$datosController = array(
-                      //"Course"=>$_POST["CourseRegistro"],
-                      "name"=>$_POST["nameRegistro"],
-                      "turn"=>$_POST["turnRegistro"],
-											"preceptor"=>$_POST["preceptorRegistro"]
-  									);
-  		$respuesta = Courses::newCourseModel($datosController, "courses");
-
-  		if ($respuesta =="success") {
-        return "saved";
-  			//header("location:index.php?action=ok");
-  		}else{
-  			header("location:index.php");
-  		}
-
+		//var_dump($respuesta);
+		if ($respuesta>0) {
+      return $respuesta;
+			//header("location:index.php?action=ok");
+		}else{
+			header("location:index.php");
 		}
 	}
+
+	/**
+	 * Metodo para verificar total de asistencias de alumnos registrados en los cursos
+	 * y tambien por turno
+	 * si desea de un turno especifico debe pasar por parametro el turno,
+	 * si desea de todo el colegio no se debe pasar ningun parametro
+	 */
+
+	public function attendanceStudentsController($turn=NULL){
+		if(isset($turn)){
+			$respuesta = Statis::attendanceStudentsModel($turn,"attendances");
+		}else{
+			$respuesta = Statis::attendanceStudentsModel(null,"attendances");
+		}
+		if ($respuesta>0) {
+      return $respuesta;
+		}else{
+			header("location:index.php");
+		}
+	}
+
+	/**
+	 * Metodo para verificar de asistencias para un curso determinado
+	 * se debe pasar por parametro el id del curso deseado
+	 */
+
+	public function attendanceCourseController($course,$month=NULL){
+		if(isset($course) && $month==null){
+			$respuesta = Statis::attendanceCourseModel($course,"attendances");
+		}elseif($month<>NULL){
+			$respuesta = Statis::attendanceCourseModel($course,"attendances",$month);
+		}
+
+
+		if ($respuesta>0) {
+      return $respuesta;
+		}else{
+			header("location:index.php");
+		}
+	}
+
+	/**
+	 * Metodo para verificar total de alumnos del colegio y por turno
+	 */
+
+	public function totalCourseController($course){
+
+		$respuesta = Statis::totalCourseModel($course, "students_courses");
+
+		if ($respuesta>=0) {
+			return $respuesta;
+			//header("location:index.php?action=ok");
+		}else{
+			header("location:index.php");
+		}
+	}
+
+	/**
+	 * Metodo lista de cursos
+	 */
+
+	public function listCoursesController($turn){
+
+		$respuesta = Statis::listCoursesModel($turn, "courses");
+
+		if ($respuesta>0) {
+			return $respuesta;
+			//header("location:index.php?action=ok");
+		}else{
+			header("location:index.php");
+		}
+	}
+
 
 	// Nuevo inscripto a Curso
 
