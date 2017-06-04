@@ -7,11 +7,13 @@
 <!--<link rel="stylesheet" href="views/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css" type="text/css">-->
 	<link rel="stylesheet" href="views/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.css" type="text/css">
 	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">-->
 <script type="text/javascript" src="views/js/jquery-3.1.0.min.js">
 
 </script>
+<script src="bootstrapTheme/vendor/tether/tether.min.js"></script>
 	<!--
 	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
 
@@ -20,16 +22,31 @@
 	<script type="text/javascript" src="views/bootstrap-4.0.0-alpha.6-dist/js/bootstrap.min.js">
 
 	</script>
+	<script src="bootstrapTheme/js/freelancer.min.js"></script>
 <!--	<script> src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>-->
 	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="img/css/estilos.css" type="text/css">
+	<link href="bootstrapTheme/css/freelancer.min.css" rel="stylesheet">
+<!--<link rel="stylesheet" href="img/css/estilos.css" type="text/css">-->
+<!-- Temporary navbar container fix -->
+<style>
+.navbar-toggler {
+		z-index: 1;
+}
+
+@media (max-width: 576px) {
+		nav > .container {
+				width: 100%;
+		}
+}
+</style>
+
 <title>S-W Colegio 5159</title>
 
 
 </head>
 
-<body>
-<div class="container">
+
+<body class="index" id="page-top">
 <?php
 //echo $_SESSION["typeUser"];
   //<link rel="stylesheet" href="views/bootstrap/bootstrap.min.css">
@@ -77,7 +94,45 @@ $mvc -> enlacesPaginasController();
  ?>
 
 </section>
+<!-- Footer -->
+<footer class="text-center">
+		<div class="footer-above">
+				<div class="container">
+						<div class="row">
+								<div class="footer-col col-md-6">
+										<h2>Colegio N° 5159</h2>
+										<p>Hipodromo de San Isidro
 
+												<br>Salta, Argentina</p>
+								</div>
+								<div class="footer-col col-md-6">
+
+										<ul class="list-inline">
+												<li class="list-inline-item">
+														<a class="btn-social btn-outline" href="https://es-la.facebook.com/colegio5159/"><i class="fa fa-fw fa-facebook"></i></a>
+												</li>
+
+												<li class="list-inline-item">
+														<a class="btn-social btn-outline" href="https://twitter.com/colegio5159"><i class="fa fa-fw fa-twitter"></i></a>
+												</li>
+
+										</ul>
+								</div>
+
+						</div>
+				</div>
+		</div>
+		<div class="footer-below">
+				<div class="container">
+						<div class="row">
+								<div class="col-lg-12">
+										Copyright &copy; Your Website 2017
+								</div>
+						</div>
+				</div>
+		</div>
+</footer>
+<!--
 <footer class="text-muted" id="footer">
       <div class="container">
         <p>
@@ -87,8 +142,8 @@ $mvc -> enlacesPaginasController();
         </p>
       </div>
 
-</footer>
-</div>
+</footer>-->
+
 <script src="views/js/validarRegistro.js" type="text/javascript">
 
 </script>	<!-- Latest compiled and minified JavaScript -->

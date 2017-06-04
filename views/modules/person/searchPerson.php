@@ -4,22 +4,22 @@ if($_SESSION["typeUser"]<>'Admin' && $_SESSION["typeUser"]<>'Preceptor/a'){
 	exit();
 }
 ?>
-<br><br>
-<div class="card">
+<section class="success" id="about">
+
 	<div class="card-block">
 
 
 <h5	 class="card-title" align="center">Agregar alumno a la base de datos:
 
 </h5></div>
-<div class="card-block" align="center"><a class="btn btn-primary"  href="index.php?action=createPerson" >Nuevo Alumno</a></div>
-</div>
+<div class="card-block" align="center"><a class="btn btn-outline"  href="index.php?action=createPerson" >Nuevo Alumno</a></div>
+
 
 
 <br><br>
 
 
-<div class="card">
+
 	<div class="card-block">
 		<h5 class="card-title" align="center">Buscar y modificar datos de Alumno:</h5>
 
@@ -57,9 +57,11 @@ if($_SESSION["typeUser"]<>'Admin' && $_SESSION["typeUser"]<>'Preceptor/a'){
   <label class="sr-only" for="">DNI</label>
   <input type="text" name="dni" value="" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="DNI">
 <div class="card-block"align="center">
-<button type="submit" class="btn btn-primary" name="searchPersonSubmit"value="Buscar">&nbsp;&nbsp;Buscar&nbsp;&nbsp;</button></div>
+<button type="submit" class="btn btn-outline" name="searchPersonSubmit"value="Buscar">&nbsp;&nbsp;Buscar&nbsp;&nbsp;</button></div>
 </form>
+
 <br><br>
+</section>
 <?php
 if($_POST){
   $resultado = new ControllerPerson();
@@ -117,4 +119,5 @@ if($_POST){
 ?>
 </div>
 </div>
+
 <br><br>

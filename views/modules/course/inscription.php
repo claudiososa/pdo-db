@@ -1,3 +1,4 @@
+<div class="container">
 
 <?php
 
@@ -123,4 +124,6 @@ if($_GET['action']=='inscription' AND $_GET['id'] ){
   echo '</tbody></table></div>';
 }
 ?>
+</div>
+
 </div>
