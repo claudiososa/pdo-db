@@ -187,7 +187,12 @@ public function deleteStudentCourseController($id){
 		$respuesta= Courses::deleteStudentCourseModel($id,"students_courses");
 
 		if($respuesta == "success"){
-			header("location:index.php?action=inscription&id=1");
+			//header("location:index.php?action=inscription&id=1");
+			//
+			echo '<script> alert("Los datos fueron guardados correctamente");
+			window.location.href = "index.php?action=inscription&id='.$_GET['id'].'";
+
+			</script>';
 			return $respuesta;
 		}
 }

@@ -118,7 +118,7 @@ if($_GET['action']=='inscription' AND $_GET['id'] ){
           echo '<td>'.$item['lastname'].'</td>';
           echo '<td>'.$item['firstname'].'</td>';
           echo '<td>'.$item['dni'].'</td>';
-					echo '<td><a class="btn btn-primary" href="index.php?action=inscription&delete&student_id='.$item['student_id'].'">Eliminar Inscripción</a></td>';
+					echo '<td><a class="btn btn-primary" href="index.php?action=inscription&delete&student_id='.$item['student_id'].'&id='.$_GET['id'].'">Eliminar Inscripción</a></td>';
           echo '</tr>';
         }
   echo '</tbody></table></div>';
