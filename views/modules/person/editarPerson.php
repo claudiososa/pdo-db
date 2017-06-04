@@ -1,3 +1,5 @@
+<div class="container">
+
 <?php
 
 if(!$_SESSION["validar"]){
@@ -5,7 +7,7 @@ if(!$_SESSION["validar"]){
 	exit();
 }
 
- ?>
+ ?><br>
 <h1>Editar Datos de Persona</h1>
 
 <form method="post">
@@ -22,3 +24,5 @@ if(!$_SESSION["validar"]){
  ?>
 
 </form>
+
+</div>

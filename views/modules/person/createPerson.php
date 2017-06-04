@@ -1,3 +1,6 @@
+<div class="container">
+
+
 <?php
 
 if($_SESSION["typeUser"]<>'Admin' && $_SESSION["typeUser"]<>'Preceptor/a'){
@@ -22,3 +25,4 @@ if($_POST){
 }
 
  ?>
+</div>

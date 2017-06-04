@@ -1,4 +1,6 @@
 <script type="text/javascript" src="views/modules/course/js/validateAttendance.js"></script>
+<div class="container">
+
 <?php
 if($_POST){
 	$attendanceStudent1 = new ControllerAttendance();
@@ -126,7 +128,7 @@ echo "<script>
 
 
 echo "</script>";
-echo '<div class="panel panel-success"><h4>Tomar Asistencia para...</h4></div>';
+echo '<br><br><div class="panel panel-success"><h4>Tomar Asistencia para...</h4></div>';
 
 
 $attendanceStudent = new ControllerAttendance();
@@ -227,3 +229,5 @@ echo '</tbody></table></div></card>';
 ?>
 <input type="submit" class="btn btn-success" name="submitAttendance" value="Guardar Asistencia">
 </form>
+
+</div>
