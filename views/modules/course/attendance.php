@@ -128,18 +128,27 @@ echo "<script>
 
 
 echo "</script>";
-echo '<br><br><div class="panel panel-success"><h4>Tomar Asistencia para...</h4></div>';
+echo '<br>';
+
+
+//echo '<br><br><div class="panel panel-success"><h4>Tomar Asistencia para...</h4></div>';
 
 
 $attendanceStudent = new ControllerAttendance();
 
 $course = new ControllerCourse();
 $nameCourse = $course->viewCourseStudentController();
-echo 'Curso: '.$nameCourse [0] ['name'].' Turno: '.$nameCourse [0] ['turn'];
-//echo date("d-m-Y");
-echo '<br><br>';
+?>
 
-echo '<br><br>';
+<h5>Tomar asistencia para el Curso: <?php echo '<label class="btn btn-primary">'.$nameCourse[0]['name'].'</label>'; ?> Turno: <?php echo '<label class="btn btn-primary">'.$nameCourse[0]['turn'].'</label>'; ?></h5><br>
+<?php
+
+
+//echo 'Curso: '.$nameCourse [0] ['name'].' Turno: '.$nameCourse [0] ['turn'];
+//echo date("d-m-Y");
+//echo '<br><br>';
+
+
 echo '<form class="formAttendance" action="" method="post">';
 echo '<input type="date" readonly name="date" value="'.date("Y-m-d").'">';
 //var_dump($viewCourse);

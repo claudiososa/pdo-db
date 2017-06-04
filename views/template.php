@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0, minimum-scale=1.0">
+	<link rel="icon" type="image/png" href="img/escudoicono.png" />
 <!--<link rel="stylesheet" href="views/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css" type="text/css">-->
 	<link rel="stylesheet" href="views/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.css" type="text/css">
 	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
@@ -40,7 +41,7 @@
 }
 </style>
 
-<title>S-W Colegio 5159</title>
+<title>School Manager para Colegio 5159</title>
 
 
 </head>
@@ -78,21 +79,12 @@ if(isset($_SESSION["typeUser"])){
 }else{
 	include "modules/navegacion/navInicial.php";
 }
-
-
-
 ?>
-
-
 <section>
-
 <?php
-
 $mvc = new MvcController();
 $mvc -> enlacesPaginasController();
-
  ?>
-
 </section>
 <!-- Footer -->
 <footer class="text-center">
@@ -101,8 +93,7 @@ $mvc -> enlacesPaginasController();
 						<div class="row">
 								<div class="footer-col col-md-6">
 										<h2>Colegio N° 5159</h2>
-										<p>Hipodromo de San Isidro
-
+										<p>Av. Hipodromo de San Isidro Nº 750
 												<br>Salta, Argentina</p>
 								</div>
 								<div class="footer-col col-md-6">
@@ -126,7 +117,7 @@ $mvc -> enlacesPaginasController();
 				<div class="container">
 						<div class="row">
 								<div class="col-lg-12">
-										Copyright &copy; Your Website 2017
+										Copyright &copy; www.colegio5159.com.ar 2017
 								</div>
 						</div>
 				</div>
