@@ -1,11 +1,16 @@
 <script type="text/javascript" src="views/js/graphic/Chart.min.js"></script>
 <script type="text/javascript" src="views/js/graphicChart.PieceLabel.js-master/build/Chart.PieceLabel.min.js"></script>
+<div class="container">
+
+
 <?php
 $students = new controllerStatis();
+
 echo '<br>';
 echo '<h6>Alumnos Total  <label class="btn btn-primary">'.$students->totalStudentsController().'</label></h6><br>';
 echo '<h6>Alumnos de Turno Mañana  <label class="btn btn-primary">'.$students->totalStudentsController('Mañana').'</label></h6><br>';
 echo '<h6>Alumnos de Turno Tarde <label class="btn btn-primary">'.$students->totalStudentsController('Tarde').'</label></h6><br>';
+
 
 $asistenciaGeneral=$students->attendanceStudentsController();
 
@@ -22,7 +27,7 @@ array("Tarde", $students->totalStudentsController('Tarde'))
 <div class="row">
   <div class="col-md-6">
     <div class="panel panel-primary">
-      <div class="panel-heading">Cantidad de alumnos por Turnos</div>
+      <div class="panel-heading">Cantidad de alumnos por Turnos</div><br>
       <div class="panel-body"><!--contenido de grafica instituciones con energia electrica-->
         <canvas id="myChart4" width="600" height="300"></canvas>
         <?php
@@ -33,7 +38,7 @@ array("Tarde", $students->totalStudentsController('Tarde'))
   </div>
   <div class="col-md-6">
     <div class="panel panel-primary">
-      <div class="panel-heading">Cantidad General de Presentes, Ausentes, Media Falta, Justificada</div>
+      <div class="panel-heading">Cantidad General de Presentes, Ausentes, Media Falta, Justificada</div><br>
       <div class="panel-body"><!--contenido de grafica instituciones con energia electrica-->
         <canvas id="myChart3" width="600" height="300"></canvas>
         <?php
@@ -43,10 +48,11 @@ array("Tarde", $students->totalStudentsController('Tarde'))
     </div>
   </div>
 </div>
+<br><br>
 <div class="row">
   <div class="col-md-6">
     <div class="panel panel-primary">
-      <div class="panel-heading">Asistencia de turno tarde</div>
+      <div class="panel-heading">Asistencia de turno tarde</div><br>
       <div class="panel-body"><!--contenido de grafica instituciones con energia electrica-->
         <canvas id="myChart6" width="600" height="300"></canvas>
         <?php
@@ -57,7 +63,7 @@ array("Tarde", $students->totalStudentsController('Tarde'))
   </div>
   <div class="col-md-6">
     <div class="panel panel-primary">
-      <div class="panel-heading">Asistencia de turno Mañana </div>
+      <div class="panel-heading">Asistencia de turno Mañana </div><br>
       <div class="panel-body"><!--contenido de grafica instituciones con energia electrica-->
         <canvas id="myChart7" width="600" height="300"></canvas>
         <?php
@@ -72,7 +78,7 @@ array("Tarde", $students->totalStudentsController('Tarde'))
 <?php
 $cursos =$students->listCoursesController("Tarde");
 echo '<br><br><br><br>';
-echo 'Cursos turno tarde <br>';
+echo 'Cursos turno tarde <br><br>';
 echo '<div class="row">';
 foreach ($cursos as $key => $value) {
   $id=$cursos[$key][0];
@@ -115,7 +121,7 @@ foreach ($cursos as $key => $value) {
                   <div class="card-header" role="tab" id="heading'.$id.'">
                     <h6 class="mb-0">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapse'.$id.'" aria-expanded="true" aria-controls="collapse'.$id.'">';
-                            echo 'Curso: '.$cursos[$key][1].'Turno : '.$cursos[$key][2].' Cantidad de Alumnos:'.$cant;
+                            echo 'Curso:&nbsp '.$cursos[$key][1].'&nbsp&nbsp&nbspTurno : '.$cursos[$key][2].'<br> Cantidad de Alumnos:&nbsp&nbsp'.$cant;
                   echo '</a>
                   </h6>
               </div>';
@@ -130,7 +136,7 @@ foreach ($cursos as $key => $value) {
 echo '</div>';
 $cursos=$students->listCoursesController("Mañana");
 echo '<br><br><br><br>';
-echo 'Cursos turno Mañana <br>';
+echo 'Cursos turno Mañana <br><br>';
 echo '<div class="row">';
 foreach ($cursos as $key => $value) {
   $id=$cursos[$key][0];
@@ -170,7 +176,7 @@ foreach ($cursos as $key => $value) {
                 <div class="card-header" role="tab" id="heading'.$id.'">
                   <h6 class="mb-0">
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapse'.$id.'" aria-expanded="true" aria-controls="collapse'.$id.'">';
-                          echo 'Curso: '.$cursos[$key][1].'Turno : '.$cursos[$key][2].' Cantidad de Alumnos:'.$cant;
+                          echo 'Curso:&nbsp '.$cursos[$key][1].'&nbsp&nbsp&nbspTurno : '.$cursos[$key][2].'<br> Cantidad de Alumnos:&nbsp&nbsp'.$cant;
                 echo '</a>
                 </h6>
             </div>';
@@ -183,4 +189,5 @@ foreach ($cursos as $key => $value) {
 </div></div></div>';
 }
 echo '</div>'; ?>
+</div>
  <script type="text/javascript" src="views/js/graphic/botongrafico.js"></script>

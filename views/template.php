@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0, minimum-scale=1.0">
 	<link rel="icon" type="image/png" href="img/escudoicono.png" />
 <!--<link rel="stylesheet" href="views/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css" type="text/css">-->
+
 	<link rel="stylesheet" href="views/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.css" type="text/css">
 	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -39,6 +40,7 @@
 				width: 100%;
 		}
 }
+
 </style>
 
 <title>School Manager para Colegio 5159</title>
@@ -107,6 +109,13 @@ $mvc -> enlacesPaginasController();
 														<a class="btn-social btn-outline" href="https://twitter.com/colegio5159"><i class="fa fa-fw fa-twitter"></i></a>
 												</li>
 
+											 		<li class="list-inline-item">
+											 				<a class="btn-social btn-outline" href="https://www.youtube.com/channel/UClOHoEv4-gkvCeYLaXRGegg"><i class="fa fa-fw fa-youtube"></i></a>
+											 		</li>
+													<li class="list-inline-item">
+											 				<a class="btn-social btn-outline" href="http://www.colegio5159.com.ar/sitioweb/"><i class="fa fa-fw fa-laptop"></i></a>
+											 		</li>
+												
 										</ul>
 								</div>
 

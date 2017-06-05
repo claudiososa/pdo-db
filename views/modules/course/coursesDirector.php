@@ -1,3 +1,6 @@
+<div class="container">
+<br><br>
+
 <?php
 /**
  * Verificar si el usuario es de tipo Admin para acceder a este archivo
@@ -109,3 +112,4 @@ foreach ($viewCourse as $key => $item) {
 echo '</tbody></table>';
 echo '</div>';
  ?>
+</div>
