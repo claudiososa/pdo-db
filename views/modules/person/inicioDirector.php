@@ -12,10 +12,10 @@
 <!-- About Section -->
 <section class="success" id="about">
     <div class="container">
-        <h2 class="text-center">ALUMNOS</h2>
+        <h2 class="text-center">BUSCAR PERSONA</h2>
         <hr class="star-light">
         <?php
-        include_once 'views/modules/person/searchPerson.php';
+        include_once 'views/modules/person/searchPersonDirector.php';
          ?>
     </div>
 </section>

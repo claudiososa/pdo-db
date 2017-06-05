@@ -17,6 +17,9 @@ if(isset($_GET)){
 
  ?>
  <br>
+ <div class="container">
+
+
 <h4>Alumnos para el Curso: <?php echo '<label class="btn btn-primary">'.$viewCourse[0]['name'].'</label>'; ?> Turno: <?php echo '<label class="btn btn-primary">'.$viewCourse[0]['turn'].'</label>'; ?></h4><br>
 
 <br>
@@ -112,4 +115,5 @@ if($_GET['action']=='viewStudentsCourse' AND $_GET['id'] ){
   echo '</tbody></table></div>';
 }
 ?>
+</div>
 </div>

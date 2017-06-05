@@ -5,7 +5,9 @@ if($_SESSION["typeUser"]<>'Admin' && $_SESSION["typeUser"]<>'Director/a'){
 }
 ?>
 <br><br>
-<div class="card">
+<div class="container">
+
+
 	<div class="card-block">
 		<h5 class="card-title" align="center">Buscar y modificar datos de Alumno:</h5>
 	</div>
@@ -39,7 +41,7 @@ if($_POST){
   $resultado = new ControllerPerson();
   $dato=$resultado->searchPersonController('form');
   //var_dump($dato);
-	echo '<div class="card">';
+//	echo '<div class="card">';
 	echo '<div class="table-responsive">';
   echo '<table class="table table-condensed">';
   echo '<thead>
@@ -86,9 +88,10 @@ if($_POST){
   }
   echo '</table>';
 	echo '</div>';
-	echo '</div';
+	//echo '</div';
 }
 ?>
+</div>
 </div>
 </div>
 <br><br>
