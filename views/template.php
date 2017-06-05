@@ -94,7 +94,7 @@ $mvc -> enlacesPaginasController();
 				<div class="container">
 						<div class="row">
 								<div class="footer-col col-md-6">
-										<h2>Colegio N° 5159</h2>
+										<h3>Colegio N° 5159</h3>
 										<p>Av. Hipodromo de San Isidro Nº 750
 												<br>Salta, Argentina</p>
 								</div>

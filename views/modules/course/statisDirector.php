@@ -5,135 +5,19 @@
 
 <?php
 $students = new controllerStatis();
-echo '<br><br>';
-echo '<h5>Cantidad de Alumnos Total: '.$students->totalStudentsController().'</h5><br>';
-echo '<h5>Cantidad de Alumnos Turno Tarde: '.$students->totalStudentsController('Tarde').'<h5><br>';
-echo '<h5>Cantidad de Alumnos Turno Mañana: '.$students->totalStudentsController('Mañana').'<h5><br><br><br>';
-//$attendance=$students->totalStudentsController('allArray');
-$attendance=$students->attendanceStudentsController();
-$presente=0;$ausente=0;$justificada=0;$mediaFalta=0;
-foreach ($attendance as $key => $value) {
-  //echo $attendance[$key][3];
-  switch ($attendance[$key][3]) {
-    case 'P':
-      $presente++;
-      break;
-    case 'A':
-      $ausente++;
-      break;
-    case 'M':
-      $mediaFalta++;
-      break;
-    case 'J':
-      $justificada++;
-      break;
-    default:
-      # code...
-      break;
-  }
-}
 
-$asistenciaGeneral = array(
-array("Presente", $presente),
-array("Ausente", $ausente),
-array("MediaFalta", $mediaFalta),
-array("Justificada", $justificada)
-);
-
-$attendance=$students->attendanceStudentsController('Tarde');
-$presente=0;$ausente=0;$justificada=0;$mediaFalta=0;
-foreach ($attendance as $key => $value) {
-  //echo $attendance[$key][3];
-  switch ($attendance[$key][3]) {
-    case 'P':
-      $presente++;
-      break;
-    case 'A':
-      $ausente++;
-      break;
-    case 'M':
-      $mediaFalta++;
-      break;
-    case 'J':
-      $justificada++;
-      break;
-    default:
-      # code...
-      break;
-  }
-}
-
-$asistenciaTarde = array(
-array("Presente", $presente),
-array("Ausente", $ausente),
-array("MediaFalta", $mediaFalta),
-array("Justificada", $justificada)
-);
-
-$attendance=$students->attendanceStudentsController('Mañana');
-$presente=0;$ausente=0;$justificada=0;$mediaFalta=0;
-foreach ($attendance as $key => $value) {
-  //echo $attendance[$key][3];
-  switch ($attendance[$key][3]) {
-    case 'P':
-      $presente++;
-      break;
-    case 'A':
-      $ausente++;
-      break;
-    case 'M':
-      $mediaFalta++;
-      break;
-    case 'J':
-      $justificada++;
-      break;
-    default:
-      # code...
-      break;
-  }
-}
-
-$asistenciaMañana = array(
-array("Presente", $presente),
-array("Ausente", $ausente),
-array("MediaFalta", $mediaFalta),
-array("Justificada", $justificada)
-);
-
-$attendance=$students->attendanceCourseController(5);
-$presente=0;$ausente=0;$justificada=0;$mediaFalta=0;
-foreach ($attendance as $key => $value) {
-  //echo $attendance[$key][3];
-  switch ($attendance[$key][3]) {
-    case 'P':
-      $presente++;
-      break;
-    case 'A':
-      $ausente++;
-      break;
-    case 'M':
-      $mediaFalta++;
-      break;
-    case 'J':
-      $justificada++;
-      break;
-    default:
-      # code...
-      break;
-  }
-}
-
-$asistenciaCurso = array(
-array("Presente", $presente),
-array("Ausente", $ausente),
-array("MediaFalta", $mediaFalta),
-array("Justificada", $justificada)
-);
+echo '<br>';
+echo '<h6>Alumnos Total  <label class="btn btn-primary">'.$students->totalStudentsController().'</label></h6><br>';
+echo '<h6>Alumnos de Turno Mañana  <label class="btn btn-primary">'.$students->totalStudentsController('Mañana').'</label></h6><br>';
+echo '<h6>Alumnos de Turno Tarde <label class="btn btn-primary">'.$students->totalStudentsController('Tarde').'</label></h6><br>';
 
 
+$asistenciaGeneral=$students->attendanceStudentsController();
 
+$asistenciaTurnoTarde=$students->attendanceStudentsController('Tarde');
 
-//echo 'Cantidad de Alumnos del Curso: '.$students->totalCourseController(8).'<br>';
+$asistenciaTurnoMañana=$students->attendanceStudentsController('Mañana');
+
 $turnos = array(
 array("Mañana", $students->totalStudentsController('Mañana')),
 array("Tarde", $students->totalStudentsController('Tarde'))
@@ -172,7 +56,7 @@ array("Tarde", $students->totalStudentsController('Tarde'))
       <div class="panel-body"><!--contenido de grafica instituciones con energia electrica-->
         <canvas id="myChart6" width="600" height="300"></canvas>
         <?php
-          echo $students->grafico('bar',$asistenciaTarde,'myChart6');
+          echo $students->grafico('bar',$asistenciaTurnoTarde,'myChart6');
         ?>
       </div>
     </div>
@@ -183,7 +67,7 @@ array("Tarde", $students->totalStudentsController('Tarde'))
       <div class="panel-body"><!--contenido de grafica instituciones con energia electrica-->
         <canvas id="myChart7" width="600" height="300"></canvas>
         <?php
-          echo $students->grafico('bar',$asistenciaMañana,'myChart7');
+          echo $students->grafico('bar',$asistenciaTurnoMañana,'myChart7');
         ?>
       </div>
     </div>
@@ -235,11 +119,11 @@ foreach ($cursos as $key => $value) {
       echo ' <div id="accordion" role="tablist" aria-multiselectable="true">
               <div class="card">
                   <div class="card-header" role="tab" id="heading'.$id.'">
-                    <h5 class="mb-0">
+                    <h6 class="mb-0">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapse'.$id.'" aria-expanded="true" aria-controls="collapse'.$id.'">';
                             echo 'Curso:&nbsp '.$cursos[$key][1].'&nbsp&nbsp&nbspTurno : '.$cursos[$key][2].'<br> Cantidad de Alumnos:&nbsp&nbsp'.$cant;
                   echo '</a>
-                  </h5>
+                  </h6>
               </div>';
       echo '<div id="collapse'.$id.'" class="collapse hide" role="tabpanel" aria-labelledby="heading'.$id.'">
       <div class="card-block">
@@ -290,11 +174,11 @@ foreach ($cursos as $key => $value) {
     echo ' <div id="accordion" role="tablist" aria-multiselectable="true">
             <div class="card">
                 <div class="card-header" role="tab" id="heading'.$id.'">
-                  <h5 class="mb-0">
+                  <h6 class="mb-0">
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapse'.$id.'" aria-expanded="true" aria-controls="collapse'.$id.'">';
                           echo 'Curso:&nbsp '.$cursos[$key][1].'&nbsp&nbsp&nbspTurno : '.$cursos[$key][2].'<br> Cantidad de Alumnos:&nbsp&nbsp'.$cant;
                 echo '</a>
-                </h5>
+                </h6>
             </div>';
     echo '<div id="collapse'.$id.'" class="collapse hide" role="tabpanel" aria-labelledby="heading'.$id.'">
     <div class="card-block">

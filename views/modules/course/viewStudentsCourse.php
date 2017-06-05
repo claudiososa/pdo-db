@@ -2,7 +2,7 @@
 <?php
 
 /**
- * Verificar si el usuario es de tipo Admin para acceder a este archivo
+ * Verificar si el usuario es de tipo Admin o Director para acceder a este archivo
  * en el caso que no sea asi se redireccion a pagina ingresar
  */
 if($_SESSION["typeUser"]<>'Admin' && $_SESSION["typeUser"]<>'Director/a'){
@@ -17,18 +17,15 @@ if(isset($_GET)){
 
  ?>
  <br>
+
  <div class="container">
 
 
-<h4>Alumnos para el Curso: <?php echo '<label class="btn btn-primary">'.$viewCourse[0]['name'].'</label>'; ?> Turno: <?php echo '<label class="btn btn-primary">'.$viewCourse[0]['turn'].'</label>'; ?></h4><br>
+
+<h6>Alumnos para el Curso: <?php echo '<label class="btn btn-primary">'.$viewCourse[0]['name'].'</label>'; ?> Turno: <?php echo '<label class="btn btn-primary">'.$viewCourse[0]['turn'].'</label>'; ?></h6><br>
 
 <br>
-
 <div class="card">
-
-
-
-
 <?php
 if($_POST){
 

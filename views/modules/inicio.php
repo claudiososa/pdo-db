@@ -3,10 +3,8 @@
     <div class="container">
   <img class="img-fluid" src="img/escudo.png" alt="EscudoColegio5159">
         <div class="intro-text">
-            <span class="name">BIENVENIDOS</span>
-
-
-                <hr class="star-light">
+            <span class="name">Bienvenidos</span>
+            <hr class="star-light">
         </div>
     </div>
 </header>

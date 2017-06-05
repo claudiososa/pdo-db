@@ -11,7 +11,7 @@
  		?>
 
 
-		<li><a href="index.php?action=salir">Salir</a></li>
+		<li><a href="index.php?action=salir">Cerrar Sesión</a></li>
 		<li><a href='#'>
 
 		<?php

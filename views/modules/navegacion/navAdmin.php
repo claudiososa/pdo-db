@@ -41,7 +41,7 @@
 		</li>
 
 
-		<li class="nav-item"><a class="nav-link"href="index.php?action=salir">Salir</a></li>
+		<li class="nav-item"><a class="nav-link"href="index.php?action=salir">Cerrar Sesión</a></li>
 		<li class="nav-item"><a class="nav-link"href='#'>
 
 		<?php

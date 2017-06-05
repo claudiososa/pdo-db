@@ -26,7 +26,7 @@
         <a class="nav-link" href="index.php?action=searchPerson">Alumnos</a>
       </li>
 			<li class="nav-item">
-        <a class="nav-link" href="index.php?action=salir">Salir</a>
+        <a class="nav-link" href="index.php?action=salir">Cerrar Sesión</a>
       </li>
 			<li class="nav-item">
 				<a class="nav-link" href="#">
