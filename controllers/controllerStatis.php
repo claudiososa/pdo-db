@@ -62,13 +62,43 @@ class ControllerStatis extends General{
 	 */
 
 	public function attendanceStudentsController($turn=NULL){
+		//$asistenciaGeneral=array();
 		if(isset($turn)){
 			$respuesta = Statis::attendanceStudentsModel($turn,"attendances");
 		}else{
 			$respuesta = Statis::attendanceStudentsModel(null,"attendances");
 		}
+		$presente=0;$ausente=0;$justificada=0;$mediaFalta=0;
+		foreach ($respuesta as $key => $value) {
+			//echo $attendance[$key][3];
+			switch ($respuesta[$key][3]) {
+				case 'P':
+					$presente++;
+					break;
+				case 'A':
+					$ausente++;
+					break;
+				case 'M':
+					$mediaFalta++;
+					break;
+				case 'J':
+					$justificada++;
+					break;
+				default:
+					# code...
+					break;
+			}
+		}
+
+		$asistenciaGeneral = array(
+		array("Presente", $presente),
+		array("Ausente", $ausente),
+		array("MediaFalta", $mediaFalta),
+		array("Justificada", $justificada)
+		);
+
 		if ($respuesta>0) {
-      return $respuesta;
+      return $asistenciaGeneral;
 		}else{
 			header("location:index.php");
 		}

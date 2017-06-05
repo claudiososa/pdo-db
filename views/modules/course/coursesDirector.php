@@ -59,15 +59,14 @@ if(isset($_GET['savedUpdate']))
  */
 
 $viewCourse = $registro->viewCourseStudentController();
-
+echo '<div class="table-responsive">';
 echo '<table class="table table-condensed">
       <thead>
       <th>Id</th>
-      <th>Nombre del Curso</th>
+      <th>Curso</th>
       <th>Turno</th>
       <th>Preceptor</th>
 			<th>Accion</th>
-			<th>Inscribir</th>
       </thead>
       <tbody>';
 $resultado = new ControllerPerson();
@@ -94,7 +93,7 @@ foreach ($viewCourse as $key => $item) {
 	}else{
 		echo '<td>Sin asignar</td>';
 	}
-  echo '<td></td>';
+  
 	//echo '<td><a class="btn btn-primary" href="index.php?action=createCourse&id='.$item["course_id"].'&edit='.$item["course_id"].'">Modificar</a></td>';
   echo '<td><a class="btn btn-primary" href="index.php?action=viewStudentsCourse&id='.$item["course_id"].'">Alumnos</a></td>';
 	//<td><a  class="btn btn-primary" href="index.php?action=deleteCourse&id='.$item["course_id"].'">Borrar</a></td>';
@@ -108,4 +107,5 @@ foreach ($viewCourse as $key => $item) {
   echo '</tr>';
 }
 echo '</tbody></table>';
+echo '</div>';
  ?>
