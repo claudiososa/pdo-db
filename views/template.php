@@ -82,12 +82,12 @@ if(isset($_SESSION["typeUser"])){
 	include "modules/navegacion/navInicial.php";
 }
 ?>
-<section>
+
 <?php
 $mvc = new MvcController();
 $mvc -> enlacesPaginasController();
  ?>
-</section>
+<br><br>
 <!-- Footer -->
 <footer class="text-center">
 		<div class="footer-above">
@@ -95,28 +95,34 @@ $mvc -> enlacesPaginasController();
 						<div class="row">
 								<div class="footer-col col-md-6">
 										<h3>Colegio N° 5159</h3>
-										<p>Av. Hipodromo de San Isidro Nº 750
+										<p>Tel: 3875619585<br>
+										Av. Hipodromo de San Isidro Nº 750
 												<br>Salta, Argentina</p>
 								</div>
 								<div class="footer-col col-md-6">
 
 										<ul class="list-inline">
 												<li class="list-inline-item">
-														<a class="btn-social btn-outline" href="https://es-la.facebook.com/colegio5159/"><i class="fa fa-fw fa-facebook"></i></a>
+														<a class="btn-social btn-outline" href="https://es-la.facebook.com/colegio5159/" target="_blank"><i class="fa fa-fw fa-facebook"></i></a>
 												</li>
 
 												<li class="list-inline-item">
-														<a class="btn-social btn-outline" href="https://twitter.com/colegio5159"><i class="fa fa-fw fa-twitter"></i></a>
+														<a class="btn-social btn-outline" href="https://twitter.com/colegio5159" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
 												</li>
 
 											 		<li class="list-inline-item">
-											 				<a class="btn-social btn-outline" href="https://www.youtube.com/channel/UClOHoEv4-gkvCeYLaXRGegg"><i class="fa fa-fw fa-youtube"></i></a>
+											 				<a class="btn-social btn-outline" href="https://www.youtube.com/channel/UClOHoEv4-gkvCeYLaXRGegg" target="_blank"><i class="fa fa-fw fa-youtube"></i></a>
 											 		</li>
 													<li class="list-inline-item">
-											 				<a class="btn-social btn-outline" href="http://www.colegio5159.com.ar/sitioweb/"><i class="fa fa-fw fa-laptop"></i></a>
+											 				<a class="btn-social btn-outline" href="http://www.colegio5159.com.ar/sitioweb/"><i class="fa fa-fw fa-laptop" target="_blank"></i></a>
 											 		</li>
-												
+													<li class="list-inline-item">
+											 				<a class="btn-social btn-outline"  href="https://www.google.com.ar/maps/place/Colegio+5159/@-24.7880002,-65.4586804,15z/data=!4m5!3m4!1s0x0:0x3dfe960212925c9f!8m2!3d-24.7880002!4d-65.4586804" target="_blank"><i class="fa fa-fw fa-map-marker"></i></a>
+											 		</li>
+
 										</ul>
+
+
 								</div>
 
 						</div>

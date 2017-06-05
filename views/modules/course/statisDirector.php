@@ -6,7 +6,7 @@
 <?php
 $students = new controllerStatis();
 
-echo '<br>';
+echo '<br><br><br><br><br><br><br>';
 echo '<h6>Alumnos Total  <label class="btn btn-primary">'.$students->totalStudentsController().'</label></h6><br>';
 echo '<h6>Alumnos de Turno Mañana  <label class="btn btn-primary">'.$students->totalStudentsController('Mañana').'</label></h6><br>';
 echo '<h6>Alumnos de Turno Tarde <label class="btn btn-primary">'.$students->totalStudentsController('Tarde').'</label></h6><br>';
@@ -24,10 +24,11 @@ array("Tarde", $students->totalStudentsController('Tarde'))
 );
 //
 ?>
+<br>
 <div class="row">
   <div class="col-md-6">
     <div class="panel panel-primary">
-      <div class="panel-heading">Cantidad de alumnos por Turnos</div><br>
+      <div class="panel-heading"><h5>Cantidad de alumnos por Turnos</h5></div><br>
       <div class="panel-body"><!--contenido de grafica instituciones con energia electrica-->
         <canvas id="myChart4" width="600" height="300"></canvas>
         <?php
@@ -38,7 +39,7 @@ array("Tarde", $students->totalStudentsController('Tarde'))
   </div>
   <div class="col-md-6">
     <div class="panel panel-primary">
-      <div class="panel-heading">Cantidad General de Presentes, Ausentes, Media Falta, Justificada</div><br>
+      <div class="panel-heading"><h5>Cantidad General de Presentes, Ausentes, Media Falta, Justificada</h5></div><br>
       <div class="panel-body"><!--contenido de grafica instituciones con energia electrica-->
         <canvas id="myChart3" width="600" height="300"></canvas>
         <?php
@@ -52,7 +53,7 @@ array("Tarde", $students->totalStudentsController('Tarde'))
 <div class="row">
   <div class="col-md-6">
     <div class="panel panel-primary">
-      <div class="panel-heading">Asistencia de turno tarde</div><br>
+      <div class="panel-heading"><h5>Asistencia de turno tarde</h5></div><br>
       <div class="panel-body"><!--contenido de grafica instituciones con energia electrica-->
         <canvas id="myChart6" width="600" height="300"></canvas>
         <?php
@@ -63,7 +64,7 @@ array("Tarde", $students->totalStudentsController('Tarde'))
   </div>
   <div class="col-md-6">
     <div class="panel panel-primary">
-      <div class="panel-heading">Asistencia de turno Mañana </div><br>
+      <div class="panel-heading"><h5>Asistencia de turno Mañana </h5></div><br>
       <div class="panel-body"><!--contenido de grafica instituciones con energia electrica-->
         <canvas id="myChart7" width="600" height="300"></canvas>
         <?php
@@ -78,7 +79,7 @@ array("Tarde", $students->totalStudentsController('Tarde'))
 <?php
 $cursos =$students->listCoursesController("Tarde");
 echo '<br><br><br><br>';
-echo 'Cursos turno tarde <br><br>';
+echo '<h6>Cursos turno tarde<h6> <br><br>';
 echo '<div class="row">';
 foreach ($cursos as $key => $value) {
   $id=$cursos[$key][0];
