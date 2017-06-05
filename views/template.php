@@ -9,8 +9,8 @@
 
 	<link rel="stylesheet" href="views/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.css" type="text/css">
 	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-	<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+	<!--<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">-->
+	<!--<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">-->
 	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">-->
 <script type="text/javascript" src="views/js/jquery-3.1.0.min.js">
 
@@ -115,7 +115,7 @@ $mvc -> enlacesPaginasController();
 													<li class="list-inline-item">
 											 				<a class="btn-social btn-outline" href="http://www.colegio5159.com.ar/sitioweb/"><i class="fa fa-fw fa-laptop"></i></a>
 											 		</li>
-												
+
 										</ul>
 								</div>
 
