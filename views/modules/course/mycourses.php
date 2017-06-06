@@ -4,7 +4,8 @@
   $courses = new ControllerCourse();
   $mycourses = $courses->myCoursesController($_SESSION["user_id"]);
   //var_dump($mycourses);
-  echo '<div class="table-responsive">
+
+  echo '<div class="container"> <div class="table-responsive"><br><br><br><br><br>
   <table class="table">
           <thead>
             <tr>
@@ -17,7 +18,6 @@
             </tr>
           </thead>
           <tbody>
-
   ';
   foreach ($mycourses as $key => $value) {
     echo '<tr><td>'.$value["course_id"].'</td>';
@@ -31,7 +31,7 @@
   }
   echo '
         </tbody>
-        </table></div>';
+        </table></div></div>';
 
 ?>
 </div>
