@@ -70,7 +70,6 @@ echo "<script>
 		foreach ($viewCourse as $key => $item) {
 
 		echo '$("#bt'.$item['student_id'].'").click(function(){';
-
       //echo 'alert("hola mundo");';
       //	total1=150;
   		//	cuotas=1;
@@ -79,14 +78,9 @@ echo "<script>
 		echo 'if($(this).attr("value")=="Presente"){';
       echo '$(this).attr("value","Ausente");';
 			echo '$("#'.$item['student_id'].'").attr("value","Ausente");';
-      //echo 'alert($(this).attr("value"));';
-      //echo '$("#tr'.$item['student_id'].'").removeClass("bg-success");';
       echo '$("#tr'.$item['student_id'].'").addClass("bg-danger text-white");';
       echo '$("#bt'.$item['student_id'].'").removeClass("btn btn-success");';
       echo '$("#bt'.$item['student_id'].'").addClass("btn btn-danger");';
-      //echo '$("#tr'.$item['student_id'].'").removeClass("bg-success")';
-      //echo '$("#tr'.$item['student_id'].'").addClass("bg-warning");';
-
 
     echo '}else if ($(this).attr("value")=="Ausente"){';
       echo '$(this).attr("value","Media F.");';
@@ -167,9 +161,12 @@ echo '<div class="table-responsive">
       <tbody>';
       foreach ($viewCourse as $key => $item) {
 				$searchAttendance = $attendanceStudent->viewAttendanceStudentController($item["student_id"],date("Y-m-d"));
+				//var_dump($searchAttendance);
+				//echo '<br><br>';
 				if(isset($searchAttendance)){
 				if(count($searchAttendance)>0){
 						//echo $searchAttendance[0]['status'];
+						//echo '<br><br>';
 						switch ($searchAttendance[0]['status']) {
 							case 'P':
 								echo '<tr  id="tr'.$item["student_id"].'">';
