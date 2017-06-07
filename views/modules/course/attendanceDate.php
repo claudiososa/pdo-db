@@ -239,6 +239,7 @@ $dateSelect=date("Y-m-d",strtotime($_POST["date"]));
 <?php
 }else{
   ?>
+	<br><br><br><br><br><br>
   <form class="" action="" method="post">
     <input type="date" name="date" value="">
     <input type="hidden" name="courseId" value="<?php echo $_GET['id'] ?>">
