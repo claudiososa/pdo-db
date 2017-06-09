@@ -27,6 +27,9 @@ if($_POST){
 				case 'Doble Ausente':
 								$status='AA';
 								break;
+				case 'Doble Tarde':
+								$status='MM';
+								break;
 				default:
 					# code...
 					break;
@@ -106,13 +109,21 @@ echo "<script>
 	      echo '$("#tr'.$item['student_id'].'").addClass("bg-inverse text-white");';
 	      echo '$("#bt'.$item['student_id'].'").removeClass("btn btn-warning");';
 	      echo '$("#bt'.$item['student_id'].'").addClass("btn btn-inverse");';
+			echo '}else if($(this).attr("value")=="Doble Ausente"){';
+					echo '$(this).attr("value","Doble Tarde");';
+					echo '$("#'.$item['student_id'].'").attr("value","Doble Tarde");';
+		      //echo 'alert($(this).attr("value"));';
+		      echo '$("#tr'.$item['student_id'].'").removeClass("bg-inverse text-white");';
+		      echo '$("#tr'.$item['student_id'].'").addClass("bg-warning text-white");';
+		      echo '$("#bt'.$item['student_id'].'").removeClass("btn btn-inverse");';
+		      echo '$("#bt'.$item['student_id'].'").addClass("btn btn-warning");';
 			echo '}else{';
 				echo '$(this).attr("value","Presente");';
 				echo '$("#'.$item['student_id'].'").attr("value","Presente");';
 	      //echo 'alert($(this).attr("value"));';
-	      echo '$("#tr'.$item['student_id'].'").removeClass("bg-inverse text-white");';
+	      echo '$("#tr'.$item['student_id'].'").removeClass("bg-warning text-white");';
 	      echo '$("#tr'.$item['student_id'].'").addClass("text-black");';
-	      echo '$("#bt'.$item['student_id'].'").removeClass("btn btn-inverse");';
+	      echo '$("#bt'.$item['student_id'].'").removeClass("btn btn-warning");';
 	      echo '$("#bt'.$item['student_id'].'").addClass("btn btn-success");';
 		echo '}
 
@@ -183,6 +194,9 @@ echo '<div class="table-responsive">
 							case 'AA':
 									echo '<tr class="bg-inverse text-white" id="tr'.$item["student_id"].'">';
 									break;
+							case 'MM':
+									echo '<tr class="bg-warning text-white" id="tr'.$item["student_id"].'">';
+									break;
 							default:
 
 								break;
@@ -219,6 +233,10 @@ echo '<div class="table-responsive">
 							case 'AA':
 										echo '<td><input  type="hidden" id="'.$item['student_id'].'" name="'.$item['student_id'].'" value="Doble Ausente"></td>';
 										echo '<td><input class="btn btn-inverse" type="button" id="bt'.$item['student_id'].'" name="bt'.$item['student_id'].'" value="Doble Ausente"></td>';
+										break;
+							case 'MM':
+										echo '<td><input  type="hidden" id="'.$item['student_id'].'" name="'.$item['student_id'].'" value="Doble Tarde"></td>';
+										echo '<td><input class="btn btn-warning" type="button" id="bt'.$item['student_id'].'" name="bt'.$item['student_id'].'" value="Doble Tarde"></td>';
 										break;
 							default:
 								echo '<td><input  type="hidden" id="'.$item['student_id'].'" name="'.$item['student_id'].'" value="Justificada"></td>';
